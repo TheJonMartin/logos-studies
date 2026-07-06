@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ephesians 3 — AuDHD Bible Study</title>
+  <style>
+    /* ── Base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; background: #f8f5f0; color: #2d2418; line-height: 1.65; }
+    h1 { font-size: 1.6rem; color: #1a0a00; text-align: center; padding: 1.5rem 1rem 0.5rem; }
+    h2 { font-size: 1.1rem; color: #5a3e28; margin: 1.5rem 0 0.75rem; padding-left: 1rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* ── Study container ──────────────────────────────────── */
+    .study-container { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    .chapter-block { margin-bottom: 2rem; }
+    .chapter-heading { font-size: 1.1rem; color: #5a3e28; margin: 1.5rem 0 0.75rem; padding-left: 0.5rem; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 2px solid #c9a96e; padding-bottom: 0.4rem; }
+
+    /* ── Theme banner ─────────────────────────────────────── */
+    .theme-banner { background: linear-gradient(135deg, #3b1a0a 0%, #6b3a1f 100%); color: #fdf5ec; padding: 1rem 1.4rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.92rem; line-height: 1.6; }
+    .theme-banner strong { font-size: 1rem; display: block; margin-bottom: 0.3rem; letter-spacing: 0.04em; color: #f0c98a; }
+
+    /* ── Verse block card ─────────────────────────────────── */
+    .verse-block { background: #fff; border: 1px solid #d4b896; border-radius: 8px; margin-bottom: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.06); overflow: hidden; }
+    .verse-header { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; background: linear-gradient(135deg, #6b3a1f 0%, #8b5a2b 100%); color: #fff; cursor: pointer; user-select: none; }
+    .verse-ref { font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; }
+    .verse-title { font-size: 0.85rem; opacity: 0.88; font-style: italic; margin-left: 0.75rem; flex: 1; }
+    .verse-text-preview { font-size: 0.82rem; opacity: 0.85; padding: 0.65rem 1.1rem; background: #fdf5ec; border-bottom: 1px solid #e8d5bc; font-style: italic; color: #5a3e28; line-height: 1.6; }
+    .toggle-arrow { font-size: 0.85rem; transition: transform 0.2s; }
+    .toggle-arrow.open { transform: rotate(180deg); }
+
+    /* ── Collapsible ──────────────────────────────────────── */
+    .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .collapsible-content.open { max-height: 9999px; }
+
+    /* ── Panels ───────────────────────────────────────────── */
+    .panel { border-top: 1px solid #e8ddd2; }
+    .panel-header { display: flex; align-items: center; padding: 0.65rem 1.1rem; font-weight: 600; font-size: 0.88rem; cursor: pointer; user-select: none; gap: 0.5rem; }
+    .panel-header .icon { font-size: 1rem; }
+    .panel-header .toggle-arrow { margin-left: auto; font-size: 0.75rem; }
+    .panel-body { padding: 1rem 1.1rem 1.1rem; font-size: 0.9rem; line-height: 1.7; }
+    .panel-body p { margin-bottom: 0.85rem; }
+    .panel-body p:last-child { margin-bottom: 0; }
+
+    /* ── Greek Exegesis panel ─────────────────────────────── */
+    .panel-greek .panel-header { background: #dbeafe; color: #1e3a5f; }
+    .panel-greek .panel-body  { background: #eff6ff; color: #1e3a5f; }
+    .greek-term { background: #fff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.85rem; }
+    .greek-term:last-child { margin-bottom: 0; }
+    .greek-term .term-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.4rem; }
+    .greek-term .term-word { font-size: 1.05rem; font-weight: 700; color: #1e40af; font-style: italic; }
+    .greek-term .term-parsing { font-size: 0.78rem; color: #3b5c9e; background: #dbeafe; padding: 2px 7px; border-radius: 12px; }
+    .greek-term .term-gloss { font-size: 0.82rem; color: #4b5563; margin-bottom: 0.35rem; }
+    .greek-term .term-significance { font-size: 0.88rem; color: #1e3a5f; }
+
+    /* ── Commentary / JFB panel ──────────────────────────── */
+    .panel-jfb .panel-header { background: #fef3c7; color: #78350f; }
+    .panel-jfb .panel-body  { background: #fffbeb; color: #451a03; }
+
+    /* ── AuDHD Reframe panel ──────────────────────────────── */
+    .panel-audhd .panel-header { background: #d1fae5; color: #064e3b; }
+    .panel-audhd .panel-body  { background: #ecfdf5; color: #022c22; }
+
+    /* ── Word Study panel ─────────────────────────────────── */
+    .panel-ws .panel-header { background: #ede9fe; color: #3b0764; }
+    .panel-ws .panel-body  { background: #f5f3ff; color: #2e1065; }
+    .word-study-term { font-size: 1.05rem; font-weight: 700; color: #5b21b6; font-style: italic; margin-bottom: 0.5rem; }
+
+    /* ── Additional Commentators panel ───────────────────── */
+    .panel-commentators .panel-header { background: #ccfbf1; color: #0f4c3a; }
+    .panel-commentators .panel-body  { background: #f0fdf9; color: #052e25; }
+    .commentator-block { background: #fff; border: 1px solid #a7f3d0; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; }
+    .commentator-block:last-child { margin-bottom: 0; }
+    .commentator-name { font-weight: 700; font-size: 0.9rem; color: #065f46; }
+    .commentator-source { font-size: 0.78rem; color: #6b7280; font-style: italic; margin-bottom: 0.4rem; }
+
+    /* ── Pastoral Reflection panel ───────────────────────── */
+    .panel-pastoral .panel-header { background: #ffe4e6; color: #9f1239; }
+    .panel-pastoral .panel-body  { background: #fff1f2; color: #4c0519; }
+    .panel-pastoral .panel-body ul { padding-left: 0; list-style: none; margin: 0; }
+    .panel-pastoral .panel-body ul li { padding: 8px 12px 8px 16px; margin: 8px 0; border-left: 3px solid #e11d48; background: #fff; border-radius: 0 4px 4px 0; font-size: 0.9rem; line-height: 1.55; }
+  </style>
+</head>
+<body>
+<div class="study-container">
+  <h1>Ephesians 3 — AuDHD Bible Study</h1>
+
+  <div class="theme-banner">
+    <strong>Study Theme: Bold, Confident Access to God Through Faith in Christ</strong>
+    The central nerve of Ephesians 3 is <em>prosagōgē</em> — the word for being formally led into the presence of a king. It appears in 2:18 (Jews and Gentiles together have access to the Father) and again in 3:12, now amplified: we have <em>parrēsia</em> (all-speech, zero filtering) and <em>pepoithēsis</em> (settled, persuaded confidence) in Christ. This study traces how that access is grounded in the revealed mystery (vv. 1–6), how it is available to the least qualified (vv. 7–13), how it is the basis of Paul's boldest prayer (vv. 14–19), and how it explodes into doxology (vv. 20–21).
+  </div>
+
+  <div class="chapter-block">
+    <h2 class="chapter-heading">Ephesians 3</h2>
+
+    <!-- v31: Eph 3:1-6 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v31')">
+        <span class="verse-ref">Ephesians 3:1–6</span>
+        <span class="verse-title">The Mystery Hidden and Now Revealed</span>
+        <span class="toggle-arrow open" id="arrow-v31">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "For this reason I, Paul, a prisoner of Christ Jesus on behalf of you Gentiles— assuming that you have heard of the stewardship of God's grace that was given to me for you, how the mystery was made known to me by revelation, as I have written briefly. When you read this, you can perceive my insight into the mystery of Christ, which was not made known to the sons of men in other generations as it has now been revealed to his holy apostles and prophets by the Spirit. This mystery is that the Gentiles are fellow heirs, members of the same body, and partakers of the promise in Christ Jesus through the gospel." — ESV
+      </div>
+      <div class="collapsible-content open" id="v31">
+
+        <!-- Panel 1: Greek Exegesis -->
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v31')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v31">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v31">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">mystērion</span>
+                <span class="term-parsing">noun · nom. sg. neut.</span>
+              </div>
+              <div class="term-gloss">ESV: "mystery" | NIV: "mystery" | NASB: "mystery"</div>
+              <div class="term-significance">In NT usage, <em>mystērion</em> does not mean something permanently unknowable or cryptically obscure — it means a secret previously hidden in the counsels of God that has now been disclosed through divine action. Paul uses it six times in Ephesians alone (1:9; 3:3, 4, 9; 5:32; 6:19). The word's first-century religious background includes initiation rites where secrets were revealed to insiders — Paul borrows the form but inverts it: this mystery was once hidden from everyone, and has now been disclosed to all who receive the gospel. No initiation fee. No esoteric qualification. The secret is out.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">apokalypseos</span>
+                <span class="term-parsing">noun · gen. sg. fem.</span>
+              </div>
+              <div class="term-gloss">ESV: "revelation" | NIV: "revelation" | NASB: "revelation"</div>
+              <div class="term-significance">The genitive qualifies how Paul received the mystery: not by intellectual effort, not by rabbinic tradition, but by direct divine <em>apokalypsis</em> — unveiling. This is the same word Paul uses in Galatians 1:12: "I did not receive it from any man, nor was I taught it, but I received it through a revelation of Jesus Christ." For the AuDHD reader: the mystery was not achievable by sustained study or by getting your spiritual life organized first. It was given. The mechanism is disclosure, not discovery.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">sugklēronomos / syssōmos / symmetochos</span>
+                <span class="term-parsing">adjectives · acc. pl. (three syn- compound words in v. 6)</span>
+              </div>
+              <div class="term-gloss">ESV: "fellow heirs / members of the same body / partakers" | NIV: "heirs together / members together / sharers together" | NASB: "fellow heirs / fellow members / fellow partakers"</div>
+              <div class="term-significance">All three words in v. 6 begin with the prefix <em>syn-</em> (together with, on equal footing). Paul is not stretching one compound word across a paragraph — he coins three distinct ones in a single verse to hammer the same point from three angles: Gentiles are <em>co</em>-heirs, <em>co</em>-body-members, <em>co</em>-partakers of the promise. Not second-class recipients. Not probationary members. Equal. The triple syn-prefix is emphatic and cumulative — by the third compound word the reader can no longer miss it. There is no insider tier to aspire to.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">oikonomia</span>
+                <span class="term-parsing">noun · gen. sg. fem.</span>
+              </div>
+              <div class="term-gloss">ESV: "stewardship" | NIV: "administration" | NASB: "stewardship"</div>
+              <div class="term-significance">From <em>oikos</em> (house) + <em>nomos</em> (law/management) — the word for the management of a household. Paul is the household manager of this grace, not its owner. The steward's job is distribution, not accumulation. He doesn't decide who gets in; he faithfully delivers what the master has given him to give. This framing removes Paul's apostolic authority from the category of personal achievement and places it entirely in the category of received trust.</div>
+            </div>
+
+            <p>The parenthetical structure of vv. 1–13 is worth noting: Paul begins the prayer in v. 1 ("For this reason I, Paul...") and does not return to the prayer itself until v. 14. Verses 2–13 are a theological parenthesis — an extended explanation of the ground on which he dares to pray what he is about to pray. Before asking for the Ephesians' strengthening, he establishes what they already are: recipients of a mystery God hid for ages and has now fully disclosed.</p>
+
+          </div>
+        </div>
+
+        <!-- Panel 2: Commentary (JFB) -->
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v31')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v31">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v31">
+            <p>Jamieson, Fausset, and Brown observe that "for this reason" in v. 1 points directly backward to the close of chapter 2 — the new temple being built on the apostolic and prophetic foundation with Christ himself as the cornerstone (2:20-22). Paul begins a prayer but interrupts himself with vv. 2–13, a parenthesis he cannot suppress before the actual petition of v. 14. He must first explain why someone like him — the former chief persecutor of the church — dares to pray for the Ephesians at all. The answer is stewardship: he was given something to carry, and he carries it faithfully.</p>
+            <p>On "prisoner of Christ Jesus" (v. 1), JFB note the deliberate reframing: Paul writes from Roman imprisonment, but names Christ, not Caesar, as his jailer. This is not resignation but theology — his chains are the specific form his commission takes in this season. Imprisonment is not defeat but deployment. The letter he writes from prison is itself evidence that God works through constrained and unlikely vessels.</p>
+            <p>JFB give careful attention to the three syn-compounds of v. 6, arguing that they represent a genuinely new disclosure — not merely the fulfillment of OT hints about Gentile inclusion, but the specific revelation that Jews and Gentiles would be <em>equal</em> members of one body, not a Gentile court in a predominantly Jewish temple. The OT anticipated Gentile blessing (Gen 12:3; Isa 49:6; Ps 87), but not co-equal body membership. That is the novelty of the mystery: the dividing wall has not been moved — it has been demolished (2:14).</p>
+            <p>JFB further note that the phrase "by the Spirit" in v. 5 grounds the revelation in divine authority. The apostles and prophets of the New Covenant received this disclosure through the Spirit's agency — making it binding and authoritative, not merely Paul's theological opinion. The revelation is pneumatological before it is apostolic.</p>
+          </div>
+        </div>
+
+        <!-- Panel 3: AuDHD Reframe -->
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v31')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v31">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v31">
+            <p>The AuDHD experience most alive in this passage is what we might call the <strong>outsider nervous system</strong> — the chronic, low-grade sense that you arrived somewhere you don't belong, that there's a form you were supposed to fill out before entering the room, that everyone else received the memo you somehow didn't. This is an experience that sits deeper than thought. It registers in the body before it registers in the mind. And for many AuDHD believers, it has been the texture of their experience inside the church — showing up genuinely wanting to belong, but perpetually uncertain whether you've mastered the unwritten rules that would make you a full member.</p>
+            <p>The Gentile position in the old covenant world is the structural position of the outsider — not because of moral failure, but because of a status that felt fixed. There was no effort by which a Gentile could become a full heir of the covenant simply by trying harder. And Paul's point is that the mystery — the thing God hid in himself and only now disclosed — is that the outsider has been brought inside <em>not by learning the rules but by an act of God</em>. The three syn-compounds are the answer to the outsider nervous system: you are <em>sugklēronomos</em> (co-heir), <em>syssōmos</em> (co-body-member), <em>symmetochos</em> (co-partaker). Not a guest. Not a probationary member. Not tolerated with conditions. A co-heir — by the same mechanism that makes everyone else an heir.</p>
+            <p>Notice the triple syn-prefix. Paul does not say Gentiles have <em>access to</em> the inheritance, or that they are <em>near</em> the body, or that they <em>may participate</em> in the promise. They <em>are</em> co-heirs, co-body, co-sharers. The prefix means "together with, on equal footing." There is no form you missed. There is no initiation you skipped. There is no second tier for people who got in through grace rather than through cultural competence. The membership is constituted by union with Christ, not by neurotypical performance of belonging.</p>
+            <p>For AuDHD believers who have internalized second-tier status — who suspect that "real" Christians experience quiet times differently, pray more eloquently, feel more reliably, fit more naturally into congregational life — this passage is counter-programming at the identity level, specifically the <strong>Identity vs. Behavior Confusion</strong> loop. Your membership in the body is not conferred by the performance of spiritual behaviors. The syn-compounds are ontological: they describe what you <em>are</em>, not what you're aiming to become. You are already the co-heir. You are already in the body. The question is not whether you have earned your place but whether you will believe you already occupy it.</p>
+            <p>The mechanism of the mystery's disclosure matters here too: <em>apokalypsis</em>, not discovery. God unveiled it; no one decoded it. This means the ground of your belonging is not your own spiritual insight. The revelation came to Paul — the former persecutor, the last person anyone would have chosen for the job — by divine disclosure, not by sustained study. If God's mystery was disclosed to <em>him</em>, the mystery is clearly not distributed based on spiritual track record. It is given. The form you thought you were supposed to fill out doesn't exist. The door was opened from the other side.</p>
+          </div>
+        </div>
+
+        <!-- Panel 4: Word Study -->
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v31')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v31">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v31">
+            <div class="word-study-term">mystērion / "mystery"</div>
+            <p><strong>Etymology and root meaning:</strong> From <em>myeō</em> (to initiate into a mystery rite) — probably related to <em>myō</em> (to close, as in closing the lips of an initiate under oath of secrecy). The core image is of something sealed off from ordinary access, known only to those to whom it has been deliberately disclosed.</p>
+            <p><strong>OT/LXX background:</strong> The word appears in the LXX primarily in Daniel (2:18–19, 27–30, 47; 4:9), translating Aramaic <em>rāz</em> — the secret counsels of God made known only by divine revelation, not by human wisdom. Daniel's situation — a captive outsider in a foreign court receiving direct divine disclosure of hidden things — is the precise background Paul is drawing on. The mystery in both cases is sovereign, not earned, and given to someone with no obvious qualifications.</p>
+            <p><strong>NT range:</strong> Paul uses <em>mystērion</em> 21 of its 28 NT occurrences. It always denotes a previously concealed divine purpose now disclosed — never "something inherently incomprehensible" (which is how modern English uses the word "mystery"). The semantic shift matters enormously: Paul's mystery is not permanently dark; it has been brought into light. What was hidden is now announced.</p>
+            <p><strong>This usage and cross-references:</strong> Here the mystery is specifically the co-equality of Jews and Gentiles in one body — something "hidden for ages" (v. 9) but now fully revealed through apostolic proclamation. Cross-references: Eph 1:9 ("making known to us the mystery of his will"); Col 1:26–27 ("the mystery hidden for ages and generations but now revealed to his saints... which is Christ in you, the hope of glory"). In both cross-references the trajectory is identical: hidden → now revealed → to recipients who did nothing to deserve the disclosure.</p>
+          </div>
+        </div>
+
+        <!-- Panel 5: Additional Commentators -->
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v31')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v31">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v31">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series / The Reason for God</div>
+              <p>Keller emphasizes that the "mystery" Paul describes is not merely sociological inclusion but the cosmic unification strategy of God — the plan from eternity to unite all things in Christ (Eph 1:10) with the unified multi-ethnic church as its first exhibit. The church is the demonstration project of what the whole creation will eventually become, and it is only credible as a demonstration project if the co-equality of its members is real and visible, not nominal.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP Bible Speaks Today)</div>
+              <p>Stott argues that Paul's extended parenthesis (vv. 2–13) is not a digression but a theological necessity — he cannot pray the prayer of vv. 14–19 without first reminding the Ephesians of the ground they already stand on. Before asking God to strengthen what the readers possess, Paul establishes what they possess: a mystery that angels longed to witness and prophets strained to see (1 Pet 1:10–12). The confidence of the forthcoming prayer rests entirely on this prior disclosure.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar New Testament Commentary)</div>
+              <p>O'Brien gives maximum weight to the three syn-compounds in v. 6, arguing that Paul is not softening the inclusion of Gentiles but intensifying it to the point of being formally unprecedentable in Second Temple Judaism. The Gentiles are not junior partners in Israel's covenant; they are equal beneficiaries of a new covenant reality in which the Jew/Gentile distinction itself has been theologically superseded by the "one new humanity" of 2:15.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Barnes</div>
+              <div class="commentator-source">Notes on the New Testament: Ephesians</div>
+              <p>Barnes draws attention to "stewardship of grace" (v. 2) as signaling Paul's consciousness that his apostolic possession is entirely fiduciary — entrusted, not earned. The steward serves the household's interests, not his own. Barnes sees this humility not as rhetorical modesty but as the defining framework of Paul's entire apostolic self-understanding, which climaxes in the self-description of v. 8: "the very least of all the saints."</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (Zondervan Exegetical Commentary on the NT)</div>
+              <p>Arnold highlights the cosmological dimension of the disclosure — the mystery being revealed is not solely for the benefit of human recipients but is being declared to "the rulers and authorities in the heavenly places" (v. 10). The church's very existence as a unified body is a theological statement addressed to the supernatural powers that organized the old age around division. The mystery's audience includes the heavenly courts, not just the earthly congregation.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Panel 6: Pastoral Reflection -->
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v31')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v31">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v31">
+            <ul>
+              <li>When you feel like a second-tier member of the church — too distracted, too intense, too much, not enough — what does it do to that feeling to hear Paul's word is not "accepted" but <em>co-heir</em>?</li>
+              <li>The mystery was hidden in God and then disclosed — not decoded, not achieved, not earned by sustained spiritual effort. Where in your faith are you still trying to decode something God has already revealed?</li>
+              <li>Which of the three syn-prefixes (co-heir, co-body-member, co-partaker) is hardest for you to receive as true about yourself today — and what does your resistance tell you?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v31 -->
+
+    <!-- v32: Eph 3:7-13 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v32')">
+        <span class="verse-ref">Ephesians 3:7–13</span>
+        <span class="verse-title">The Steward's Grace and Our Daring Access (prosagōgē)</span>
+        <span class="toggle-arrow open" id="arrow-v32">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "Of this gospel I became a minister according to the gift of God's grace, which was given me by the working of his power. To me, though I am the very least of all the saints, this grace was given, to preach to the Gentiles the unsearchable riches of Christ, and to bring to light for everyone what is the plan of the administration of the mystery hidden for ages in God, who created all things, so that through the church the manifold wisdom of God might now be made known to the rulers and authorities in the heavenly places. This was according to the eternal purpose that he has realized in Christ Jesus our Lord, in whom we have boldness and access with confidence through our faith in him. So I ask you not to lose heart over what I am suffering for you, which is your glory." — ESV
+      </div>
+      <div class="collapsible-content open" id="v32">
+
+        <!-- Panel 1: Greek Exegesis -->
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v32')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v32">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v32">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">prosagōgē</span>
+                <span class="term-parsing">noun · acc. sg. fem. — THE KEY TERM</span>
+              </div>
+              <div class="term-gloss">ESV: "access" | NIV: "approach" | NASB: "access"</div>
+              <div class="term-significance">From <em>prosagō</em> (to lead/bring toward, to introduce) + the nominalizing suffix. In ancient usage, the <em>prosagōgeus</em> was the court official — the chamberlain or herald — who formally introduced a petitioner or ambassador into the presence of a king. You did not simply walk into the throne room; you were <em>led in</em> by the official whose job it was to present you. The <em>prosagōgē</em> was the act of that formal introduction — the right of entry, the conducted approach. This same word appears at Eph 2:18 ("through him we both have access in one Spirit to the Father"), and again here in 3:12. Both occurrences are in Christ. He is our prosagōgeus — not one who might present us if conditions are met, but one whose presentation is already accomplished and ongoing.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">parrēsia</span>
+                <span class="term-parsing">noun · acc. sg. fem.</span>
+              </div>
+              <div class="term-gloss">ESV: "boldness" | NIV: "freedom and confidence" | NASB: "boldness"</div>
+              <div class="term-significance">Literally "all-speech" — <em>pan</em> (all) + <em>rhēsis</em> (speech). The freedom to say everything without filtering or self-censorship. In the ancient political world, <em>parrēsia</em> was the formal right of a free citizen to speak openly in the civic assembly — the right slaves and foreigners did not have. Children of the king had <em>parrēsia</em>. In prayer this word means: no topic is off-limits, no phrasing too inarticulate, no request too petty, no repetition too tedious. The filter is off. This is access with voice.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">pepoithēsis</span>
+                <span class="term-parsing">noun · dat. sg. fem. (from perfect passive participle)</span>
+              </div>
+              <div class="term-gloss">ESV: "confidence" | NIV: "confidence" | NASB: "confidence"</div>
+              <div class="term-significance">A noun derived from the perfect passive participle of <em>peithō</em> (to persuade) — literally "the state of having been persuaded and remaining in that state." The perfect tense is critical: this is not self-generated confidence, not willpower, not a feeling you have to sustain by effort. It is a condition produced by an external argument (the finished work of Christ) applied by an external agent (the Spirit). The believer has been persuaded and <em>remains</em> in the persuaded state. When the feeling of confidence evaporates, the text is not saying "try harder to feel confident." It is saying: return to the argument. The argument is Christ. The argument does not change.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">elachistoteros</span>
+                <span class="term-parsing">comparative of a superlative · acc. sg. masc. (hapax legomenon)</span>
+              </div>
+              <div class="term-gloss">ESV: "the very least" | NIV: "less than the least" | NASB: "the very least"</div>
+              <div class="term-significance">A grammatical tour de force of self-description. Paul takes <em>elachistos</em> (superlative: "the least") and adds the comparative suffix <em>-teros</em> to produce something that does not grammatically exist: "lesser than the least." It is a superlative-comparative that Greek grammar does not normally permit. Paul arguably coins it on the spot — as if ordinary grammar has no word adequate for the degree of his unworthiness. Crucially, the very man who is beyond the reach of normal language to describe his smallness is in the next breath given <em>parrēsia</em> and <em>prosagōgē</em>. The two truths stand together: maximum unworthiness and maximum welcome. The access is not predicated on the adequacy of the one accessing.</div>
+            </div>
+
+            <p>Note the three terms in v. 12 functioning together: <em>parrēsia</em> (the freedom of speech once inside), <em>prosagōgē</em> (the right of entry itself), and <em>pepoithēsis</em> (the settled conviction that holds both). Stott's description of these as the subjective state, the objective right, and the integrating conviction is apt. "We have" (<em>echomen</em>) is present indicative active — we are currently, actively possessing this access. It is not something to be obtained; it is something already held and inhabited.</p>
+
+          </div>
+        </div>
+
+        <!-- Panel 2: Commentary (JFB) -->
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v32')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v32">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v32">
+            <p>JFB observe that vv. 7–8 form a chiasm of grace: Paul became a minister of the gospel according to the gift of God's grace (v. 7), and within that grace the specific commission to the Gentiles was itself a grace given to him (v. 8). The double occurrence of <em>edothē</em> (aorist passive: "was given") in these two verses drives the point home — Paul received commission; he did not earn it. This creates the passage's great juxtaposition: the man who once "ravaged the church" (Acts 8:3, Gal 1:13) is now entrusted with the richest proclamation the world has ever heard.</p>
+            <p>The phrase "unsearchable riches of Christ" (<em>anexichniastos</em>, v. 8) uses a word meaning "untraceable, impossible to track by following footprints." The image is of riches so vast that no one can follow the trail of them to their end. JFB note this is not rhetorical hyperbole but theological statement: the preaching commission is to announce something that exceeds all human capacity to fully explore. The preacher is not the end of the message; he is the beginning of an inquiry that will outlast any individual life.</p>
+            <p>On v. 10's remarkable claim — that the church's existence as a unified body is itself a proclamation to "the rulers and authorities in the heavenly places" — JFB note this elevates the church's significance beyond the human drama. The church is not merely a community of mutual support; it is cosmic apologetics. The wisdom of God that was hidden in prior ages is now being displayed through the sheer fact that former enemies are one body. The church's visible unity argues a case that no sermon on its own could make.</p>
+            <p>On v. 12, JFB emphasize that <em>prosagōgē</em> is not metaphorical but precise: the image of a court chamberlain presenting a petitioner to the king is the exact background, and the remarkable thing is that the access is not mediated by a figure you wait for — it is constituted "through our faith in him," making it constant, personal, and immediate. The door is open. The access is ongoing. The believer does not seek an audience; the believer already has one.</p>
+          </div>
+        </div>
+
+        <!-- Panel 3: AuDHD Reframe -->
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v32')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v32">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v32">
+            <p>This is the block where the study's central theme arrives in full, and the two AuDHD experiences most directly addressed are <strong>Performance-Review Posture Toward God</strong> and the deep <strong>Neurology-as-Disqualifier Fear</strong> — the terror that the AuDHD brain is somehow constitutionally unqualified for the kind of close, present, unmediated access to God that v. 12 describes.</p>
+            <p>Consider what <em>parrēsia</em> means for an AuDHD brain. The AuDHD experience of speech is often one of radical hyperfiltering — what you're about to say runs through a gauntlet of anticipated rejection detection, wrong-context evaluation, and executive-function latency before it comes out, if it comes out at all. Many AuDHD people in conversation feel the delay between thought and speech as a kind of wall. Prayer can feel exactly like this: the inner speech-monitor runs so hot that nothing reaches God that hasn't been pre-censored. "Is this worth bringing? Is it too petty? Too incoherent? I said this yesterday. God must be tired of this." The monitor becomes a wall between you and the throne.</p>
+            <p><em>Parrēsia</em> is the Greek word for the exact opposite of that. All-speech. No filter. Complete freedom to say everything — the incoherent, the repetitive, the petty, the embarrassing, the inarticulate, the half-thought-through, the barely verbal. In the Roman political world, <em>parrēsia</em> was the speech of the free citizen in the assembly — not the slave who must choose words carefully under threat, but the full member who can say what no one else will say. Paul says this is what you have before God, <em>in Christ</em>. Not because your prayer is well-constructed, but because Christ is the ground of your welcome and his welcome is not contingent on your verbal performance. The filter is not yours to maintain. You were never the one holding the door open.</p>
+            <p>Then <em>prosagōgē</em>. The chamberlain who introduces you to the king. What is theologically extraordinary is this: you don't have to wait for the chamberlain to decide you are ready. The access is yours, in Christ, <em>now</em>. Not eventually, when you've gotten the anxiety under control. Not after a season of more consistent quiet times. Not once you've resolved the theological question that has been confusing you for three years. "In whom we have" — <em>echomen</em>, present indicative active — access. We are currently, actively, in possession of this access. It is not something we acquire by spiritual effort; it is something we already hold and are invited to walk into. The door is not waiting for you to knock at the right frequency. It is open.</p>
+            <p>And <em>pepoithēsis</em> — the persuaded confidence. This is the word that is most medicine for the AuDHD believer who has tried to manufacture "confidence in prayer" through willpower and watched it evaporate every time life got complicated. <em>Pepoithēsis</em> is a perfect passive state: you have been persuaded, you remain in the state of persuasion. The source of the persuasion is external to you — it is Christ's finished work, applied by the Spirit. The confidence is not your job to generate. It is your inheritance to inhabit. When the feeling of confidence is absent, the answer is not to try harder to feel it. The answer is to return to the argument. The argument is: Christ was raised. The access was purchased. The welcome is permanent. The argument does not change based on how you feel this morning.</p>
+            <p>Finally: Paul calls himself <em>elachistoteros</em> — beyond the reach of normal grammar to describe how unqualified he is. And then, in the same breath, says he has full <em>parrēsia</em> and <em>prosagōgē</em>. The two truths stand together without one canceling the other. The AuDHD believer who knows every reason they should be told to wait outside — inconsistency, distraction, the gap between intention and execution, the prayers that didn't happen — is invited to stand next to Paul in this verse and hold both at once: <em>elachistoteros</em> and <em>prosagōgē</em>. The very least, with full access. The access is not predicated on the adequacy of the one accessing. It never was.</p>
+          </div>
+        </div>
+
+        <!-- Panel 4: Word Study -->
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v32')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v32">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v32">
+            <div class="word-study-term">prosagōgē / "access"</div>
+            <p><strong>Etymology and root meaning:</strong> <em>pros</em> (toward, in the direction of) + <em>agō</em> (to lead, to bring, to conduct) → <em>prosagō</em> (to lead toward, to introduce formally) → <em>prosagōgē</em> (the act or right of formal introduction/access). The compound verb <em>prosagō</em> is used in Luke 9:41 of a child being "brought" to Jesus, and in Acts 16:20 of Paul and Silas being "led" before the magistrates. The noun crystallizes the act into a right — not just the action of being led in, but the standing entitlement to that approach.</p>
+            <p><strong>Background — the prosagōgeus:</strong> In Hellenistic and Roman court culture, the <em>prosagōgeus</em> (or Latin <em>proxenetes</em>) was the official court chamberlain who presented petitioners, ambassadors, and subjects to the ruler. Without a <em>prosagōgeus</em>, you had no legitimate access to the throne room regardless of your urgency or your need. With one, you were formally conducted in, properly introduced, and given the floor. In Xenophon and Josephus the word is used in precisely this technical court sense. Paul's deployment of it in Ephesians carries all of this freight: Christ is our <em>prosagōgeus</em>, and he has already conducted us in.</p>
+            <p><strong>NT occurrences — all three:</strong> The word appears only three times in the entire NT, all in Paul: Rom 5:2 ("through him we have also obtained access [<em>prosagōgē</em>] by faith into this grace in which we stand"), Eph 2:18 ("through him we both have access [<em>prosagōgē</em>] in one Spirit to the Father"), and here in Eph 3:12. The three occurrences trace a progressive intensification. In Romans 5 we have access to grace — the sphere of standing. In Ephesians 2 both Jew and Gentile have access together to the Father — the person of God, not just his gifts. In Ephesians 3 the access now comes with <em>parrēsia</em> and <em>pepoithēsis</em> attached — not just access, but bold access, confident access, access that includes the right to speak freely.</p>
+            <p><strong>Cross-references:</strong> Heb 4:16 — "Let us then with confidence draw near (<em>proserchomai</em>) to the throne of grace, that we may receive mercy and find grace to help in time of need." The author uses a different verb but the same theology: the throne of God is the place of mercy, not judgment, and the posture of approach is confidence, not terror. Both texts insist that the normal posture of the believer before God is not fearful petition but confident child-of-the-king approach.</p>
+          </div>
+        </div>
+
+        <!-- Panel 5: Additional Commentators -->
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v32')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v32">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v32">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermons / The Prodigal God</div>
+              <p>Keller connects the <em>parrēsia/prosagōgē</em> cluster in v. 12 to his reading of the Parable of the Prodigal Son — the elder son was in the father's house but would not go in. The far-country son returned expecting a servant's position and was given <em>parrēsia</em> instead — a seat at the table, a ring on the finger, full speech and presence. Ephesians 3:12 is the systematic-theological statement of what the parable dramatizes: access and freedom of speech before God are constituted by sonship, not by good behavior. The elder brother's self-exclusion was not the father's doing.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP Bible Speaks Today)</div>
+              <p>Stott argues that the three terms of v. 12 form a deliberate progression: <em>parrēsia</em> is the subjective freedom of speech (what we experience once inside), <em>prosagōgē</em> is the objective right of entry (what we have been given in Christ), and <em>pepoithēsis</em> is the settled conviction that holds the subjective and objective together when feeling and doctrine are out of sync. None of the three is earned; all three are "in him" — grounded entirely in Christ's person and finished work. The order matters: the objective right precedes and grounds the subjective experience.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar New Testament Commentary)</div>
+              <p>O'Brien notes that "through our faith in him" (<em>dia tēs pisteōs autou</em>) in v. 12 admits a plausible alternative rendering: "through his [Christ's] faithfulness" — a subjective genitive in which the access is grounded not in the quality of our faith but in Christ's own faithful mediation before the Father. O'Brien considers both readings theologically valid and complementary; either way, the access is anchored outside of the believer's performance. What varies is whether we stress our receiving faith or his enabling faithfulness — both point away from the believer's adequacy as the ground.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Barnes</div>
+              <div class="commentator-source">Notes on the New Testament: Ephesians</div>
+              <p>Barnes draws attention to the contrast implicit in vv. 8 and 12 as Paul's central pastoral paradox: the one who is "the very least of all the saints" is the one given the unsearchable riches to proclaim; the one who should by all accounts be furthest from the throne is the one invited in with boldness and confidence. Barnes reads this as deliberate inversion — grace does not select from the most qualified end of the spectrum. The very nature of grace is that it runs to where merit is lowest.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (Zondervan Exegetical Commentary on the NT)</div>
+              <p>Arnold situates <em>prosagōgē</em> within the first-century spiritual marketplace of Ephesus, where access to divine powers was mediated by ritual, incantation, and the correct use of divine names — as Arnold's broader research on magical papyri in Asia Minor has documented. Paul's claim that access to the Creator God is available to every believer, through faith alone, without ritual mediation or esoteric knowledge, is a direct counter-proclamation to the spiritual economy his readers lived in. The <em>prosagōgē</em> costs nothing you can acquire; it is received as the inheritance of those who are in Christ.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Panel 6: Pastoral Reflection -->
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v32')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v32">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v32">
+            <ul>
+              <li>When you approach prayer, does your inner experience match "boldness and access with confidence" — or does it feel more like waiting at a door that might not open? What is the door waiting for, and where did you learn that?</li>
+              <li><em>Parrēsia</em> means all-speech — complete freedom to say everything without pre-censoring. What is the thing you most heavily filter before bringing it to God, and what does that filtering reveal about what you believe about your welcome?</li>
+              <li>Paul calls himself <em>elachistoteros</em> — beyond grammar to describe his smallness — and in the same breath claims full access. Can you hold both? Where does one of the two truths feel impossible to believe alongside the other?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v32 -->
+
+    <!-- v33: Eph 3:14-19 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v33')">
+        <span class="verse-ref">Ephesians 3:14–19</span>
+        <span class="verse-title">The Kneeling Prayer: Rooted, Strengthened, and Filled</span>
+        <span class="toggle-arrow open" id="arrow-v33">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "For this reason I bow my knees before the Father, from whom every family in heaven and on earth is named, that according to the riches of his glory he may grant you to be strengthened with power through his Spirit in your inner being, so that Christ may dwell in your hearts through faith—that you, being rooted and grounded in love, may have strength to comprehend with all the saints what is the breadth and length and height and depth, and to know the love of Christ that surpasses knowledge, that you may be filled with all the fullness of God." — ESV
+      </div>
+      <div class="collapsible-content open" id="v33">
+
+        <!-- Panel 1: Greek Exegesis -->
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v33')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v33">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v33">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">krataiōthēnai</span>
+                <span class="term-parsing">verb · aor. pass. infinitive</span>
+              </div>
+              <div class="term-gloss">ESV: "be strengthened" | NIV: "be strengthened" | NASB: "be strengthened"</div>
+              <div class="term-significance">Aorist passive infinitive: the action is received, not generated. The strengthening arrives from outside the self; it is not the product of willpower or sustained spiritual discipline. The aorist frames it as an event — the gift arriving — rather than a slow accumulation. Paul does not pray that the Ephesians would try harder to feel strong; he prays that God would "grant" (<em>dōē</em> — aorist active optative, the most direct form of petition) this strengthening. The grammar removes the human agent from the position of producer and places God there. This is not an excuse for passivity; it is a description of the mechanism of spiritual strength.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">katoikēsai</span>
+                <span class="term-parsing">verb · aor. act. infinitive</span>
+              </div>
+              <div class="term-gloss">ESV: "dwell" | NIV: "dwell" | NASB: "dwell"</div>
+              <div class="term-significance">From <em>kata-</em> (intensive prefix: thoroughly, permanently) + <em>oikeō</em> (to dwell in a house). The compound intensifies the sense of settled, domestic, permanent residence — as distinct from <em>paroikeō</em> (to dwell as a temporary resident, an alien, a visitor who might leave). Christ is not a guest in the heart who might check out when the hospitality runs low. He is the permanent resident who has set up home. The heart is the new temple — not a holy site Christ visits on special occasions, but the place of his settled dwelling. The aorist here captures the decisive act of that residence being established.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">hyperballousan</span>
+                <span class="term-parsing">verb · pres. act. participle · acc. sg. fem.</span>
+              </div>
+              <div class="term-gloss">ESV: "that surpasses" | NIV: "that surpasses" | NASB: "which surpasses"</div>
+              <div class="term-significance">Present active participle: the surpassing is <em>ongoing and continuous</em>. The love of Christ is always in the act of exceeding any effort to fully know it. It is not that the love surpassed knowledge at some point in the past and has now plateaued within reach; it is currently, actively, at this moment, exceeding the capacity of knowledge to contain it. This is not frustrating but ecstatic — the object of knowledge is inexhaustible. You can go further in than you have ever been and find more, not less. There is no bottom. There is no ceiling you can finally press against.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">plērōma</span>
+                <span class="term-parsing">noun · acc. sg. neut.</span>
+              </div>
+              <div class="term-gloss">ESV: "all the fullness" | NIV: "all the fullness" | NASB: "all the fullness"</div>
+              <div class="term-significance">Paul prays that believers would be "filled (<em>plēroō</em>) unto all the fullness (<em>plērōma</em>) of God" — the verb and its noun cognate used together for emphasis. The <em>plērōma</em> is the divine fullness, that which fills and completes all things (cf. Eph 1:23). Paul does not pray that they become God, but that they receive everything God gives of himself — that the self-giving of God would reach its fullest possible expression in them. This prayer asks for more than improved behavior or heightened spiritual awareness; it asks for nothing less than the filling of the human person with the divine abundance.</div>
+            </div>
+
+            <p>The structural movement of vv. 16–19 is progressive and enabling: Spirit-strengthening in the inner being (v. 16) → Christ's permanent dwelling in the heart (v. 17a) → being rooted and grounded in love (v. 17b) → comprehending the four-dimensional love with all the saints (v. 18) → knowing that love beyond knowledge → being filled to the divine fullness (v. 19). Each gift is the precondition for receiving the next. The Spirit's work creates the capacity for Christ's indwelling; Christ's indwelling establishes the rootedness from which comprehension grows; comprehension opens into the inexhaustible knowing; the knowing overflows into filling. It is a theological cascade, not a checklist.</p>
+
+          </div>
+        </div>
+
+        <!-- Panel 2: Commentary (JFB) -->
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v33')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v33">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v33">
+            <p>JFB note that Paul's posture shift in v. 14 — "I bow my knees" — is theologically loaded. Jewish practice in this era was typically to pray standing (cf. Luke 18:11–13, where standing is the default). Kneeling was reserved for extraordinary moments of urgency, supplication, or solemnity (cf. Acts 20:36, Phil 2:10). Paul's kneeling before the Father signals that what follows is not routine intercession but an act of deep and deliberate suppliance — as heavy as the prayer itself, which asks for the maximum God can give.</p>
+            <p>On v. 15's "every family in heaven and on earth is named from him," JFB note the wordplay between <em>pater</em> (Father) and <em>patria</em> (family/fatherhood) — every legitimate structure of family, lineage, and community derives its meaning and pattern from this Father, not the other way around. Paul grounds his confidence in prayer in the character of the one he approaches: the original and archetypal Father from whom all fatherhood takes its meaning. This Father is not reluctant; his very nature is to give to children what they need and far more.</p>
+            <p>JFB observe that the four dimensions of v. 18 — breadth, length, height, depth — are deliberately left without an explicit object. Some interpreters apply them to the cross, others to the love of Christ (the subject of v. 19), others to the total plan of salvation, others to the cosmos Christ fills (Eph 4:10). JFB incline toward identifying the object as the love of Christ named in v. 19, seeing vv. 18–19 as a continuous movement: the four dimensions are those of an object too vast to chart — the love that exceeds all knowledge while being genuinely knowable from within. You cannot find the edge; you can be immersed in the middle.</p>
+            <p>On the paradox of v. 19 — "to know the love of Christ that surpasses knowledge" — JFB note that Paul does not dissolve the paradox into mysticism but holds it as a precise theological claim: there is a real knowing available (the love is disclosed, not permanently hidden) that can never be a complete knowing (the love exceeds the container of human cognition). Knowing more increases the awareness of how much more there is to know. This is not a frustrating asymptote; it is the structure of endless delight.</p>
+          </div>
+        </div>
+
+        <!-- Panel 3: AuDHD Reframe -->
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v33')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v33">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v33">
+            <p>The AuDHD experiences most alive in this prayer are the <strong>Will/Execution Gap</strong> and the downstream <strong>Shame Spiral</strong> — and the pastoral gift of this passage is that Paul's prayer is structured precisely to address both, from the outside in. He does not pray that the Ephesians would try harder to draw near to God. He prays that God would <em>act on them</em> and <em>in them</em>, in the exact locations where the gap lives.</p>
+            <p>The will/execution gap shows up in prayer itself. The intention to pray is genuine; the act of initiating and sustaining prayer is neurologically costly. The mind jumps. Time passes. The prayer that was supposed to happen didn't. Then comes the shame spiral: "I haven't prayed. God must notice. I'm a bad Christian." The spiral makes the next attempt harder, because prayer is now loaded with the accumulated weight of failure, and the AuDHD nervous system is very good at carrying that kind of weight in the body. The thought of approaching God triggers the shame of the last failed approach.</p>
+            <p>Watch what Paul prays. He does not ask that the Ephesians would pray more consistently, develop better spiritual habits, feel more motivated to seek God, or try harder to feel close. He prays that God would "grant" the strengthening — aorist, passive, received. That Christ would "dwell" — permanently settle in, not visit on the days when the inner life is presentable. That they would be "rooted and grounded" — both passive participles: you are rooted, you do not root yourself. The direction of every verb in this prayer runs from God toward the believer. The engine is not human spiritual effort; it is divine action in the inner being. This is not a consolation for spiritual laziness; it is an accurate description of how New Covenant transformation actually works. The Spirit strengthens the <em>esō anthrōpos</em> — the inner person — which is precisely the space where the gap between willing and doing lives.</p>
+            <p>"Rooted and grounded in love" (v. 17) gives the AuDHD reader two structural metaphors for the stability that makes comprehension possible. "Rooted" (<em>rhizōmenoi</em>) is agricultural: the root system below ground that holds a plant stable through every kind of weather, including weather the plant never sees coming. "Grounded" (<em>tethemeliōmenoi</em>) is architectural: the foundation a building rests on, which was poured and set before the building went up and will remain after it comes down. Both are passive perfect participles — describing a condition that was established in the past and continues to hold. You don't root yourself by sustained spiritual effort. You are already rooted. The question is whether you will live from the root or keep trying to generate your own stability from scratch.</p>
+            <p>The four dimensions of love in v. 18 — breadth, length, height, depth — are the answer to the AuDHD believer who suspects God's love has an asterisk. That it's generally available but not quite reaching <em>you</em>. That the love is real for people who are more consistent, more attentive, more neurotypically Christian. Paul says: go in any direction. There is no edge. The love is not a pool you can swim to the wall of and discover the limit. It is an ocean with no shore. You cannot go in a direction that takes you outside it. You cannot be distracted enough, inconsistent enough, or far enough in debt to yourself to find the end of it. The breadth reaches the width of whatever you can imagine. The length outlasts whatever timeline you're afraid you've exhausted your welcome on. The height rises above whatever ceiling you've placed on what's available to you. The depth goes below whatever floor you think God's love has. There is no asterisk.</p>
+          </div>
+        </div>
+
+        <!-- Panel 4: Word Study -->
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v33')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v33">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v33">
+            <div class="word-study-term">katoikeō / "dwell" (permanently reside)</div>
+            <p><strong>Etymology and root meaning:</strong> <em>kata-</em> (intensive prefix: thoroughly, fully, in accordance with) + <em>oikeō</em> (to live in a house, to inhabit, from <em>oikos</em>, household). The compound means "to dwell in thoroughly, to be settled as a full-time resident." Compare <em>paroikeō</em> (to dwell beside as a temporary alien, a sojourner) — the <em>para-</em> prefix signals adjacency and transience. The <em>kata-</em> prefix in <em>katoikeō</em> signals depth and permanence.</p>
+            <p><strong>LXX background:</strong> The word is used throughout the LXX for God's <em>dwelling</em> in the tabernacle and temple — the divine presence taking up a specific, settled residence among his people (Deut 12:5; 1 Kgs 8:12–13; Ps 74:2; 135:21). This is significant for the theology of v. 17: what the tabernacle and temple were — the designated location of God's permanent dwelling among humanity — Paul now locates in the human heart. The new temple is not a building. The dwelling of God is not mediated through stone and curtain. It is in you.</p>
+            <p><strong>NT range:</strong> Used 44 times in the NT. Key contrasts: Acts 7:48 — God "does not dwell (<em>katoikeō</em>) in houses made by hands," establishing the contrast Paul develops. John 14:23 — "we will come to him and make our home (<em>monē</em>) with him" — a parallel concept in Johannine vocabulary. Col 2:9 — "in him the whole fullness of deity dwells (<em>katoikei</em>) bodily" — the same verb for Christ's fullness in his own person that v. 17 now extends to the heart of the believer.</p>
+            <p><strong>This usage:</strong> The heart is the new temple. Christ's dwelling there is not aspirational or conditional on spiritual performance — the aorist infinitive here refers to the decisive act of that residency being established in conversion and union with Christ. What Paul prays in v. 17 is not that Christ would start living in them but that the experiential reality of his permanent residence would become increasingly inhabited and trusted. Cross-reference: 1 Cor 3:16 — "Do you not know that you are God's temple and that God's Spirit dwells (<em>oikei</em>) in you?"</p>
+          </div>
+        </div>
+
+        <!-- Panel 5: Additional Commentators -->
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v33')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v33">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v33">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller unpacks the "surpasses knowledge" paradox of v. 19 — Paul prays that they would <em>know</em> a love that <em>surpasses knowledge</em>. He argues this is not anti-intellectual mysticism but an accurate description of relational knowing: you can know you are in the love of Christ, know its character, know it is real and specific and directed toward you, without being able to map every inch of it. The knowing is experiential and relational before it is exhaustively propositional — the way you can know a vast landscape without having walked every trail.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP Bible Speaks Today)</div>
+              <p>Stott argues that the four dimensions of v. 18 are deliberately left without a specified object — Paul wants the reader to fill them with the largest thing they can conceive, and then be told it still isn't large enough. The love of Christ is not just as large as the universe; Stott notes that in Paul's cosmology it is the context within which the universe exists (Col 1:17, Eph 1:10). The four dimensions are those of its containing space, not its maximum extent.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar New Testament Commentary)</div>
+              <p>O'Brien argues that "filled with all the fullness of God" (v. 19) is best read in light of Eph 1:23 ("the fullness of him who fills all in all") and Col 2:10 ("you have been filled in him"). The prayer does not ask for something entirely new but for an existing constitutive reality — the believer's being-filled by God's fullness in Christ — to be increasingly experienced, inhabited, and trusted. The indicative (what is) grounds the prayer (what may become more fully experienced).</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Barnes</div>
+              <div class="commentator-source">Notes on the New Testament: Ephesians</div>
+              <p>Barnes notes that "according to the riches of his glory" (v. 16) specifies the measure of the strengthening Paul requests: not according to the believers' spiritual attainment, not according to their prayer frequency or consistency, but according to the inexhaustible wealth of God's own splendor. The prayer's ambition is calibrated not to human capacity to receive but to divine capacity to give — which is limitless.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (Zondervan Exegetical Commentary on the NT)</div>
+              <p>Arnold observes that the four-dimensional love of vv. 18–19 may intentionally counter the four-directional cosmic formulas found in Ephesian-area magical papyri, where practitioners invoked power "above and below and on every side" to access spiritual forces. Paul redeems the spatial structure: the love that fills all dimensions is not accessed by ritual or formula but known through faith in Christ. The cosmic comprehensiveness of the love is available through the same <em>prosagōgē</em> described in v. 12.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Panel 6: Pastoral Reflection -->
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v33')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v33">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v33">
+            <ul>
+              <li>The Spirit strengthens the "inner being" — the exact space where your will and your execution don't connect. What does it feel like to let that gap be the Spirit's address rather than your own responsibility to close?</li>
+              <li>"Rooted and grounded in love" — both are passive: you have been rooted, you have been grounded. When you feel spiritually unstable, are you trying to root yourself by effort, or returning to a root that is already there?</li>
+              <li>Paul prays you would "know" a love that "surpasses knowledge." Where do you feel you've hit the ceiling of what's available to you from God — and what would it mean to learn that the ceiling is actually open sky?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v33 -->
+
+    <!-- v34: Eph 3:20-21 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v34')">
+        <span class="verse-ref">Ephesians 3:20–21</span>
+        <span class="verse-title">The Doxology: Beyond All Asking or Thinking</span>
+        <span class="toggle-arrow open" id="arrow-v34">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "Now to him who is able to do far more abundantly than all that we ask or think, according to the power at work within us, to him be glory in the church and in Christ Jesus throughout all generations, forever and ever. Amen." — ESV
+      </div>
+      <div class="collapsible-content open" id="v34">
+
+        <!-- Panel 1: Greek Exegesis -->
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v34')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v34">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v34">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">hyperekperissou</span>
+                <span class="term-parsing">adverb · hapax legomenon</span>
+              </div>
+              <div class="term-gloss">ESV: "far more abundantly" | NIV: "immeasurably more" | NASB: "far more abundantly"</div>
+              <div class="term-significance">A triple compound occurring only here in the entire NT: <em>hyper</em> (above, beyond, over) + <em>ek</em> (out from, out of the depths of) + <em>perissos</em> (excessive, overflowing, beyond what is needed or expected). If <em>perissos</em> = "more than enough," then <em>ek-perissos</em> = "out of more than enough," and <em>hyper-ek-perissos</em> = "beyond-out-of-more-than-enough." Paul stacks three layers of excess because no single one is sufficient. This word, like <em>elachistoteros</em> in v. 8, may be a Pauline coinage — reaching beyond grammar to gesture at what grammar cannot contain. Note that v. 8 has the most extreme word for human smallness and v. 20 has the most extreme word for divine capacity. The gap between them is exactly where grace operates.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">energoumenēn</span>
+                <span class="term-parsing">verb · pres. mid/pass. participle · acc. sg. fem.</span>
+              </div>
+              <div class="term-gloss">ESV: "at work" | NIV: "at work" | NASB: "works"</div>
+              <div class="term-significance">Present tense: currently, actively, continuously operating. From <em>en</em> (in) + <em>ergon</em> (work/deed) — the same root as "energy." The power (<em>dynamis</em>) that raised Christ from the dead (Eph 1:19–20) is not a resource stored for future deployment; it is present-tense, in-working energy currently operating in the believer. The doxology is grounded not in a distant future promise but in a present-tense operating reality. The <em>hyperekperissou</em> capacity is not hypothetical; it is being exercised right now.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">doxa</span>
+                <span class="term-parsing">noun · nom. sg. fem.</span>
+              </div>
+              <div class="term-gloss">ESV: "glory" | NIV: "glory" | NASB: "glory"</div>
+              <div class="term-significance">In the LXX, <em>doxa</em> translates Hebrew <em>kābôd</em> — the "weightiness," the manifest, visible splendor of God. The glory of God was not merely an internal quality but an event — it appeared, it was seen, it filled the tabernacle and the temple. Paul assigns this glory to God "in the church and in Christ Jesus" — not "through" the church (instrumentally) but "in" the church (locationally). The church is a venue of divine self-disclosure: the place where the weight and brilliance of God become visible to the watching world and the watching cosmos.</div>
+            </div>
+
+            <p>The doxology is addressed to <em>him who is able</em> — the ability of God is the anchor of the praise. This is significant: Paul does not say "to him who has done" (past tense, recording what happened) or "to him who will do" (future tense, anticipating what is coming) but "to him who is able" (present participle: currently possessing the capacity to act). The doxology is grounded in God's ongoing ability, which is enacted "according to the power <em>at work within us</em>" — the same engine as the prayer, now revealed to be the basis of the praise.</p>
+
+          </div>
+        </div>
+
+        <!-- Panel 2: Commentary (JFB) -->
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v34')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v34">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v34">
+            <p>JFB treat this doxology as the theological capstone of the entire doctrinal first half of Ephesians — chapters 1–3 are gathered up into these two verses. Election (chapter 1), reconciliation and the new humanity (chapter 2), the mystery of the church and its access to God (chapter 3): all of it arrives at "to him be glory." The doxology is not a postscript; it is the destination that the entire argument has been moving toward. Theological knowledge that does not arrive at doxology has not finished its journey.</p>
+            <p>JFB note that "all that we ask or think" sets the ceiling as high as human imagination can reach — and then <em>hyperekperissou</em> blows past it. This is not Paul saying God can do somewhat more than we expect; he is saying the distance between what any human can request or conceive and what God is capable of doing is itself immeasurable. The prayer of vv. 14–19 — which asks for the fullness of God — is itself exceeded by what God is able to do.</p>
+            <p>On the pairing "in the church and in Christ Jesus" (v. 21), JFB note this is theologically dense: glory flows to God through both the church and Christ together — head and body jointly glorifying the Father. The church is not the instrument through which glory passes to reach Christ; the church and Christ are together the locus where God's glory is manifest. This permanently elevates the significance of the ordinary gathered community: it is, even in its weakness and imperfection, a locus of divine glory.</p>
+            <p>JFB observe that "throughout all generations, forever and ever" (v. 21) is Paul's broadest temporal formula — reaching across all human history and into the unending age beyond it. Yet the doxology is not simply future-oriented; it is present-grounded. The glory is "in the church" now, powered by the energy "at work within us" now. The eternal doxology is assembled from present-tense moments of praise, of which this reading is one.</p>
+          </div>
+        </div>
+
+        <!-- Panel 3: AuDHD Reframe -->
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v34')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v34">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v34">
+            <p>The AuDHD experience this doxology speaks most directly into is <strong>Time Blindness and the Future Self Disconnect</strong> — but also, and unexpectedly, the fatigue that comes from trying to sustain spiritual motivation across time when the ADHD brain does not experience future payoffs the way many spiritual formation frameworks assume. Many devotional and discipleship approaches are built on the implicit premise that you can generate sustained motivation by keeping the future vividly in view. For AuDHD believers, this premise frequently fails. Future you doesn't feel real. Future glory doesn't produce traction. The eschatological horizon stays abstract while the present difficulty is very concrete.</p>
+            <p><em>Hyperekperissou</em> is the doxological answer, and its answer is present-tense. Paul does not close Ephesians 3 by pointing toward a distant horizon and saying "keep your eyes on that." He closes by locating the inexhaustible capacity of God in the present: "according to the power at work <em>within us</em>" — present participle, active, in us now. The capacity of God to do immeasurably more than you can ask or imagine is not a future resource you will eventually access when you finally get your spiritual life together. It is a present energy currently operating inside the actual you — the distracted, inconsistent, struggling, sometimes-barely-showing-up you.</p>
+            <p>The AuDHD brain can anchor in the present in a way it cannot reliably anchor in the future. And this doxology is entirely present-tense in its grounding: the God who is <em>able</em> (present participle) to do <em>hyperekperissou</em> is able right now, not after you improve. The power is "at work" (present tense) within us right now, not when we become more consistent. The glory "in the church" is manifested right now, in the broken and scattered and distracted and imperfectly gathered community you are part of.</p>
+            <p>"To him be glory in the church" — not the perfected church, not the church once it reaches full sanctification, not when you have become a more disciplined version of yourself. The church that carries God's glory is the church as it actually is — because the church is the body of the one in whom all fullness dwells (1:23). You, showing up imperfectly, contributing what you can contribute, present in whatever way you are able to be present: you are part of the venue where God's glory becomes visible to the watching cosmos. The doxology of v. 21 includes you. The <em>hyperekperissou</em> is working in you. The manifold wisdom of God is being displayed through the body you belong to (v. 10). Your participation in the body, however imperfect, is part of what the rulers and authorities in the heavenly places are watching as evidence of God's wisdom. You don't have to be a spectacular Christian for that to be true. You have to be in the body. You are in the body.</p>
+            <p>"Throughout all generations, forever and ever" — Paul's temporal horizon is as wide as language can reach. But the pastoral gift for the AuDHD reader is not the width of the horizon; it is that this widest possible frame is assembled from moments exactly like this one. The "forever and ever" is made of nows. The eternal doxology of which Paul speaks is not deferred until some future state; it is being voiced here, in this moment of reading, by a person whose attention may have wandered three times in this paragraph, whose prayer life may be a wreck this week, whose inner life may bear very little resemblance to what they wish it did. And still: the power is at work within you. The glory is in the church you belong to. The doxology rises. Amen.</p>
+          </div>
+        </div>
+
+        <!-- Panel 4: Word Study -->
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v34')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v34">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v34">
+            <div class="word-study-term">hyperekperissou / "far more abundantly"</div>
+            <p><strong>Etymology — a triple compound:</strong> Three Greek components bolted together: <em>hyper</em> (above, beyond, over — the highest-intensity prefix in Greek) + <em>ek</em> (out of, out from — indicating source and completeness) + <em>perissos</em> (exceeding, overflowing, more than is expected or needed). Each component alone is already an intensifier. Stacked: "beyond-out-of-more-than-enough." There is no standard translation that captures the compounding because English doesn't stack intensifiers the same way. The NIV's "immeasurably more" is the closest in feeling; the ESV's "far more abundantly" is the most literal; the NASB matches ESV. All translations undershoot.</p>
+            <p><strong>Hapax and probable coinage:</strong> This word appears only once in the NT. Like <em>elachistoteros</em> in v. 8, it may be Paul reaching beyond available vocabulary to gesture at what vocabulary cannot contain. The pattern in Ephesians 3 is striking: v. 8 has the most extreme word for smallness (<em>elachistoteros</em> — a grammatical impossibility coined to describe maximum inadequacy) and v. 20 has the most extreme word for divine capacity (<em>hyperekperissou</em> — a lexical impossibility coined to describe maximum ability). The chapter opens with who Paul is and closes with who God is. The contrast is the gospel.</p>
+            <p><strong>Related Pauline forms:</strong> Paul uses escalating versions of <em>perissos</em> throughout his letters: <em>perissos</em> (overflowing, 2 Cor 9:8), <em>hyperperisseuō</em> (abound beyond measure, Rom 5:20; 2 Cor 7:4), <em>hyperperissos</em> (exceedingly beyond, 1 Thess 3:10). In each case Paul is reaching for language adequate to divine abundance and finding normal Greek insufficient. <em>Hyperekperissou</em> is the apex of this reaching.</p>
+            <p><strong>Cross-references:</strong> Eph 1:19 — "the immeasurable greatness of his power toward us who believe, according to the working of his great might" — the same power, named in the prayer's foundation and named again in the doxology's ground. 2 Cor 9:8 — "God is able to make all grace abound to you, so that having all sufficiency in all things at all times, you may abound in every good work." The pattern: divine <em>hyperekperissou</em> capacity → overflow into the believer's actual life.</p>
+          </div>
+        </div>
+
+        <!-- Panel 5: Additional Commentators -->
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v34')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v34">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v34">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller calls this doxology the theological hinge of the entire letter: everything that follows in chapters 4–6 (the ethics of the new humanity — walk worthy, put off the old, put on the new, be filled with the Spirit, wives and husbands, parents and children, spiritual warfare) is grounded in the <em>hyperekperissou</em> capacity of God described here. The imperatives of chapters 4–6 are not demands issued to self-starters; they are invitations issued to people who have already been told that immeasurably more than they can ask or imagine is currently at work in them.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP Bible Speaks Today)</div>
+              <p>Stott notes the irony of a doxology built on acknowledged inarticulacy — Paul reaches for <em>hyperekperissou</em> precisely because language has broken down. The word itself is an act of worship: the acknowledgment that God exceeds description, and that the attempt to describe him is itself a form of praise even when it grammatically fails. The doxology begins in silence and speaks toward it simultaneously.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar New Testament Commentary)</div>
+              <p>O'Brien argues that "according to the power at work within us" (v. 20b) links the doxology directly back to the prayer of vv. 14–19 — the same power Paul asked the Father to deploy in strengthening the inner being (v. 16) is the power he now identifies as the ground of the doxology. Prayer and praise share the same engine. The God to whom Paul prays is the God he praises, and the capacity being praised is the capacity being petitioned. The chapter is theologically circular in the best sense.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Barnes</div>
+              <div class="commentator-source">Notes on the New Testament: Ephesians</div>
+              <p>Barnes notes that glory "in the church and in Christ Jesus" (v. 21) uses the preposition "in" (<em>en</em>) for both — not "through" (which would indicate the church as merely instrumental) but "in" (which indicates location and union). The glory resides in the church because the church is in Christ and Christ is in the church. The church's status as a locus of divine glory is not conditional on its visible excellence; it is constitutive of what the church is as the body of Christ.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (Zondervan Exegetical Commentary on the NT)</div>
+              <p>Arnold highlights that the doxology's address to God as "him who acts according to the power at work within us" implies that the extraordinary divine operations described throughout chapters 1–3 — election, redemption, reconciliation, the revealing of the mystery, the bestowal of prosagōgē — are not past-tense historical achievements. They are the present operating mode of God's activity in the believing community. The doxology is not nostalgic; it is present-tense praise for present-tense power.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Panel 6: Pastoral Reflection -->
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v34')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v34">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v34">
+            <ul>
+              <li><em>Hyperekperissou</em> — immeasurably more than you can ask or think. What is the largest thing you've asked God for recently? What would it mean to believe the actual answer is larger than that, not smaller?</li>
+              <li>"According to the power at work within us" — present tense, in you now. Where do you most struggle to believe that power is currently active in your actual, unimproved life — not a hypothetical future version of it?</li>
+              <li>You are part of "the church" in which God's glory is manifest — right now, in your current state, with your current struggles. What does it do to your self-understanding to hear that the doxology includes your imperfect, sometimes-distracted participation?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v34 -->
+
+  </div><!-- /chapter-block -->
+
+</div><!-- /study-container -->
+
+<script>
+function toggleVerse(id) {
+  const content = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  arrow.classList.toggle('open', !isOpen);
+  arrow.textContent = isOpen ? '▶' : '▼';
+}
+
+function togglePanel(id) {
+  const content = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  if (!content) return;
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  if (arrow) { arrow.textContent = isOpen ? '▶' : '▼'; }
+}
+</script>
+</body>
+</html>

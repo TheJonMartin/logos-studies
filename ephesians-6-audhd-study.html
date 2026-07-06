@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ephesians 6 — AuDHD Bible Study</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; background: #f8f5f0; color: #2d2418; line-height: 1.65; }
+    h1 { font-size: 1.6rem; color: #1a0a00; text-align: center; padding: 1.5rem 1rem 0.5rem; }
+    .study-container { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    .chapter-block { margin-bottom: 2rem; }
+    .chapter-heading { font-size: 1.1rem; color: #5a3e28; margin: 1.5rem 0 0.75rem; padding-left: 0.5rem; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 2px solid #c9a96e; padding-bottom: 0.4rem; }
+    .theme-banner { background: linear-gradient(135deg, #1a0a00 0%, #4a2810 100%); color: #fdf5ec; padding: 1rem 1.4rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.92rem; line-height: 1.6; }
+    .theme-banner strong { font-size: 1rem; display: block; margin-bottom: 0.3rem; letter-spacing: 0.04em; color: #f0c98a; }
+    .verse-block { background: #fff; border: 1px solid #d4b896; border-radius: 8px; margin-bottom: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.06); overflow: hidden; }
+    .verse-header { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; background: linear-gradient(135deg, #3b1a0a 0%, #5a3010 100%); color: #fff; cursor: pointer; user-select: none; }
+    .verse-ref { font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; }
+    .verse-title { font-size: 0.85rem; opacity: 0.88; font-style: italic; margin-left: 0.75rem; flex: 1; }
+    .verse-text-preview { font-size: 0.82rem; padding: 0.65rem 1.1rem; background: #fdf5ec; border-bottom: 1px solid #e8d5bc; font-style: italic; color: #5a3e28; line-height: 1.6; }
+    .toggle-arrow { font-size: 0.85rem; transition: transform 0.2s; }
+    .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .collapsible-content.open { max-height: 9999px; }
+    .panel { border-top: 1px solid #e8ddd2; }
+    .panel-header { display: flex; align-items: center; padding: 0.65rem 1.1rem; font-weight: 600; font-size: 0.88rem; cursor: pointer; user-select: none; gap: 0.5rem; }
+    .panel-header .icon { font-size: 1rem; }
+    .panel-header .toggle-arrow { margin-left: auto; font-size: 0.75rem; }
+    .panel-body { padding: 1rem 1.1rem 1.1rem; font-size: 0.9rem; line-height: 1.7; }
+    .panel-body p { margin-bottom: 0.85rem; }
+    .panel-body p:last-child { margin-bottom: 0; }
+    .panel-greek .panel-header { background: #dbeafe; color: #1e3a5f; }
+    .panel-greek .panel-body  { background: #eff6ff; color: #1e3a5f; }
+    .greek-term { background: #fff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.85rem; }
+    .greek-term:last-child { margin-bottom: 0; }
+    .greek-term .term-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.4rem; }
+    .greek-term .term-word { font-size: 1.05rem; font-weight: 700; color: #1e40af; font-style: italic; }
+    .greek-term .term-parsing { font-size: 0.78rem; color: #3b5c9e; background: #dbeafe; padding: 2px 7px; border-radius: 12px; }
+    .greek-term .term-gloss { font-size: 0.82rem; color: #4b5563; margin-bottom: 0.35rem; }
+    .greek-term .term-significance { font-size: 0.88rem; color: #1e3a5f; }
+    .panel-jfb .panel-header { background: #fef3c7; color: #78350f; }
+    .panel-jfb .panel-body  { background: #fffbeb; color: #451a03; }
+    .panel-audhd .panel-header { background: #d1fae5; color: #064e3b; }
+    .panel-audhd .panel-body  { background: #ecfdf5; color: #022c22; }
+    .panel-ws .panel-header { background: #ede9fe; color: #3b0764; }
+    .panel-ws .panel-body  { background: #f5f3ff; color: #2e1065; }
+    .word-study-term { font-size: 1.05rem; font-weight: 700; color: #5b21b6; font-style: italic; margin-bottom: 0.5rem; }
+    .panel-commentators .panel-header { background: #ccfbf1; color: #0f4c3a; }
+    .panel-commentators .panel-body  { background: #f0fdf9; color: #052e25; }
+    .commentator-block { background: #fff; border: 1px solid #a7f3d0; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; }
+    .commentator-block:last-child { margin-bottom: 0; }
+    .commentator-name { font-weight: 700; font-size: 0.9rem; color: #065f46; }
+    .commentator-source { font-size: 0.78rem; color: #6b7280; font-style: italic; margin-bottom: 0.4rem; }
+    .panel-pastoral .panel-header { background: #ffe4e6; color: #9f1239; }
+    .panel-pastoral .panel-body  { background: #fff1f2; color: #4c0519; }
+    .panel-pastoral .panel-body ul { padding-left: 0; list-style: none; margin: 0; }
+    .panel-pastoral .panel-body ul li { padding: 8px 12px 8px 16px; margin: 8px 0; border-left: 3px solid #e11d48; background: #fff; border-radius: 0 4px 4px 0; font-size: 0.9rem; line-height: 1.55; }
+  </style>
+</head>
+<body>
+<div class="study-container">
+  <h1>Ephesians 6 — AuDHD Bible Study</h1>
+
+  <div class="theme-banner">
+    <strong>Already-Won War: Standing in Accomplished Victory</strong>
+    The armor passage that climaxes Ephesians is not a call to win a war — it is a call to stand in a war that has already been won. The imperative that runs through 6:10–17 is not "fight" or "advance" but <em>stēnai / stēte</em> — stand, stand firm, stand (four times). The posture is that of soldiers who have been given territory already taken by their commander, not troops trying to take new ground. Every piece of armor is either directly identified with Christ's accomplished work (righteousness, salvation) or is a gift of the Spirit (faith, the Word). The AuDHD believer who is exhausted by the demand to generate the resources for spiritual battle will find in this passage that the armor has already been issued. Your assignment is to put it on and stand. The letter closes with the same <em>parrēsia</em> (boldness) it introduced at its center in 3:12 — the confident access to God that is the grounds for everything. Ephesians ends where it has been all along: the indicative of what Christ has done, sustaining everything the imperative asks.
+  </div>
+
+  <div class="chapter-block">
+    <h2 class="chapter-heading">Ephesians 6</h2>
+
+    <!-- v61: Eph 6:1-9 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v61')">
+        <span class="verse-ref">Ephesians 6:1–9</span>
+        <span class="verse-title">Children and Parents, Servants and Masters</span>
+        <span class="toggle-arrow open" id="arrow-v61">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "Children, obey your parents in the Lord, for this is right. 'Honor your father and mother' (this is the first commandment with a promise), 'that it may go well with you and that you may live long in the land.' Fathers, do not provoke your children to anger, but bring them up in the discipline and instruction of the Lord. Bondservants, obey your earthly masters… as you would Christ… Fathers, do the same to them, and stop your threatening, knowing that he who is both their Master and yours is in heaven, and that there is no partiality with him." — ESV
+      </div>
+      <div class="collapsible-content open" id="v61">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v61')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v61">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v61">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">hypakouete</span>
+                <span class="term-parsing">verb · pres. act. imperative 2pl (v. 1)</span>
+              </div>
+              <div class="term-gloss">ESV: "obey" | NIV: "obey" | NASB: "obey"</div>
+              <div class="term-significance">From <em>hypo</em> (under) + <em>akouō</em> (to hear/listen) — literally "to hear-under," implying a posture of attentive, responsive listening that results in action. Distinct from <em>hypotassō</em> (submit, place oneself under) used for wives in 5:22 — <em>hypakouō</em> carries a more direct compliance register. The qualification "in the Lord" (<em>en kyriō</em>) is significant: obedience is rooted in the child's own relationship with Christ, not merely in the parent's authority. The obedience is to God mediated through parents, not to parental authority as an end in itself.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">mē parorgizete</span>
+                <span class="term-parsing">verb · pres. act. imperative 2pl + negation (v. 4)</span>
+              </div>
+              <div class="term-gloss">ESV: "do not provoke to anger" | NIV: "do not exasperate" | NASB: "do not provoke to anger"</div>
+              <div class="term-significance"><em>Parorgizō</em> — to make thoroughly angry, to provoke to the point of sustained rage or resentment. The present imperative with negation (<em>mē</em>) means "stop doing this" or "do not make a practice of this." The prohibition is not on any parental correction or disappointment of the child's desires; it is on the systematic provocation that creates in the child a spirit of chronic resentment. The positive counterpart — "bring them up in the discipline and instruction of the Lord" — shifts the frame from the child as the agent of obedience to the father as the agent of formation. Both roles carry obligation.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">paideia kai nouthesia kyriou</span>
+                <span class="term-parsing">noun phrase · gen. sg. masc. (v. 4)</span>
+              </div>
+              <div class="term-gloss">ESV: "discipline and instruction of the Lord" | NIV: "training and instruction of the Lord" | NASB: "discipline and instruction of the Lord"</div>
+              <div class="term-significance"><em>Paideia</em> — training, formation, discipline (the whole project of child-raising in the ancient world; from <em>pais</em> = child; <em>paideia</em> is the comprehensive process of forming a child into a mature person). <em>Nouthesia</em> — verbal instruction, admonition, counsel; the word-based component of formation. Together they describe formation that involves both experiential correction and verbal guidance — the complete picture of parenting. "Of the Lord" qualifies both: the training and instruction are to be in accordance with and oriented toward the Lord, not simply any system of formation.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">prosōpolēpsia</span>
+                <span class="term-parsing">noun · nom. sg. fem. (v. 9)</span>
+              </div>
+              <div class="term-gloss">ESV: "partiality" | NIV: "favoritism" | NASB: "partiality"</div>
+              <div class="term-significance">Compound: <em>prosōpon</em> (face/person) + <em>lambanō</em> (to take/receive) — to "take the face," i.e., to judge by external appearance and social status. A Hebrew idiom (Heb. <em>nasa' panim</em>) rendered into Greek; in both cultures it described the perversion of justice by attending to who a person is rather than what is true and right. Applied here to the master-slave relationship: the Lord in heaven is the master of both, and he plays no favorites based on social position. The slave and the master stand before the same bar.</div>
+            </div>
+
+            <p>The household code of 5:22–6:9 (flowing from the mutual submission of 5:21) is now complete. The consistent structural feature across all three pairs — wives/husbands, children/parents, slaves/masters — is that Paul addresses the subordinate role first with a relatively brief call to a recognizable social obligation, then addresses the authority role with an extensive call to a form of service modeled on Christ that would have been deeply counter-cultural. The fathers are told not to exasperate their children and to form them in the Lord's paideia. The masters are told to do the same things they require of their slaves, "and stop your threatening" — a direct challenge to the absolute legal authority of the Roman paterfamilias over his household's enslaved members.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v61')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v61">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v61">
+            <p>JFB note that Paul's quotation of the fifth commandment in vv. 2–3 is the only commandment he identifies as "the first commandment with a promise." This is not merely a rhetorical encouragement; it establishes the obedience of children within the framework of the covenant community. The child who honors parents is not simply obeying a social rule but participating in the covenant pattern that shapes the whole people of God. The promise ("that it may go well with you and that you may live long in the land") is applied from the national context of Israel to the new-covenant community.</p>
+            <p>JFB give extended attention to the father's double obligation in v. 4: negative (<em>mē parorgizete</em> — stop provoking) and positive (<em>ektrephete</em> — nourish, bring up with care and tenderness). JFB note that <em>ektrephō</em> is the same verb used in 5:29 for Christ nourishing the church: "no one ever hated his own flesh, but nourishes and cherishes it, just as Christ does the church." The father who nourishes his children is doing to them what Christ does to the church. The household code is consistently Christological at every level.</p>
+            <p>On the slave/master section, JFB observe the radical nature of Paul's instruction to masters in v. 9: "do the same to them." The same things Paul has just told slaves — single-hearted service, doing the will of God from the heart, rendering good service as to the Lord — Paul now tells masters to apply in kind. This mutual obligation structure had no precedent in Roman household management literature, where the master's obligations ran to his property, not to his people. The "stop your threatening" instruction directly curtails the most common form of slave management in the ancient world.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v61')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v61">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v61">
+            <p>The AuDHD experiences most alive in this passage: <strong>Shame Spiraling</strong> and <strong>Identity vs. Behavior Confusion</strong> — particularly in the parent-child dynamic, which is one of the most formative relationships for the AuDHD person's self-understanding.</p>
+            <p>The command to fathers — "do not provoke your children to anger, but bring them up in the discipline and instruction of the Lord" — carries specific weight for the AuDHD context. Neurological research consistently shows that AuDHD children receive significantly more negative feedback than neurotypical peers: more corrections, more disappointed expressions, more "why can't you just...?" The chronic experience of being corrected-but-not-formed, disciplined-but-not-understood, required-to-comply-but-never-quite-able-to, is precisely what <em>parorgizō</em> describes: producing sustained resentment through systematic provocation rather than genuine formation. The prohibition is not incidental; it is an instruction to parents to examine whether their formation practices are actually forming the child or producing the condition Paul is prohibiting.</p>
+            <p>The positive frame — <em>paideia kai nouthesia kyriou</em> — describes formation that includes both experiential and verbal-instructional dimensions, explicitly grounded in the Lord's character and will. Formation "of the Lord" implies formation that looks like how the Lord forms his people: with patience, with faithfulness to his own character, with the goal of the child's flourishing rather than the parent's ease. For the AuDHD adult now looking back on their formation and identifying the places where <em>parorgizō</em> occurred rather than <em>paideia</em>, this text provides both a description of what went wrong and a framework for what formation was supposed to look like.</p>
+            <p>The slave/master dynamic offers a surprising reframe for the AuDHD person in workplace contexts: "rendering service with a good will as to the Lord and not to man" (v. 7). The AuDHD person who has chronic difficulty with authority-compliance in workplace settings — who bristles at arbitrary rules, who struggles with performative compliance to a manager whose rationale is unclear — is given a frame that both validates the struggle (the compliance is ultimately to the Lord, not to the person) and reorients it. You are not performing for human approval; you are doing your work for God. This detaches the performance from the RSD trigger (fear of human disapproval) and attaches it to a more stable orientation.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v61')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v61">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v61">
+            <div class="word-study-term">paideia / "discipline, training, formation" — the whole project of making a child human</div>
+            <p><strong>Etymology:</strong> From <em>pais</em> (child). <em>Paideia</em> in classical Greek was the comprehensive educational and formational project of the Greek city-state: not merely instruction in skills but the formation of a person of virtue, wisdom, and civic character. It included physical training, music, literature, philosophy, and moral formation — the total project of turning a child into a full human participant in the community. It was the most important cultural concept in Greek educational theory.</p>
+            <p><strong>Biblical range:</strong> LXX uses <em>paideia</em> extensively for the Lord's disciplinary formation of Israel: Prov 3:11 ("do not despise the Lord's discipline/<em>paideia</em>"); Prov 15:5 ("a fool despises his father's instruction/<em>paideia</em>"); Heb 12:5–11 applies the same frame to God's disciplinary work in believers — "the Lord disciplines the one he loves" (<em>paideuei</em>). <em>Paideia</em> is formation through the full range of life experience, including difficulty and correction, oriented toward the child's ultimate flourishing.</p>
+            <p><strong>This usage:</strong> "Bring them up in the <em>paideia</em> and <em>nouthesia</em> of the Lord" — the comprehensive formation project, qualified by "of the Lord": oriented toward who the Lord is and what he wants to produce in the child. <em>Nouthesia</em> (from <em>nous</em> + <em>tithēmi</em>: to place in the mind) is the verbal-instruction component; <em>paideia</em> is the broader experiential-formational dimension. Together: formation by living and learning.</p>
+            <p><strong>Cross-references:</strong> Heb 12:5–11 ("God is treating you as sons... he disciplines us for our good, that we may share his holiness"); Prov 22:6 ("Train up a child in the way he should go; even when he is old he will not depart from it"); 2 Tim 3:16 ("All Scripture is breathed out by God and profitable for teaching... for training/<em>paideia</em> in righteousness").</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v61')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v61">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v61">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller emphasizes the Christological grounding of the household code at every level: the child's obedience is "in the Lord"; the father's formation is "of the Lord"; the slave's service is "as to Christ"; the master's obligation mirrors Christ's self-giving. Paul does not give secular household ethics a religious veneer; he transforms the entire institution by routing it through the character of Christ. The parent who follows Paul's instruction is not parenting like a wise Roman paterfamilias but like a small-scale reflection of how God parents his children.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP BST)</div>
+              <p>Stott notes that Paul's "do the same to them" instruction to masters (v. 9) is arguably the most revolutionary statement in the household code. In Roman law, slaves had no legal standing; the master's authority was absolute. Paul does not immediately abolish the institution (the social disruption would have been unmanageable), but he transforms its moral content from the inside: the master who owes his slaves the same quality of service, conscientiousness, and good will that he requires of them has, in practice, undergone a change that renders the old power structure meaningless.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar NTC)</div>
+              <p>O'Brien carefully situates the children/parent passage within the flow from mutual submission (5:21). Children are not instructed to submit to parents in quite the same terms as wives to husbands — the word is <em>hypakouō</em> (obey) rather than <em>hypotassō</em> (submit). O'Brien argues this is deliberate: the parenting relationship aims at the child's eventual full maturity and independence; obedience is appropriate for the formation stage but not the permanent condition of the relationship. The goal of <em>paideia</em> is to produce a person who no longer needs to be directed but who has internalized the formation.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (ZECNT)</div>
+              <p>Arnold traces the honor-parents command to its OT context in the Decalogue, noting that "honoring" in the Hebrew sense encompassed practical provision and care — not merely emotional respect. In the Greco-Roman context this would have included caring for aging parents, not merely obeying them in childhood. The scope of the commandment is thus lifelong, not limited to the minority years. Arnold also notes the significance of "stop your threatening" to masters — the present imperative with negation implies the practice was ongoing and needed to be halted.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v61')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v61">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v61">
+            <ul>
+              <li>"Do not provoke your children to anger, but bring them up in the <em>paideia</em> of the Lord." What distinction does this make between discipline that forms and discipline that merely requires compliance? How does that distinction land for you — either as a parent or as someone looking back at your own formation?</li>
+              <li>The father's positive task — <em>paideia kai nouthesia kyriou</em> — is comprehensive formation oriented toward the Lord's character and purposes. What does it look like to raise a child in a way that is specifically shaped by who God is, not merely by what works socially or behaviorally?</li>
+              <li>"Rendering service with a good will as to the Lord and not to man" (v. 7). For work that is frustrating, under-valued, or poorly directed by human authority — what changes when the ultimate audience is the Lord rather than the manager?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v61 -->
+
+    <!-- v62: Eph 6:10-13 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v62')">
+        <span class="verse-ref">Ephesians 6:10–13</span>
+        <span class="verse-title">Be Strong in the Lord: The Battle and Its Ground</span>
+        <span class="toggle-arrow open" id="arrow-v62">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "Finally, be strong in the Lord and in the strength of his might. Put on the whole armor of God, that you may be able to stand against the schemes of the devil. For we do not wrestle against flesh and blood, but against the rulers, against the authorities, against the cosmic powers over this present darkness, against the spiritual forces of evil in the heavenly places. Therefore take up the whole armor of God, that you may be able to withstand in the evil day, and having done all, to stand firm." — ESV
+      </div>
+      <div class="collapsible-content open" id="v62">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v62')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v62">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v62">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">endunamousthe en kyriō</span>
+                <span class="term-parsing">verb · pres. pass. imperative 2pl + prep. phrase (v. 10)</span>
+              </div>
+              <div class="term-gloss">ESV: "be strong in the Lord" | NIV: "be strong in the Lord" | NASB: "be strong in the Lord"</div>
+              <div class="term-significance">Present passive imperative — the same grammatical construction as <em>plērousthe en pneumati</em> (be filled with the Spirit, 5:18). Ongoing, received, not self-generated. The strength does not originate with the believer; it is received strength from the Lord. "In the Lord" (<em>en kyriō</em>) — locating the strength in the sphere of the Lord's own power, not as an addition to one's own strength. The parallel phrase "in the strength of his might" (<em>en tō kratei tēs ischyos autou</em>) uses the same language as 1:19 ("the immeasurable greatness of his power toward us who believe") — the armor passage explicitly draws on the same power that raised Christ from the dead.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">stēnai / stēte (×4)</span>
+                <span class="term-parsing">verb · aor. act. infinitive / aor. act. imperative (vv. 11, 13, 14)</span>
+              </div>
+              <div class="term-gloss">ESV: "stand / stand firm" | NIV: "stand / stand firm" | NASB: "stand / stand firm"</div>
+              <div class="term-significance">The governing imperative of the entire armor passage appears four times: "to stand against the schemes of the devil" (v. 11); "to withstand in the evil day, and having done all, to stand firm" (v. 13, two occurrences); "stand therefore" (v. 14, the head of the armor list). The vocabulary is military: to hold one's ground, maintain one's position, not yield territory to the enemy. Conspicuously absent is any verb for advancing, attacking, or taking new territory — the posture throughout is the defense of what has already been given. The spiritual life is not a charge up a hill; it is the holding of ground that has been cleared by another.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">methodeia tou diabolou</span>
+                <span class="term-parsing">noun phrase · gen. sg. masc. (v. 11)</span>
+              </div>
+              <div class="term-gloss">ESV: "schemes of the devil" | NIV: "devil's schemes" | NASB: "schemes of the devil"</div>
+              <div class="term-significance"><em>Methodeia</em> — from <em>meta</em> (after, along) + <em>hodos</em> (way, road) — a systematic method, a planned strategy, a calculated approach. The same word appears in 4:14 for the "scheming of men" that toss the immature around. The devil does not work randomly; his opposition to the believer is systematic and strategic. This sobers the picture of spiritual conflict: the enemy is not making ad hoc attacks but following a coherent strategy against the believer's standing. The full armor of God is the appropriate response to a strategic enemy.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">archas / exousias / kosmokratoras / pneumatika tēs ponērias</span>
+                <span class="term-parsing">noun phrases · acc. pl. (v. 12)</span>
+              </div>
+              <div class="term-gloss">ESV: "rulers / authorities / cosmic powers / spiritual forces of evil" | NIV: "rulers / authorities / powers of dark world / spiritual forces" | NASB: "rulers / powers / world forces of darkness / spiritual forces"</div>
+              <div class="term-significance">The same four-fold language of spiritual powers appears throughout Ephesians (1:21; 2:2; 3:10; 6:12) — but the direction has reversed. In 1:21 and 3:10, Christ rules over these powers and the church reveals God's wisdom to them. Here in 6:12 they are the adversaries against whom the church must stand. Both are true simultaneously: these powers are defeated and subordinate to Christ (1:21), and yet they actively oppose believers in the present age (6:12). The "already but not yet" of the powers: their defeat is accomplished; their expulsion from active opposition is still ongoing until Christ's final coming.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v62')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v62">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v62">
+            <p>JFB observe that the passage opens with the same power language as 1:19 — "the strength of his might" (<em>kratos tēs ischyos</em>) explicitly echoing the "immeasurable greatness of his power toward us who believe." Paul is not introducing a new resource in the armor passage; he is calling the readers to put on what they have already been told they possess by virtue of being "in Christ." The armor passage is the practical and experiential appropriation of the cosmic indicative of chapters 1–3.</p>
+            <p>JFB give careful attention to the "not against flesh and blood" qualification of v. 12. This does not mean that conflict with human beings is not real or painful — it means that the ultimate source and character of the opposition is not human but spiritual. The human conflict is real, but it takes its character and energy from the spiritual powers behind it. This prevents both the error of dismissing human opposition as merely personal and the error of treating human opponents as the ultimate enemy. The armored posture of the believer is toward the spiritual reality behind the human surface.</p>
+            <p>JFB note the careful structure of v. 13: "that you may be able to withstand in the evil day, and having done all, to stand firm." The "having done all" (<em>hapanta katergazomenoi</em>) describes not superhuman achievement but the completion of the defensive assignment: having used every piece of the armor, having done everything the standing assignment requires — then, to stand. The goal is maintained position, not new conquests.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v62')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v62">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v62">
+            <p>The AuDHD experiences most directly engaged here: <strong>Will/Execution Gap</strong> and <strong>Shame Spiraling</strong> — specifically the shame that arises when the AuDHD believer perceives themselves as losing battles they feel they should be winning. The "stand" imperative is the reframe.</p>
+            <p>The armor passage is often preached as a call to aggressive, sustained, offensive spiritual warfare — which maps onto the image of a consistently disciplined, energized, daily-regime believer. The AuDHD believer who cannot sustain that kind of consistent output, who has "bad days" that feel like spiritual failures, who experiences intermittent collapses in the very areas they most want to hold — often receives the armor passage as evidence of their deficiency. "I should be winning this. I have the armor. Why am I losing?"</p>
+            <p>But the Greek refuses this framing. The imperative is <em>stēnai</em> — stand. Four times. Never "charge." Never "advance." The posture is the defense of territory that has already been cleared by Christ's work. The question is not "are you taking new ground?" but "are you holding the ground that has been given to you?" The person who is standing — even barely, even exhausted, even having barely survived the day — is doing exactly what the text asks. A day when you did not yield the ground of your faith in Christ is a day when you obeyed the imperative.</p>
+            <p>The received-strength framing of <em>endunamousthe</em> (present passive — be strengthened, keep being strengthened) is also critical. This is the same passive as "be filled with the Spirit." You do not generate the strength for the battle; you receive it from the Lord in whose sphere you stand. On the days when the AuDHD nervous system makes strength feel neurologically inaccessible, the passive imperative is a provision: the strength is his, in him, for you. Your role is to stay in him. Standing in him is enough.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v62')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v62">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v62">
+            <div class="word-study-term">stēnai / stēte / "stand" — the defining posture of the already-won battle</div>
+            <p><strong>The verb:</strong> <em>Histēmi</em> (to stand, to cause to stand, to place, to set firmly) / aorist <em>stēnai</em> / aorist imperative <em>stēte</em>. The aorist tense in these imperatives is decisive and complete: stand — as a definitive posture, not a continuous progressive effort. Hold the ground. Do not yield.</p>
+            <p><strong>Military context:</strong> In ancient warfare, the critical skill of heavy infantry (<em>hoplitai</em>) was holding the line — the coordinated defensive formation of interlocked shields that stopped an enemy advance. The greatest danger was not losing an individual fight but breaking the line, causing the formation to collapse and rout. "Standing firm" was the primary military virtue of heavy infantry, distinct from the cavalry's advance or the missile troops' engagement. Paul uses the metaphor of the heavily armored infantryman whose assignment is to maintain position.</p>
+            <p><strong>Frequency in this passage:</strong> <em>Stēnai</em>/<em>stēte</em> appears in v. 11 ("to stand"), v. 13 ("to withstand" [<em>antistēnai</em>] + "to stand firm" [<em>stēnai</em>]), and v. 14 ("stand therefore"). The repetition is deliberate emphasis: standing — not advancing, not winning new territory, not eliminating the enemy — is the assignment.</p>
+            <p><strong>Theological significance:</strong> The "standing" frame is the practical expression of the indicative/imperative structure of the whole letter. Chapters 1–3 describe what Christ has accomplished and what the believer already has "in him." Chapters 4–6 describe what the believer is to do. The final imperative — "stand" — is the practical embodiment of living from the completed work: you stand in what has already been won, not for what has yet to be achieved. The "evil day" (v. 13) when you must withstand is a specific future trial, not ordinary Christian life generally — but the posture of standing is the constant.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v62')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v62">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v62">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller argues that the armor passage is the practical and experiential appropriation of the cosmic triumph of Christ narrated in 1:19–23. The power that raised Christ from the dead and seated him far above all rule and authority and power and dominion (1:21) is the same power in which the believer stands when they put on the full armor of God. The armor passage does not introduce a new resource; it calls the believer to actually use what they have been given. The indicative of chapters 1–3 makes the imperative of 6:10–17 possible and sustainable.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP BST)</div>
+              <p>Stott notes the important tension in Paul's description of the spiritual powers in vv. 10–12 alongside 1:20–23 and 3:10. In 1:21 Christ is seated "far above all rule and authority and power and dominion" — the powers are clearly subordinate to Christ. In 3:10 the church is the means by which "the manifold wisdom of God might be made known to the rulers and authorities in the heavenly places." Yet in 6:12 these same powers are the adversary the believer must stand against. Stott's resolution: the powers are defeated but not yet destroyed; their doom is certain but their opposition in the present age is real. The believer stands in the certainty of the outcome while contending with the reality of the present opposition.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar NTC)</div>
+              <p>O'Brien gives extensive treatment to the nature of the "cosmic powers" of v. 12, situating them in the broader NT picture of spiritual powers and authorities. He resists two errors: the over-spiritualization that sees purely supernatural beings with no human or institutional dimension, and the de-spiritualization that translates "principalities and powers" into purely sociological or structural categories. The biblical witness describes real spiritual agents that work through human structures, ideologies, and institutions — but are not reducible to them. The armor is both spiritually and practically necessary.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (ZECNT)</div>
+              <p>Arnold provides important background on the pervasiveness of magical practice and fear of spiritual powers in the Ephesian context. Ephesus was one of the ancient world's centers for magical texts, amulets, and protective ritual. The believers Paul addresses would have come from a culture deeply shaped by the fear of malevolent spiritual forces and the need for protection against them. Paul's armor passage addresses this very fear — but redirects the response from magical protective ritual to the arms provided by the God who has already triumphed over these powers in Christ.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v62')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v62">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v62">
+            <ul>
+              <li>"Be strengthened in the Lord" — present passive. You receive this strength; you don't generate it. Where have you been trying to fight spiritual battles on the energy of self-generated willpower rather than received strength from the Lord?</li>
+              <li>The imperative is "stand" — not advance, not win, not eliminate the enemy. A day when you held your ground in Christ is a day when you fulfilled the assignment. What would it mean to measure spiritual faithfulness by "did I stand?" rather than "did I win?"</li>
+              <li>"We do not wrestle against flesh and blood." Who or what has been the face of the opposition in your life lately? What changes when you trace that opposition back to its spiritual source rather than treating the human surface as the ultimate enemy?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v62 -->
+
+    <!-- v63: Eph 6:14-17 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v63')">
+        <span class="verse-ref">Ephesians 6:14–17</span>
+        <span class="verse-title">The Six Pieces: The Full Armor of God</span>
+        <span class="toggle-arrow open" id="arrow-v63">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "Stand therefore, having fastened on the belt of truth, and having put on the breastplate of righteousness, and, as shoes for your feet, having put on the readiness given by the gospel of peace. In all circumstances take up the shield of faith, with which you can extinguish all the flaming darts of the evil one; and take the helmet of salvation, and the sword of the Spirit, which is the word of God." — ESV
+      </div>
+      <div class="collapsible-content open" id="v63">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v63')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v63">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v63">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">The aorist participles (vv. 14-16)</span>
+                <span class="term-parsing">aor. mid. / pass. participles — perizōsamenoi / endysamenoi / hypodēsamenoi / analabontes</span>
+              </div>
+              <div class="term-gloss">"having fastened / having put on / having shod / having taken up"</div>
+              <div class="term-significance">Four of the six armor pieces are introduced with aorist participles — completed prior actions — before the final imperative "stand therefore." The belt, breastplate, shoes, and shield have already been put on; the standing is the stance of the already-armed soldier. This grammatical sequence supports the theological reading of the armor as the appropriation of what Christ has already accomplished, not the daily manufacturing of new spiritual resources. You are already equipped; the command is to take the posture appropriate to someone who has put on the armor. The two final pieces (helmet and sword) use an aorist imperative (<em>dexasthe</em> — receive/take) — you are to actively take them up.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">Six pieces: belt, breastplate, shoes, shield, helmet, sword</span>
+                <span class="term-parsing">Pieces 1-6 and their identifications</span>
+              </div>
+              <div class="term-gloss">Truth / Righteousness / Gospel of Peace / Faith / Salvation / Word of God</div>
+              <div class="term-significance">
+                <strong>1. Belt of truth (<em>alētheia</em>)</strong> — the girdle that secured and supported everything else. Without a properly fastened belt, the rest of the armor shifts and becomes useless. Truth — reality-orientation, the refusal of illusion about God, self, or the enemy — is what holds the whole armor together. It echoes the "truth" (<em>alētheia</em>) thread through the letter: "speaking truth in love" (4:15); "speaking truth" (4:25); "fruit of light is truth" (5:9). <br><br>
+                <strong>2. Breastplate of righteousness (<em>dikaiosynē</em>)</strong> — protects the vital organs. Righteousness here is primarily the imputed righteousness of Christ (as in 1:7; 2:8–9), not moral performance — the believer's heart is protected not by their own moral track record but by the righteousness that is theirs in Christ. <br><br>
+                <strong>3. Shoes of the gospel of peace</strong> — readiness and stability of footing. An army that cannot move effectively because of inadequate footwear cannot hold ground. The peace of the gospel — both peace with God (2:14–18) and the peace given to the community (4:3) — provides the stable footing from which the believer stands. <br><br>
+                <strong>4. Shield of faith (<em>thyreou tēs pisteōs</em>)</strong> — the large <em>thyreos</em> (door-shaped, body-covering shield, not the small round <em>aspis</em>). Extinguishes burning arrows. Faith here is the active trust that receives Christ's protection and deflects the enemy's attacks; it is not a moral performance but a responsive orientation of trust toward God. <br><br>
+                <strong>5. Helmet of salvation (<em>sōtērias</em>)</strong> — protects the mind. The assurance of salvation secures the believer's thinking from the enemy's attempts to produce doubt, confusion, and despair about their standing before God. "Salvation" is the completed work of Christ applied to the believer. <br><br>
+                <strong>6. Sword of the Spirit = the word of God (<em>rhēma theou</em>)</strong> — the only offensive piece, and it belongs to the Spirit. <em>Rhēma</em> (specific word, utterance) rather than <em>logos</em> (word in a broader sense) — specific spoken Scripture wielded in the specific moment of attack. The Spirit wields the Word through the believer; the believer is not the autonomous agent but the Spirit's instrument.
+              </div>
+            </div>
+
+            <p>The armor passage draws extensively on Isaianic imagery: Isa 11:5 (belt of righteousness and faithfulness); Isa 52:7 (feet of the herald of peace); Isa 59:17 (God himself putting on righteousness as a breastplate and salvation as a helmet — Paul applies to the believer what Isaiah's God wears). The armor is thus not merely military metaphor; it is the armor of the God who fights for his people, now given to his people to wear in Christ.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v63')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v63">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v63">
+            <p>JFB trace the Isaianic background carefully, noting that in Isa 59:17 God himself is described as putting on righteousness as a breastplate and salvation as a helmet when he comes to deliver his people. Paul applies the divine armor to the believer in Christ — the armor the believer wears is the same armor God wears. This is not a metaphor for human virtue but for the believer's sharing in Christ's own standing before the Father. The breastplate of righteousness is not what you produce; it is what the righteous God is, given to you in Christ.</p>
+            <p>JFB note the distinction between the four aorist participles (already put on) and the final imperative <em>dexasthe</em> (receive/take up) for the helmet and sword. The helmet of salvation is something to be actively received and taken — the conscious, deliberate appropriation of the assurance of salvation for the protection of the mind. The sword of the Spirit is something to be taken up ready for use. Both require active response from the believer, even though the resources themselves come from outside.</p>
+            <p>JFB observe that the sword of the Spirit is identified as <em>rhēma theou</em> — not the generic <em>logos</em> but the specific utterance. This implies active, situationally-appropriate use of Scripture in the specific moment of spiritual attack — not general biblical literacy as a background resource but the Spirit-directed deployment of specific Scripture in specific circumstances. Jesus' use of Deuteronomy against Satan's three temptations (Matt 4:1–11) is the paradigm case.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v63')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v63">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v63">
+            <p>The AuDHD experiences most engaged in the armor list: <strong>Neurology-as-Disqualifier Fear</strong>, <strong>Shame Spiraling</strong>, and <strong>Performance-Review Posture</strong>. The armor passage is often received as a list of spiritual disciplines or character qualities that the AuDHD believer must consistently generate to be protected. The grammar insists otherwise.</p>
+            <p>Consider each piece through this lens: (1) The belt of truth is not "try very hard to always be honest" — it is reality-orientation, the willingness to see things as they actually are (your situation, God's character, your own standing). The AuDHD person who tends toward catastrophizing or RSD-distorted perception is being given a piece of armor that says: fasten yourself to what is actually true. (2) The breastplate of righteousness is not your moral performance protecting your vital organs — it is Christ's righteousness protecting your heart from the accusation that your failures expose you as unprotected. When shame spiraling says "you are disqualified," the breastplate says "not by your performance — by his." (3) The shoes of the gospel of peace are the stable footing of being at peace with God — which does not fluctuate with your daily consistency. The foundation is settled; the ground underfoot does not shift when you have a bad week.</p>
+            <p>(4) The shield of faith extinguishes "burning arrows" — which many commentators and a long tradition of spiritual reading have associated with intrusive thoughts, sudden doubt, and the sudden-onset despair that can hit without warning. The shield is not a performance of consistent trust; it is the practiced orientation of trust toward God in those moments. Picking up the shield in the moment of attack is enough — you do not need to have been holding it flawlessly for years for it to work. (5) The helmet of salvation protects the mind — which is specifically where the AuDHD struggle most often lives. The mind that spirals, that rehearses failures, that generates catastrophic predictions — is being offered a piece of armor specifically designed to protect it: the settled assurance that your salvation does not rest on your performance. (6) The sword of the Spirit is wielded by the Spirit through you. You do not have to be a skilled biblical scholar to use it; you need to be oriented toward the Spirit's leading to the specific word for the specific moment.</p>
+            <p>The whole armor is issued equipment, not earned equipment. You did not manufacture any of it. You put it on — and then you stand.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v63')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v63">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v63">
+            <div class="word-study-term">panoplia / "full armor" — the whole kit of the heavily-armed infantryman</div>
+            <p><strong>Etymology:</strong> <em>Pan</em> (all, complete) + <em>hopla</em> (arms, equipment, weapons). The <em>panoplia</em> is specifically the complete equipment of the heavy infantryman (<em>hoplitēs</em>), who carried a large shield, spear, short sword, helmet, breastplate, greaves, and belt. The light infantryman or cavalry soldier carried a partial kit. The heavy infantryman's role was formation-holding: standing in line with others, interlocking shields, resisting frontal assaults.</p>
+            <p><strong>Isaianic background:</strong> Paul's armor list draws directly from Isa 59:17 — "He put on righteousness as a breastplate, and a helmet of salvation on his head; he put on garments of vengeance for clothing, and wrapped himself in zeal as a cloak." This is God himself putting on the armor when he acts to deliver his people. The transfer of this divine armor to the believer in Christ is the theological center of the passage: you wear what God wears.</p>
+            <p><strong>What is conspicuously absent:</strong> No back armor is mentioned — the armor is entirely defensive of the forward-facing standing position. The soldier who stands with this armor is fully protected at the front but vulnerable at the back only if they turn and run. The armor is designed for standing ground, not for retreat. The structural absence of back armor is part of Paul's "stand" metaphor: the army of God does not retreat.</p>
+            <p><strong>Cross-references:</strong> 1 Thess 5:8 — "having put on the breastplate of faith and love, and for a helmet the hope of salvation" (Paul's earlier deployment of the same armor imagery, with slightly different identifications — suggesting the armor is a flexible metaphor for the resources of salvation, not a rigid allegorical one-to-one correspondence); Rom 13:12 — "put on the armor of light"; 2 Cor 6:7 — "with weapons of righteousness."</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v63')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v63">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v63">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller argues that the specific piece of the armor most needed in contemporary western culture is the breastplate of righteousness — specifically understood as imputed righteousness, not moral performance. The attack the enemy most consistently deploys against modern believers is not intellectual doubt but accusation: you are not good enough, consistent enough, disciplined enough to stand. The breastplate of righteousness says: this attack has already been absorbed. Your heart is protected not by your track record but by Christ's.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP BST)</div>
+              <p>Stott resists moralizing the individual armor pieces into character virtues. The armor is theological before it is ethical: the righteousness is Christ's; the salvation is God's completed work; the faith is responsive trust in a given object, not a quantity of personal confidence generated. Stott notes that the one potentially moral piece — the belt of truth — is placed first precisely because reality-orientation is what makes the rest of the armor possible. You cannot put on Christ's righteousness if you do not first acknowledge, truthfully, that you need it.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar NTC)</div>
+              <p>O'Brien examines the identification of the sword as <em>rhēma theou</em> rather than <em>logos theou</em>, arguing that the distinction points to the specific, situationally-deployed utterance of Scripture under the Spirit's direction — as in Jesus' use of specific Deuteronomy texts against the devil's temptations (Matt 4). The sword is effective not because the believer has memorized large quantities of Scripture but because the Spirit directs the specific word needed in the specific moment. The sword is the Spirit's weapon; the believer is its wielder under the Spirit's guidance.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Barnes</div>
+              <div class="commentator-source">Notes on the New Testament: Ephesians</div>
+              <p>Barnes traces the Isaianic source of each armor piece with particular care, noting that Paul consistently applies to the believer what Isaiah applies to God or to the Messiah. The "armor of God" is literally the armor that God himself wears when he fights for his people — and in Christ, this armor is now the armor of the believer. Barnes finds in this the deepest possible comfort: you are not armed with human equipment for a divine battle; you are armed with divine equipment, wearing the armor of the God who has already won.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v63')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v63">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v63">
+            <ul>
+              <li>The armor is issued equipment, not earned equipment — you put on what Christ has already provided. Which piece of the armor do you find yourself trying to manufacture (generate by your own consistent moral effort) rather than receiving and putting on?</li>
+              <li>The breastplate of righteousness protects the vital organs — specifically, the accusation that your failures disqualify you. When shame spiraling says "you are not good enough to stand," which piece of armor is the Spirit directing you to pick up?</li>
+              <li>The sword of the Spirit is the one offensive piece, and it belongs to the Spirit — wielded through you. What would it look like to be more attentive to the Spirit's direction toward a specific passage of Scripture in a specific moment of attack, rather than relying on general biblical familiarity?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v63 -->
+
+    <!-- v64: Eph 6:18-24 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v64')">
+        <span class="verse-ref">Ephesians 6:18–24</span>
+        <span class="verse-title">Prayer in the Spirit / The Letter's Close</span>
+        <span class="toggle-arrow open" id="arrow-v64">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "…praying at all times in the Spirit, with all prayer and supplication. To that end, keep alert with all perseverance, making supplication for all the saints, and also for me, that words may be given to me in opening my mouth boldly to proclaim the mystery of the gospel, for which I am an ambassador in chains, that I may declare it boldly, as I ought to speak. So that you also may know how I am and what I am doing, Tychicus the beloved brother and faithful minister in the Lord will tell you everything… Peace be to the brothers, and love with faith, from God the Father and the Lord Jesus Christ. Grace be with all who love our Lord Jesus Christ with love incorruptible." — ESV
+      </div>
+      <div class="collapsible-content open" id="v64">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v64')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v64">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v64">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">proseuchomenoi en panti kairō</span>
+                <span class="term-parsing">pres. mid. participle + prep. phrase (v. 18)</span>
+              </div>
+              <div class="term-gloss">ESV: "praying at all times" | NIV: "pray in the Spirit on all occasions" | NASB: "praying at all times"</div>
+              <div class="term-significance">"At all times" translates <em>en panti kairō</em> — at every <em>kairos</em>, every qualitatively significant moment, not at every <em>chronos</em> clock-interval. This is the same <em>kairos</em> as in 5:16 ("redeeming the <em>kairos</em>") and signals a pattern of opportunistic, Spirit-attentive prayer responsiveness rather than a fixed-interval prayer schedule. "In the Spirit" (<em>en pneumati</em>) — prayer that is generated and sustained by the Spirit's prompting and energy, the sixth expression flowing from the Spirit-filling of 5:18. Prayer is thus the overarching posture of the Spirit-filled life, flowing from and expressing the filling of 5:18 and wrapping the whole armor section (6:10–17).</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">proskarterountes</span>
+                <span class="term-parsing">verb · pres. act. participle (v. 18)</span>
+              </div>
+              <div class="term-gloss">ESV: "keep alert" | NIV: "be alert" | NASB: "be on the alert"</div>
+              <div class="term-significance"><em>Proskartereō</em> — to persist, continue steadfastly, devote oneself to, be constantly ready and available. The same verb appears in Acts 1:14 ("they were devoting themselves to prayer"), Acts 2:42 ("they devoted themselves to the apostles' teaching and prayer"), and Rom 12:12 ("be constant in prayer"). The quality described is not the sustained high-energy attention of rigorous discipline but the persistent, ready, always-available orientation of someone who has not given up on prayer and whose posture remains open to it. "Keeping alert" describes vigilant attentiveness, not frantic activity.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">parrēsia (×2 in vv. 19-20)</span>
+                <span class="term-parsing">noun · dat. sg. fem. / adverb parrēsiazomai</span>
+              </div>
+              <div class="term-gloss">ESV: "boldly / boldly" | NIV: "fearlessly / fearlessly" | NASB: "boldly / boldly"</div>
+              <div class="term-significance"><em>Parrēsia</em> — the same word used in 3:12 ("in whom we have boldness and confident access through our faith in him") — the letter's central gift of confident access to God and open speech toward others. The letter began with God's cosmic plan (ch. 1), moved through the community's creation (ch. 2), Paul's prayer and doxology (ch. 3), then the ethics of the community (ch. 4–6). At the very end, Paul asks for <em>parrēsia</em> — the same confident access/boldness he announced as the gift of the gospel in 3:12. The letter closes with the same word at its center. The theology of the whole letter is: you have <em>parrēsia</em> before God (3:12); now pray for me to have it in proclaiming the gospel (6:19).</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">mystērion tou euaggeliou</span>
+                <span class="term-parsing">noun phrase · gen. sg. neut. (v. 19)</span>
+              </div>
+              <div class="term-gloss">ESV: "mystery of the gospel" | NIV: "mystery of the gospel" | NASB: "mystery of the gospel"</div>
+              <div class="term-significance">The final use of <em>mystērion</em> in Ephesians (cf. 1:9; 3:3, 4, 9; 5:32). Paul has used it throughout the letter for the formerly-hidden-now-disclosed secret of God's plan: the unity of Jews and Gentiles in Christ, the cosmic reconciliation in him, the marriage-as-image-of-Christ-and-church. Here, at the close, it is the mystery of the gospel itself — the whole revealed plan of God in Christ — for which Paul is an ambassador and for which he requests prayer. The letter ends with its own content as the object of prayer for its proclamation.</div>
+            </div>
+
+            <p>The closing benediction of vv. 23–24 — "peace be to the brothers, and love with faith, from God the Father and the Lord Jesus Christ. Grace be with all who love our Lord Jesus Christ with love incorruptible" — gathers the three great benediction-words of the letter's opening: grace and peace (1:2) now given back as the closing gift. The letter is an arc from grace and peace through cosmic theology and communal ethics back to grace and peace. "Love incorruptible" (<em>en aphtharsia</em>) — an undying, imperishable love for Christ: the final note of the letter. Not love-as-performance but love that does not decay, that persists through inconsistency and failure, that belongs to the new creation order rather than the old age that is passing away.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v64')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v64">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v64">
+            <p>JFB observe that the prayer instruction of vv. 18–20 functions as the necessary companion and sustainer of the armor: the armor is passive/received equipment, but prayer is the active, ongoing communication with the commander. JFB note the fourfold "all" of v. 18 ("all prayer," "all supplication," "all times," "all perseverance") — an all-encompassing call to a life of prayer that is comprehensive in type, timing, and persistence. This is not a description of an elite spiritual practice but of the normal orientation of the Spirit-filled life toward the Father.</p>
+            <p>JFB give extended attention to Paul's prayer request in vv. 19–20 as a remarkable window into the apostle's self-understanding. Paul — the author of this letter's high Christology, the recipient of the revelation of the mystery of the gospel, the apostle to the Gentiles — confesses that he needs prayer for boldness in speaking. He is not self-sufficient as a communicator of the gospel. The very thing he has been writing about — <em>parrēsia</em>, the bold confidence of gospel access — he needs to pray for and needs others to pray for on his behalf. This is among the most humanizing moments in the Pauline letters.</p>
+            <p>JFB note that "love incorruptible" (<em>agapē en aphtharsia</em>) as the final phrase of the letter is a specifically eschatological description: <em>aphtharsia</em> (incorruptibility, imperishability) is the quality of the resurrection life (1 Cor 15:42, 50, 53–54). To love Christ "with love incorruptible" is to love him with a love that already has something of the character of the resurrection age, that cannot be finally destroyed by sin, failure, or death. This is the grace Paul pronounces at the letter's close.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v64')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v64">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v64">
+            <p>The AuDHD experiences most alive in this closing passage: <strong>Time Blindness/Future Self Disconnect</strong> (the prayer-at-every-<em>kairos</em> frame), <strong>Will/Execution Gap</strong> (Paul's own request for prayer for boldness), and a specific reframe in the letter's final phrase: "love incorruptible."</p>
+            <p>"Praying at every <em>kairos</em>" — the same <em>kairos</em> as in 5:16 — describes a prayer practice built on qualitative moment-recognition rather than chronological scheduling. The AuDHD person who struggles to maintain a consistent daily quiet time at a fixed hour is not thereby excluded from the "all times" of prayer; the command is responsiveness to the qualitatively significant moment when the Spirit prompts, the need surfaces, or the awareness of God's presence sharpens. The "keep alert" (<em>proskarterountes</em>) quality — persistent availability, not abandoning the posture — is the realistic description of what this kind of prayer looks like. Not a sustained 60-minute daily meditation but a life of being available to prayer as it presents itself.</p>
+            <p>Paul's own prayer request — "that I may speak boldly, as I ought to speak" — is one of the most important pieces of pastoral self-disclosure in the NT for the AuDHD believer who struggles with their own communication. Paul, who wrote this letter, who was given the revelation of the mystery of the gospel, who was the apostle to the Gentiles — asks for prayer for his boldness in speaking. He does not have this resource on demand; he needs the Spirit's supply and the community's intercession. If the apostle needs to pray for adequate boldness in proclaiming what he knows, the AuDHD believer whose communication is variable, whose verbal output on important subjects is sometimes inadequate, is not unusually deficient. The resource was always supposed to be prayed-for, not self-generated.</p>
+            <p>The letter's final phrase — "love with love incorruptible" (<em>agapē en aphtharsia</em>) — is the AuDHD heart of the entire letter's close. The love for Christ that Ephesians calls for is specifically incorruptible — it does not decay with inconsistency, it cannot be finally destroyed by failure, it belongs to the resurrection order rather than the old age. The love of the AuDHD believer for Christ, which fluctuates with nervous system state and is often felt most acutely in the hyperfocus moments and least acutely in the shutdown moments, is held by a grace that is itself incorruptible. Your love for him, even when you cannot feel it, is held in a relationship defined by incorruptibility. This is where Ephesians ends: not with a performance bar but with grace — incorruptible grace — for all who love the Lord Jesus Christ.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v64')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v64">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v64">
+            <div class="word-study-term">parrēsia — returning home: the letter closes where it centered</div>
+            <p><strong>The word:</strong> <em>Parrēsia</em> — bold, open, confident speech; the freedom to speak openly without fear; in the context of access to authority, the confidence of welcome that enables free approach. Derived from <em>pan</em> (all) + <em>rhēsis</em> (speech) — "all-speech," the freedom to say everything, to hold nothing back out of fear.</p>
+            <p><strong>The letter's arc:</strong> <em>Parrēsia</em> appears at the structural center of Ephesians in 3:12 — "in whom we have boldness and confident access through our faith in him." This is the climax of Paul's prayer in 3:14–19 and the gift of the mystery he has just disclosed. The believer has <em>parrēsia</em> — the freedom of welcome, the boldness of access — before the Father. It is the defining characteristic of the new-covenant relationship with God: not the terrified approach of one who is unsure of their welcome but the open, unobstructed, bold approach of a beloved child.</p>
+            <p><strong>At the letter's close:</strong> Paul uses <em>parrēsia</em> twice in 6:19–20 — for his prayer request for boldness in proclaiming the gospel. The letter's closing prayer request is for the very thing the letter's center announced as given. Paul prays for the gift the letter has been proclaiming. This is not circular; it is the structure of the Christian life: the gift is given in Christ (3:12), and then it is appropriated, prayed-for, sought in the Spirit (6:18–20). The indicative makes the imperative possible; the imperative is the appropriation of the indicative by faith and prayer.</p>
+            <p><strong>Cross-references:</strong> Acts 4:29, 31 (the early church prayed for <em>parrēsia</em> and received it); Heb 4:16 ("let us then with confidence draw near to the throne of grace" — the same access/bold-approach language); 1 John 4:17 ("confidence for the day of judgment"); Heb 10:19 ("we have confidence to enter the holy places by the blood of Jesus"). <em>Parrēsia</em> is consistently the gift of the gospel, always received, always to be appropriated by faith and prayer.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v64')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v64">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v64">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller argues that the armor passage and the prayer instruction together form the complete picture of how the indicative of chapters 1–3 is practically appropriated in the imperative of chapters 4–6. The armor is the defensive structure of the indicative; prayer is the active, relational communication through which the believer lives in the power of the indicative. Neither alone is sufficient: armor without prayer is passive waiting; prayer without the armor is exposure to attack. Together they describe the posture of someone who knows both that they are fully equipped and that they are dependent on constant communication with the one who equipped them.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP BST)</div>
+              <p>Stott finds in Paul's prayer request for <em>parrēsia</em> one of the most important pieces of apostolic self-disclosure in the NT. Here is the man who has just written six chapters of some of the most sophisticated theological argument in the NT, who has argued for the believer's cosmic standing in Christ — and he confesses that he needs prayer for his own boldness in speaking. The apostle is not self-sufficient. The very gift he announces in 3:12 is the gift he asks the Ephesians to pray that he will receive in 6:19. This recursive structure — announcing the gift and then praying for it — is the normal pattern of Christian life.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar NTC)</div>
+              <p>O'Brien traces the structural completion of the letter in its closing verses. The opening benediction of grace and peace (1:2) is bookended by the closing benediction of peace, love, faith, and grace (6:23–24). The letter's great themes — the mystery of the gospel, the bold access of the believer before God, the grace and peace of God — all return in the closing section. O'Brien notes that "love incorruptible" (<em>agapē en aphtharsia</em>) is a specifically eschatological characterization: the love that endures into the new creation, not the love that is subject to the corruption of the present age.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (ZECNT)</div>
+              <p>Arnold notes that Paul's identification of himself as "an ambassador in chains" (<em>presbeuō en halysei</em>, v. 20) creates a striking paradox: ambassadors in the ancient world were diplomatic envoys of sovereign powers, expected to be received with honor and to speak with authority. Paul's chains mark him as a prisoner, apparently stripped of the standing his ambassadorial role should carry. Yet he asks not for release but for boldness — for the <em>parrēsia</em> to keep speaking the mystery of the gospel from within his chains. The gospel is not hindered by the messenger's circumstances but by the messenger's silence.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v64')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v64">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v64">
+            <ul>
+              <li>"Praying at every <em>kairos</em>" — the prayer life of the Spirit-filled community is built on responsive awareness to the qualitatively significant moment, not the rigid execution of a fixed schedule. Where do you notice the Spirit prompting you toward prayer? What does keeping the posture "alert" look like for you in practice?</li>
+              <li>Paul asked for prayer for his own boldness in speaking — the apostle needed what the letter promised, and he needed the community to pray it for him. What does it mean for you that the man who wrote Ephesians still needed to ask for the gift he had been writing about? Where do you need to ask for it?</li>
+              <li>"Grace be with all who love our Lord Jesus Christ with love incorruptible." Your love for Christ is held in a relationship defined by grace — incorruptible, imperishable, resurrection-grade grace. When your love feels inconsistent or absent, what does it mean that the grace holding you in that love does not decay?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v64 -->
+
+  </div><!-- /chapter-block -->
+</div><!-- /study-container -->
+
+<script>
+function toggleVerse(id) {
+  const content = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  arrow.classList.toggle('open', !isOpen);
+  arrow.textContent = isOpen ? '▶' : '▼';
+}
+function togglePanel(id) {
+  const content = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  if (!content) return;
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  if (arrow) { arrow.textContent = isOpen ? '▶' : '▼'; }
+}
+</script>
+</body>
+</html>

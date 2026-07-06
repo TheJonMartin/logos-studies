@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ephesians 5 — AuDHD Bible Study</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; background: #f8f5f0; color: #2d2418; line-height: 1.65; }
+    h1 { font-size: 1.6rem; color: #1a0a00; text-align: center; padding: 1.5rem 1rem 0.5rem; }
+    .study-container { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    .chapter-block { margin-bottom: 2rem; }
+    .chapter-heading { font-size: 1.1rem; color: #5a3e28; margin: 1.5rem 0 0.75rem; padding-left: 0.5rem; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 2px solid #c9a96e; padding-bottom: 0.4rem; }
+    .theme-banner { background: linear-gradient(135deg, #3b1a0a 0%, #6b3a1f 100%); color: #fdf5ec; padding: 1rem 1.4rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.92rem; line-height: 1.6; }
+    .theme-banner strong { font-size: 1rem; display: block; margin-bottom: 0.3rem; letter-spacing: 0.04em; color: #f0c98a; }
+    .verse-block { background: #fff; border: 1px solid #d4b896; border-radius: 8px; margin-bottom: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.06); overflow: hidden; }
+    .verse-header { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; background: linear-gradient(135deg, #6b3a1f 0%, #8b5a2b 100%); color: #fff; cursor: pointer; user-select: none; }
+    .verse-ref { font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; }
+    .verse-title { font-size: 0.85rem; opacity: 0.88; font-style: italic; margin-left: 0.75rem; flex: 1; }
+    .verse-text-preview { font-size: 0.82rem; padding: 0.65rem 1.1rem; background: #fdf5ec; border-bottom: 1px solid #e8d5bc; font-style: italic; color: #5a3e28; line-height: 1.6; }
+    .toggle-arrow { font-size: 0.85rem; transition: transform 0.2s; }
+    .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .collapsible-content.open { max-height: 9999px; }
+    .panel { border-top: 1px solid #e8ddd2; }
+    .panel-header { display: flex; align-items: center; padding: 0.65rem 1.1rem; font-weight: 600; font-size: 0.88rem; cursor: pointer; user-select: none; gap: 0.5rem; }
+    .panel-header .icon { font-size: 1rem; }
+    .panel-header .toggle-arrow { margin-left: auto; font-size: 0.75rem; }
+    .panel-body { padding: 1rem 1.1rem 1.1rem; font-size: 0.9rem; line-height: 1.7; }
+    .panel-body p { margin-bottom: 0.85rem; }
+    .panel-body p:last-child { margin-bottom: 0; }
+    .panel-greek .panel-header { background: #dbeafe; color: #1e3a5f; }
+    .panel-greek .panel-body  { background: #eff6ff; color: #1e3a5f; }
+    .greek-term { background: #fff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.85rem; }
+    .greek-term:last-child { margin-bottom: 0; }
+    .greek-term .term-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.4rem; }
+    .greek-term .term-word { font-size: 1.05rem; font-weight: 700; color: #1e40af; font-style: italic; }
+    .greek-term .term-parsing { font-size: 0.78rem; color: #3b5c9e; background: #dbeafe; padding: 2px 7px; border-radius: 12px; }
+    .greek-term .term-gloss { font-size: 0.82rem; color: #4b5563; margin-bottom: 0.35rem; }
+    .greek-term .term-significance { font-size: 0.88rem; color: #1e3a5f; }
+    .panel-jfb .panel-header { background: #fef3c7; color: #78350f; }
+    .panel-jfb .panel-body  { background: #fffbeb; color: #451a03; }
+    .panel-audhd .panel-header { background: #d1fae5; color: #064e3b; }
+    .panel-audhd .panel-body  { background: #ecfdf5; color: #022c22; }
+    .panel-ws .panel-header { background: #ede9fe; color: #3b0764; }
+    .panel-ws .panel-body  { background: #f5f3ff; color: #2e1065; }
+    .word-study-term { font-size: 1.05rem; font-weight: 700; color: #5b21b6; font-style: italic; margin-bottom: 0.5rem; }
+    .panel-commentators .panel-header { background: #ccfbf1; color: #0f4c3a; }
+    .panel-commentators .panel-body  { background: #f0fdf9; color: #052e25; }
+    .commentator-block { background: #fff; border: 1px solid #a7f3d0; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; }
+    .commentator-block:last-child { margin-bottom: 0; }
+    .commentator-name { font-weight: 700; font-size: 0.9rem; color: #065f46; }
+    .commentator-source { font-size: 0.78rem; color: #6b7280; font-style: italic; margin-bottom: 0.4rem; }
+    .panel-pastoral .panel-header { background: #ffe4e6; color: #9f1239; }
+    .panel-pastoral .panel-body  { background: #fff1f2; color: #4c0519; }
+    .panel-pastoral .panel-body ul { padding-left: 0; list-style: none; margin: 0; }
+    .panel-pastoral .panel-body ul li { padding: 8px 12px 8px 16px; margin: 8px 0; border-left: 3px solid #e11d48; background: #fff; border-radius: 0 4px 4px 0; font-size: 0.9rem; line-height: 1.55; }
+  </style>
+</head>
+<body>
+<div class="study-container">
+  <h1>Ephesians 5 — AuDHD Bible Study</h1>
+
+  <div class="theme-banner">
+    <strong>You Are Light: Identity Before Imperative</strong>
+    The governing thread of Ephesians 5 is the identity statement of verse 8: "you <em>are</em> light in the Lord." Not "you should try to be light" — <em>you are</em>. The chapter unfolds this identity in four movements: beloved children who imitate a Father who first loved them (vv. 1–7), people whose identity as light means darkness-exposure happens by existing, not by striving (vv. 8–14), Spirit-filled worshippers who receive wisdom rather than manufacture it (vv. 15–21), and a marriage defined not by performance of roles but by the model of Christ's self-giving love for an as-yet-unglorious church (vv. 22–33). In each movement, the indicative precedes the imperative: what you <em>are</em> shapes what you <em>do</em>, not the other way around.
+  </div>
+
+  <div class="chapter-block">
+    <h2 class="chapter-heading">Ephesians 5</h2>
+
+    <!-- v51: Eph 5:1-7 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v51')">
+        <span class="verse-ref">Ephesians 5:1–7</span>
+        <span class="verse-title">Beloved Children: Imitators of God, Walking in Love</span>
+        <span class="toggle-arrow open" id="arrow-v51">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "Therefore be imitators of God, as beloved children. And walk in love, as Christ loved us and gave himself up for us, a fragrant offering and sacrifice to God. But sexual immorality and all impurity or covetousness must not even be named among you, as is proper among saints. Let there be no filthiness nor foolish talk nor crude joking, which are out of place, but instead let there be thanksgiving. For you may be sure of this, that everyone who is sexually immoral or impure, or who is covetous (that is, an idolater), has no inheritance in the kingdom of Christ and God. Let no one deceive you with empty words, for because of these things the wrath of God comes upon the sons of disobedience. Therefore do not become partners with them." — ESV
+      </div>
+      <div class="collapsible-content open" id="v51">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v51')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v51">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v51">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">mimētai</span>
+                <span class="term-parsing">noun · nom. pl. masc. (imperatival predicate)</span>
+              </div>
+              <div class="term-gloss">ESV: "imitators" | NIV: "imitators" | NASB: "imitators"</div>
+              <div class="term-significance">From <em>mimeō</em> (to imitate, from which English "mime" derives). The command structure is nominal, not verbal: "be imitators" — become the kind of person whose characteristic pattern is mimicry of God, not "perform a series of imitations." This is the only use of <em>mimētai</em> in Ephesians. In the Greek world, imitation of a model was the primary pedagogical method: students imitated masters, children imitated parents, disciples imitated teachers. The frame is relational-formational, not rules-based compliance.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">agapētoi</span>
+                <span class="term-parsing">adjective · nom. pl. masc. (substantive)</span>
+              </div>
+              <div class="term-gloss">ESV: "beloved" | NIV: "dearly loved" | NASB: "beloved"</div>
+              <div class="term-significance">The prior status that makes the imitation possible and appropriate. The order is crucial: <em>beloved children</em> first, <em>then</em> imitators. The imitation flows from the belovedness; the belovedness is not earned by the imitation. Children imitate parents not primarily out of obligation but out of love, security, and attachment. The child who is not sure of their welcome imitates anxiously; the beloved child imitates freely. The whole ethical project of Ephesians 5 rests on this sequence.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">paredōken heauton</span>
+                <span class="term-parsing">verb · aor. act. indic. 3sg + reflexive pronoun</span>
+              </div>
+              <div class="term-gloss">ESV: "gave himself up" | NIV: "gave himself up" | NASB: "gave himself up"</div>
+              <div class="term-significance">Aorist: a decisive, completed act of self-giving. The reflexive pronoun (<em>heauton</em>) makes clear this was self-directed — he gave <em>himself</em>, not something external. "A fragrant offering and sacrifice to God" — language drawn from the Levitical sacrificial system, where the ascending smoke of the offering was the <em>rēach nîkhōakh</em> (pleasing aroma) before God. Paul applies this entire cultic vocabulary to Christ's death, making the cross the definitive and final sacrifice that fulfilled and ended the cultic system.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">eucharistia</span>
+                <span class="term-parsing">noun · nom. sg. fem.</span>
+              </div>
+              <div class="term-gloss">ESV: "thanksgiving" | NIV: "thanksgiving" | NASB: "giving of thanks"</div>
+              <div class="term-significance">Compound: <em>eu</em> (well, good) + <em>charis</em> (grace, favor) — literally "good-grace" or "grace-gratitude." Paul proposes <em>eucharistia</em> as the replacement for "filthiness, foolish talk, and crude joking" — not silence, but a different kind of speech. Thanksgiving occupies the same social register as banter and wit but redirects it toward God. This is not an invitation to sanctimonious speech; it is an invitation to a different orientation of the same vocal register: gratitude rather than degradation. The word will become the standard early Christian term for the Lord's Supper.</div>
+            </div>
+
+            <p>The three prohibited speech-acts of v. 4 — <em>aischrotes</em> (obscenity/shamefulness), <em>mōrologia</em> (foolish talk/buffoonery), <em>eutrapelia</em> (crude joking, lit. "easy turning" — ready wit aimed at degradation) — were all actually valued in the Greco-Roman honor culture as marks of social sophistication. Paul's prohibition is itself a cultural inversion: what the surrounding culture counted as social currency, Paul identifies as "out of place" (<em>ou anēken</em>) in the community of beloved children.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v51')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v51">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v51">
+            <p>JFB note that the "therefore" of v. 1 continues the chain of motivation from 4:32 — "as God in Christ has forgiven you" flows directly into "therefore be imitators of God." The imitation of God is not a new and higher demand added to the previous ethical section; it is the summary and culmination of it. Having been told to forgive as God forgave, they are now told to imitate God comprehensively. The forgiveness of 4:32 is the specific form of the love of 5:2, which is itself the mode of the imitation of 5:1.</p>
+            <p>JFB observe that "as beloved children" is not a condition but a designation — not "imitate God <em>if you are</em> beloved children" but "imitate God <em>as</em> beloved children, which is what you are." Children imitate parents naturally in the context of secure attachment; the security of belovedness is what makes the imitation free rather than fearful. A child who is uncertain of their parent's love performs; a beloved child absorbs.</p>
+            <p>On the vice list of vv. 3–4, JFB observe that Paul pairs the prohibition of sexual immorality (<em>porneia</em>) with covetousness (<em>pleonexia</em>) — a combination that seems surprising until one observes that both share the same root dynamic: treating persons as objects to possess for self-gratification. The idolater, Paul says, is the covetous person — the one who is functionally worshipping acquisition rather than God. Covetousness is thus not merely financial vice but a structural misdirection of worship.</p>
+            <p>JFB note the significance of <em>eucharistia</em> as the positive replacement for corrupting speech — not merely "say nice things" but cultivate the orientation of thankfulness that makes all speech come out differently. The orientation of gratitude changes not just what is said but how everything is received and processed before it is expressed.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v51')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v51">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v51">
+            <p>The AuDHD experiences most directly addressed in this opening section: <strong>Performance-Review Posture Toward God</strong> and <strong>Identity vs. Behavior Confusion</strong>. The sequence of v. 1 is the antidote to both: beloved first, imitators second.</p>
+            <p>The performance-review posture reads the command "be imitators of God" as a high performance bar: how closely can I match the divine standard? And immediately generates either anxiety (I will fall short) or shame (I already have). But the grammatical sequence refuses this reading at its first word. You imitate God <em>as beloved children</em> — the belovedness is prior to and independent of the imitation. A child who is secure in their parent's love does not imitate their parent as a strategy for gaining that love; they imitate because they love and are loved, because they are always in the parent's presence, because the parent's ways become their native air. The neurological reality of AuDHD — where children often absorb rather than consciously perform social behavior — is actually closer to this model than the performance-of-compliance model. Secure attachment enables absorption; anxious attachment produces performance.</p>
+            <p>The model for the imitation is stated in v. 2: "as Christ loved us and gave himself up for us." The standard is not God's perfection abstracted from his character — it is God's love expressed as costly self-giving. This means the imitation is love-shaped, not perfection-shaped. The AuDHD believer who cannot sustain consistent, neurotypical-compliant performance can still imitate a love that looks like costly, unconditional self-giving. The benchmark is relational and directional, not metric-based.</p>
+            <p>The vice list of vv. 3–4 includes <em>eutrapelia</em> (crude joking, "easy wit") — which is particularly interesting for the AuDHD brain. AuDHD humor tends toward the irreverent, the dark, the blurted, the socially unexpected. The humor is often genuine and disarming, but it can also drift into degradation of self or others. Paul's prohibition is not on wit or humor in general — the positive replacement is <em>eucharistia</em>, which is not solemn silence but a differently-oriented verbal facility. The AuDHD gift for unexpected observation, quick connection, and linguistic creativity is not condemned here; it is invited to orient itself toward thankfulness rather than degradation. The humor faculty does not have to die; it has to find a different north star.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v51')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v51">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v51">
+            <div class="word-study-term">mimētai / "imitators" — learning by proximity, not performance</div>
+            <p><strong>Etymology:</strong> From <em>mimeō</em> (to imitate, to represent by imitation — the root of English "mime," "mimic," "mimicry"). In the ancient world, <em>mimēsis</em> was the primary theory of education and artistic representation: students learned by imitating masters; the purpose of art was to imitate reality; disciples imitated the habits and practices of teachers. The word carries a strong formational and relational register.</p>
+            <p><strong>NT range:</strong> 1 Cor 4:16 — "be imitators of me"; 1 Cor 11:1 — "be imitators of me, as I am of Christ"; Phil 3:17 — "brothers, join in imitating me"; 1 Thess 1:6 — "you became imitators of us and of the Lord"; 1 Thess 2:14 — "you became imitators of the churches of God"; Heb 6:12 — "imitators of those who through faith and patience inherit the promises." In every case, the imitation is not rule-following but the absorption of a life pattern through relationship with a model.</p>
+            <p><strong>This usage:</strong> The only occurrence in Ephesians, and in the entire NT the only instance of being called to imitate <em>God himself</em> rather than a human exemplar. The qualification "beloved children" grounds the imitation in the family relationship — children do not imitate their parents to become their children; they imitate because they already are children, and because the parent's presence is formative. The model of learning by absorption in secure relationship maps directly onto the AuDHD learning style of hyperfocused immersion in a subject or person that genuinely captivates.</p>
+            <p><strong>Cross-references:</strong> Matt 5:48 ("be perfect, as your heavenly Father is perfect") — same family-relation framework; John 13:34 ("love one another as I have loved you" — the measure is the model, not a rule); 1 John 4:19 ("we love because he first loved us" — the prior act of being loved generates the imitation of love).</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v51')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v51">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v51">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller emphasizes the sequence beloved → imitators as the structural key to understanding all Christian ethics. The person who tries to imitate God to <em>become</em> beloved is pursuing moralism; the beloved child who imitates God out of gratitude and security is living the gospel. The entire ethical section of Ephesians fails if the sequence is reversed. Keller draws the parallel to the Exodus pattern: Israel was redeemed from Egypt (indicative: you are my people), <em>then</em> given the law (imperative: live as my people). The commandments come after the declaration, not before it.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP BST)</div>
+              <p>Stott notes that the pairing of "fragrant offering" with "sacrifice" in v. 2 draws from the two Levitical categories of voluntary (ascending, sweet-smelling) and obligatory (sin/guilt) offerings — Christ's death fulfills both simultaneously. It was wholly voluntary (fragrant offering) and yet the required payment for sin (sacrifice). This double description makes the atonement total: nothing remains to be offered; nothing remains unpaid. The imitation of this love is the imitation of the totality of this giving.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar NTC)</div>
+              <p>O'Brien traces the significance of Paul's prohibition list in the context of Roman household ethics: vv. 3–7 engage directly with the sexual and verbal norms of Roman elite culture, where <em>eutrapelia</em> (wit and banter, including sexual innuendo) was a mark of social sophistication. Paul's prohibition is not prudishness but a theological counter-cultural statement: these practices belong to the former-life pattern ("sons of disobedience"), not the new-creation community of beloved children.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (ZECNT)</div>
+              <p>Arnold provides important cultural background on the frequency and normalcy of sexual immorality (<em>porneia</em>) in the Greco-Roman world, noting that Paul's prohibition would have been genuinely counter-cultural, not simply an echo of ambient social norms. The Ephesian temple district, with its associated sexual cult practices, made the prohibition directly relevant and specific. The beloved-child identity was precisely what gave believers the inner formation to resist a norm that everyone around them considered acceptable.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v51')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v51">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v51">
+            <ul>
+              <li>Beloved first, imitators second — the sequence is the whole gospel. Which direction does your imitation of God flow: from security in belovedness, or from anxiety about whether you've earned it yet?</li>
+              <li>The model for imitation is "as Christ loved us and gave himself up for us" — love expressed as costly self-giving, not perfection of performance. What would it mean to measure your life by that standard rather than a metric of behavioral consistency?</li>
+              <li>Thanksgiving (<em>eucharistia</em>) is proposed as the positive replacement for corrupting speech — not silence but a differently-oriented vocal faculty. What would it look like for your humor, your wit, and your verbal creativity to orient toward gratitude rather than degradation?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v51 -->
+
+    <!-- v52: Eph 5:8-14 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v52')">
+        <span class="verse-ref">Ephesians 5:8–14</span>
+        <span class="verse-title">Walk as Children of Light</span>
+        <span class="toggle-arrow open" id="arrow-v52">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "for at one time you were darkness, but now you are light in the Lord. Walk as children of light (for the fruit of light is found in all that is good and right and true), and try to discern what is pleasing to the Lord. Take no part in the unfruitful works of darkness, but instead expose them. For it is shameful even to speak of the things that they do in secret. But when anything is exposed by the light, it becomes visible, for anything that becomes visible is light. Therefore it says, 'Awake, O sleeper, and arise from the dead, and Christ will shine on you.'" — ESV
+      </div>
+      <div class="collapsible-content open" id="v52">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v52')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v52">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v52">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">ēte skotia / este phōs</span>
+                <span class="term-parsing">imperfect indic. / present indic. (v. 8)</span>
+              </div>
+              <div class="term-gloss">ESV: "you were darkness / you are light" | NIV: same | NASB: same</div>
+              <div class="term-significance">The contrast is not between "walking in" darkness and "walking in" light — it is between <em>being</em> darkness and <em>being</em> light. Paul uses the predicate noun, not a prepositional phrase: "you were [not: in] darkness"; "you are [not: in] light." This is the most radical form of the identity statement possible. The identity shift is total and past-completed: the imperfect tense (<em>ēte</em>) places the darkness-identity in the past as an ongoing former state that has now definitively ended. The present tense (<em>este</em>) makes the light-identity the current, ongoing reality. You are not trying to become light; you are light, in the Lord.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">elenchō</span>
+                <span class="term-parsing">verb · pres. act. imperative (v. 11)</span>
+              </div>
+              <div class="term-gloss">ESV: "expose" | NIV: "expose" | NASB: "expose"</div>
+              <div class="term-significance"><em>Elenchō</em> has a rich semantic range: to expose, reprove, refute, convict, bring to light. The same verb is used of the Spirit's work of convicting the world (John 16:8) and of Scripture's reproving function (2 Tim 3:16). The mechanism of exposure by light is clarified in v. 13: "when anything is exposed by the light, it becomes visible" — the light does not need to attack the darkness; it simply needs to be present. The exposure is a consequence of the light existing and shining, not a separate aggressive action. This is an important distinction: the light does not hunt down darkness and confront it; it illuminates, and darkness cannot coexist with that illumination.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">pan to phaneroumenon phōs estin</span>
+                <span class="term-parsing">participial clause · pres. pass. ptc. (v. 13)</span>
+              </div>
+              <div class="term-gloss">ESV: "anything that becomes visible is light" | NIV: "everything exposed by the light becomes visible—and everything that is illuminated becomes a light" | NASB: "everything that becomes visible is light"</div>
+              <div class="term-significance">One of the most theologically dense and grammatically compact statements in Ephesians. Two interpretations are defensible: (a) anything that the light makes visible is thereby <em>shown to be</em> light — i.e., the things once hidden in darkness, when brought into the light, are revealed for what they truly are; or (b) anything illuminated by the light <em>itself becomes</em> light — i.e., the light transforms what it touches, making the formerly-dark thing a light-bearer. Both readings are theologically productive, and v. 14's resurrection hymn supports the second: the sleeper/dead who "arises" will have Christ shine on them — the light transforms the one it encounters.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">egeirou / epiphausei</span>
+                <span class="term-parsing">verb · aor. pass. imperative / verb · fut. act. indic. (v. 14)</span>
+              </div>
+              <div class="term-gloss">ESV: "arise / will shine on" | NIV: "rise / will shine on" | NASB: "arise / will shine on"</div>
+              <div class="term-significance">The resurrection hymn of v. 14 — almost certainly a liturgical fragment, possibly baptismal — contains an imperative and a promise. "Arise" (<em>egeirou</em> — aorist passive imperative: be raised, arise, wake up) and "Christ will shine on you" (future indicative — a promise, not a command). The awakening is active in form but passive in implication: the dead cannot raise themselves; the imperative calls for a response, and the promise asserts that Christ will act. The light comes from outside; the arising is enabled by the shining, not its prerequisite.</div>
+            </div>
+
+            <p>The phrase "try to discern what is pleasing to the Lord" (v. 10, <em>dokimazō</em> — to test, examine, approve as genuine after testing) is a call to active moral reasoning, not passive rule-following. <em>Dokimazō</em> is the word for testing metals to establish their purity. The children of light are not given an exhaustive list; they are given the capacity to test and discern, sharpened by the Spirit and oriented toward pleasing the Lord.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v52')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v52">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v52">
+            <p>JFB give sustained attention to the identity-before-imperative structure of v. 8. The first statement ("you were darkness") is fully past; the second ("you are light") is fully present. The walk commanded in v. 8b ("walk as children of light") flows from the prior identity statement — it is not the mechanism by which they become light, but the manner of life appropriate to those who already are light. The parallel construction mirrors the structure of Eph 4:1 ("walk worthy of the calling to which you have been called") — the walk is always responsive to a prior completed reality.</p>
+            <p>JFB note that "fruit of light" (v. 9) — goodness, righteousness, and truth — contrasts with "unfruitful works of darkness" (v. 11). The metaphor is organic: light produces fruit; darkness produces works. Light yields living, growing things; darkness produces mechanical and ultimately sterile activity. JFB find in this contrast a structural description of the difference between Spirit-animated obedience and law-motivated performance.</p>
+            <p>JFB are careful with the exposure mechanism of vv. 11–13: the light does not require the believer to actively seek out and publicly denounce all darkness. The primary mechanism is the presence of the light itself. The believer who is genuinely living as light will naturally expose what is incompatible with light — not by a campaign of denunciation but by the simple fact of being present and living differently.</p>
+            <p>On the hymn of v. 14, JFB suggest it was an early Christian composition based on Old Testament imagery (Isa 26:19; 51:17; 52:1; 60:1), used possibly in baptismal or Easter liturgy. The three movements — awake, arise, Christ will shine — follow the pattern of death-awakening-illumination, mapping the believer's transformation onto the resurrection of Christ.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v52')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v52">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v52">
+            <p>The AuDHD experiences most directly addressed in this passage: <strong>Identity vs. Behavior Confusion</strong> and <strong>Shame Spiraling</strong>. The central identity statement of v. 8 — "you <em>are</em> light in the Lord" — is designed to cut off the shame spiral at its root.</p>
+            <p>The shame spiral's mechanism is to move from "I did something dark" to "I <em>am</em> dark — I am still the old self, the darkness." But v. 8 renders this impossible on grammatical grounds. "You <em>were</em> darkness" — imperfect, completed, past. "You <em>are</em> light" — present, current, ongoing identity. The identity shift happened. Paul does not say "you are partially light" or "you are light in the areas where you have been consistent." He says "you <em>are</em> light in the Lord" — the qualifier "in the Lord" locates the identity not in the believer's performance but in Christ's completed work. The darkness identity is over. When you act from darkness-patterns (and you sometimes will), you are acting in a way that contradicts who you actually are — but you are not <em>reverting</em> to who you formerly were. The darkness is over. The light is your nature now.</p>
+            <p>The exposure mechanism of vv. 11–13 is specifically designed to avoid the <strong>Prohibition-Activation Paradox</strong>. Paul does not say "actively hunt down darkness and confront it." He says: take no <em>part</em> in the unfruitful works of darkness, but instead expose them. And the exposure mechanism, clarified in v. 13, is simply the presence of the light: "when anything is exposed by the light, it becomes visible." You do not need a campaign strategy for darkness. You need to be what you are. The light exposes by existing and shining. The AuDHD believer who is exhausted by the demand to be constantly vigilant against every manifestation of darkness around them is being given a simpler assignment: be light, and the rest follows.</p>
+            <p>The resurrection hymn of v. 14 — "arise from the dead, and Christ will shine on you" — deserves particular attention for the AuDHD experience of spiritual flatness, disconnection, and what can feel like spiritual deadness. The structure is: imperative (arise) + promise (Christ will shine). But the passive voice of "arise" (<em>egeirou</em> — aorist passive: be raised) implies the arising is enabled from outside. You cannot raise yourself from the dead. The call is to respond — to orient yourself toward the light, to turn your face in the direction of the one who shines — and the promise is that Christ will do the shining. The light comes from outside you. Your role is not to generate the light but to orient toward the one who does. On the days when the AuDHD nervous system makes spiritual engagement feel neurologically impossible, the hymn offers a reframe: Christ will shine. The arising is a response to his action, not its precondition.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v52')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v52">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v52">
+            <div class="word-study-term">phōs / "light" — identity, not environment</div>
+            <p><strong>The grammatical precision:</strong> Paul does not say "you are <em>in</em> the light" (<em>en tō phōti</em>) — he says "you <em>are</em> light" (<em>phōs este</em>). The difference is categorical. Being <em>in</em> the light means inhabiting a realm; <em>being</em> light means bearing the identity. You are not a person who lives in a bright environment; you are a person who <em>is</em> light — who carries and radiates it. Jesus says in Matt 5:14: "You are the light of the world" — same structure, same identity-not-environment statement.</p>
+            <p><strong>The former identity:</strong> "You were darkness" — not "you were <em>in</em> darkness" but "you were darkness." The former identity was total, just as the current identity is total. This symmetry means the shift is not gradual or partial but categorical. The person who "was darkness" and "is light" has undergone what amounts to a nature-change, not a behavior-modification program.</p>
+            <p><strong>Fruit of light (v. 9) — three qualities:</strong> <em>Agathōsynē</em> (goodness — active, generative goodness; the positive orientation toward the other's flourishing); <em>dikaiosynē</em> (righteousness — right-relatedness, conformity to the covenant standard); <em>alētheia</em> (truth — truthfulness, reality-orientation, the refusal of illusion). These three are not arbitrary; they describe the three dimensions of light's fruit: toward others (goodness), toward God's standard (righteousness), toward reality (truth).</p>
+            <p><strong>Cross-references:</strong> John 8:12 ("I am the light of the world; whoever follows me will not walk in darkness, but will have the light of life" — Christ the source); Matt 5:14 ("you are the light of the world" — believers as derived light-bearers); John 3:19–21 (the judgment of those who "loved darkness rather than light" — the identity is related to what one loves, not just what one does); 1 John 1:5–7 ("God is light… if we walk in the light as he is in the light…").</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v52')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v52">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v52">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller emphasizes the anti-moralism of "you <em>are</em> light": you do not become light by walking in the light. You walk in the light because you are light. The ethical imperative flows from the ontological indicative, never the other way around. He draws the parallel to 2 Cor 5:17 ("if anyone is in Christ, he is a new creation — the old has passed away; behold, the new has come") — both passages make the same categorical claim: the identity-shift is total, prior to any behavioral response to it.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP BST)</div>
+              <p>Stott gives sustained attention to the hymn of v. 14 as a text about the universal human condition of spiritual death and the call to receive Christ's illuminating life. He notes the three-beat structure — awake / arise / Christ will shine on you — as a movement from the recognition of spiritual torpor (awake), through the response of turning toward life (arise), to the promise of Christ's active illumination (will shine). The initiative in the shining belongs to Christ; the human role is responsiveness, not generation.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar NTC)</div>
+              <p>O'Brien carefully examines v. 13's compressed statement about exposure and light: "everything that is made visible is light." He argues the second sense (the illuminated thing becomes a light-bearer itself) is theologically supported by the context — the light does not merely reveal darkness but transforms what it touches. This has profound missiological implications: those who were formerly darkness, now illuminated by Christ, themselves become light-bearers. The exposure of darkness is therefore not only the destruction of darkness but its potential transformation into light.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Barnes</div>
+              <div class="commentator-source">Notes on the New Testament: Ephesians</div>
+              <p>Barnes traces the Old Testament background of the v. 14 hymn, noting the verbal and thematic connections to Isaiah 26:19 ("your dead shall live; their bodies shall rise"), Isaiah 52:1 ("Awake, awake, put on your strength, O Zion"), and Isaiah 60:1 ("Arise, shine, for your light has come, and the glory of the LORD has risen upon you"). Paul draws from this prophetic tradition of eschatological awakening and applies it to the present experience of the person who turns to Christ — the eschatological dawn is not merely future but now accessible in the present, in Christ.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v52')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v52">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v52">
+            <ul>
+              <li>"You are light in the Lord" — not "you are trying to be light" or "you are partially light." This is your identity, located in Christ, not in your performance. When you act from darkness-patterns, are you reverting to your old identity — or acting out of character with your new one?</li>
+              <li>The exposure of darkness happens when the light simply exists and shines. You do not need a strategy for darkness; you need to be what you are. Where have you been trying to fight darkness by willpower rather than by inhabiting your identity as light?</li>
+              <li>"Arise from the dead, and Christ will shine on you" — the shining comes from Christ; your role is to arise toward it. On the days when spiritual engagement feels neurologically impossible, what would it mean to simply orient yourself toward the one who shines, rather than trying to generate the light yourself?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v52 -->
+
+    <!-- v53: Eph 5:15-21 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v53')">
+        <span class="verse-ref">Ephesians 5:15–21</span>
+        <span class="verse-title">Walk in Wisdom: Redeeming the Time, Filled with the Spirit</span>
+        <span class="toggle-arrow open" id="arrow-v53">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "Look carefully then how you walk, not as unwise but as wise, making the best use of the time, because the days are evil. Therefore do not be foolish, but understand what the will of the Lord is. And do not get drunk with wine, for that is debauchery, but be filled with the Spirit, addressing one another in psalms and hymns and spiritual songs, singing and making melody to the Lord with your heart, giving thanks always and for everything to God the Father in the name of our Lord Jesus Christ, submitting to one another out of reverence for Christ." — ESV
+      </div>
+      <div class="collapsible-content open" id="v53">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v53')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v53">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v53">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">akribōs peripateite</span>
+                <span class="term-parsing">adverb + verb · pres. act. imperative</span>
+              </div>
+              <div class="term-gloss">ESV: "look carefully how you walk" | NIV: "be very careful how you live" | NASB: "be careful how you walk"</div>
+              <div class="term-significance"><em>Akribōs</em> means precisely, exactly, carefully — with attention to the details. The call is not to anxious scrupulosity but to intentional, attentive living — not sleepwalking through the days. The contrast is <em>asophos</em> (unwise — one who is not capable of discerning what matters) vs. <em>sophos</em> (wise — one who is). Wisdom in the Hebrew/biblical tradition is not intellectual abstraction but practical skill in living well — the ability to read a situation and respond appropriately. The walk of the wise person is characterized by this attentive, skilled, situationally-responsive quality.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">exagorazomenoi ton kairon</span>
+                <span class="term-parsing">verb · pres. mid. participle + acc. sg. masc.</span>
+              </div>
+              <div class="term-gloss">ESV: "making the best use of the time" | NIV: "making the most of every opportunity" | NASB: "making the most of your time"</div>
+              <div class="term-significance"><em>Exagorazō</em> means to buy out, to purchase from the marketplace, to buy back — the same root as redemption language (<em>agorazō</em>: to purchase in the marketplace; <em>ex-</em>: out of, away from). The object is <em>kairos</em> — not <em>chronos</em> (clock-time, measured duration) but <em>kairos</em> (the opportune moment, the right time, the qualitative occasion). The image is of buying back moments of opportunity from the surrounding competitive marketplace of other demands. Present participle: this is an ongoing, continuous practice of recognizing and seizing qualitatively significant moments.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">plērousthe en pneumati</span>
+                <span class="term-parsing">verb · pres. pass. imperative + prep. phrase</span>
+              </div>
+              <div class="term-gloss">ESV: "be filled with the Spirit" | NIV: "be filled with the Spirit" | NASB: "be filled with the Spirit"</div>
+              <div class="term-significance">Present passive imperative — the combination is theologically significant. <em>Present</em>: this filling is ongoing, not a one-time event; it requires continuous receptivity. <em>Passive</em>: the filling is received, not generated — you do not fill yourself with the Spirit; you are filled by the Spirit. <em>Imperative</em>: and yet you are commanded to it, meaning there is a real response required from you — a receptivity, an openness, a non-resistance. The analogy with wine (v. 18) is illuminating: being drunk with wine means being controlled by an external substance; being filled with the Spirit means being controlled by the Spirit. The contrast is about what controls you, not the amount.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">psalmois kai hymnois kai ōdais pneumatikais</span>
+                <span class="term-parsing">noun phrase · dat. pl. (v. 19)</span>
+              </div>
+              <div class="term-gloss">ESV: "psalms and hymns and spiritual songs" | NIV/NASB: same</div>
+              <div class="term-significance">The threefold expression probably covers the range of musical expression available to the early church rather than designating three precisely distinct categories. <em>Psalmoi</em> likely includes the Psalter and similar compositions; <em>hymnoi</em> are songs of praise, possibly liturgical; <em>ōdai pneumatikai</em> are Spirit-inspired songs, possibly including spontaneous or charismatic compositions. The totality expresses the full range of musical and sung expression — formal and informal, received and spontaneous, corporate and personal. The Spirit-filled life has a musical, embodied, communal dimension that the text neither marginalizes nor makes optional.</div>
+            </div>
+
+            <p>The five participles following the Spirit-filling imperative (v. 18) — speaking (v. 19), singing and making melody (v. 19), giving thanks (v. 20), submitting (v. 21) — are all in the present tense and describe the expressions of the Spirit-filled life. They answer the question "what does Spirit-filling look like?" with a community of mutual speech, corporate song, perpetual thanksgiving, and mutual submission. The Spirit-filled life is irreducibly communal and embodied in this passage.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v53')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v53">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v53">
+            <p>JFB note that "the days are evil" is the theological ground for "making the best use of the time" — not a call to pessimism but a sober assessment that the surrounding culture is hostile to the Christian community's flourishing, and therefore every moment of genuine <em>kairos</em> — opportune for the gospel, for community building, for growth — must be recognized and seized rather than passively allowed to pass. The days are evil not in a fatalistic sense but in the sense that they do not naturally produce or protect Christian formation; that work must be done actively.</p>
+            <p>JFB observe that the wine/Spirit contrast of v. 18 is more pointed than it first appears. In Dionysian cult worship — pervasive in the Asia Minor context — wine and ecstatic states were the mechanism of divine possession and inspiration. Paul's contrast is not between sobriety and excess but between two kinds of control and two sources of inspiration: the chaotic, degrading control of wine/Dionysus, and the ordered, community-building, Christ-honoring control of the Spirit. The Spirit is the true source of genuine ecstatic experience; the Dionysian alternative is a counterfeit.</p>
+            <p>JFB find in the five-fold Spirit-filling expression (speaking, singing, making melody, giving thanks, submitting) a complete portrait of the Spirit-filled community: it speaks to itself, it sings together, it sings individually from the heart, it thanks God perpetually, and it serves one another. Each of these is both an expression of the Spirit's filling and a means of deepening it — the relationship between Spirit-filling and these practices is reciprocal.</p>
+            <p>On the mutual submission of v. 21, JFB insist this verse is structurally the heading of the household code that follows (vv. 22–6:9) — wives/husbands, children/parents, slaves/masters all stand under the umbrella of the mutual submission rooted in reverence for Christ. The specific instructions of the household code are applications of the mutual submission of v. 21, not alternatives to it.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v53')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v53">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v53">
+            <p>The AuDHD experiences most alive in this passage: <strong>Time Blindness and Future Self Disconnect</strong>, <strong>Will/Execution Gap</strong>, and a specific opportunity around the embodied, musical, communal form that Spirit-filling takes here.</p>
+            <p>"Making the best use of the time" (<em>exagorazomenoi ton kairon</em>) — the object is <em>kairos</em>, not <em>chronos</em>. This is crucially important for the AuDHD experience of time. <em>Chronos</em> is the thing AuDHD struggles with: clocks, durations, schedules, the sense of measured time passing. AuDHD time blindness makes <em>chronos</em> management perpetually difficult. But <em>kairos</em> is a different kind of time: the opportune moment, the qualitatively significant occasion, the "now is the time for this." The AuDHD brain that struggles with <em>chronos</em> management often has a heightened sensitivity to <em>kairos</em> — the sudden recognition that this conversation, this moment, this person, this opening matters. Paul commands the buying-back of <em>kairos</em>, not the perfect management of <em>chronos</em>. The AuDHD person who cannot sustain a consistent daily quiet time may nonetheless be exquisitely responsive to <em>kairos</em> moments of spiritual significance.</p>
+            <p>The Spirit-filling imperative — present passive — is the most important verse in this passage for the Will/Execution Gap. The gap between wanting to live well and being able to sustain it is real and neurological. Paul's answer is not: try harder, be more consistent, discipline your executive function. Paul's answer is: be filled with the Spirit — receive, do not generate. The filling comes from outside. The Spirit is the engine Paul has always said is the only real one (cf. Phil 2:13: "it is God who works in you, both to will and to work for his good pleasure"). The Spirit does not supplement deficient human willpower; he replaces it as the motivating and sustaining energy. The AuDHD believer whose will-execution gap feels like a spiritual disqualifier is being told: the mechanism was never supposed to be your willpower. Be filled.</p>
+            <p>The five expressions of Spirit-filling — speaking, singing, making melody, giving thanks, submitting — include two forms of music (corporate and personal, external and from-the-heart). This matters neurologically. Music is one of the most reliably effective access routes for neurodivergent people to states of emotional engagement, regulatory calm, and felt presence. Paul is not merely describing an aesthetically pleasing worship style; he is describing one of the primary mechanisms by which the Spirit-filled life is expressed and deepened. The AuDHD person who finds corporate singing or personal worship music unusually regulating or connecting is experiencing something the text explicitly validates. The embodied, musical, communal expressions of Spirit-filling are not secondary; they are listed first among the five participles. The Spirit-filled life has a sensory-rich, musical, communal quality that works <em>with</em> neurodivergent experience, not against it.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v53')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v53">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v53">
+            <div class="word-study-term">exagorazomenoi ton kairon / "redeeming the time" — kairos vs. chronos</div>
+            <p><strong>The compound verb:</strong> <em>Ex-</em> (out of, away from) + <em>agorazō</em> (to purchase in the marketplace, buy). The metaphor is of the marketplace: time is like merchandise that can be purchased — seized and taken out of the general flow and put to deliberate use — or left on the shelf and lost to competitors. The present middle participle makes this an ongoing, active, self-involving practice: continuously buying back these moments for their intended purpose.</p>
+            <p><strong>Kairos vs. Chronos — the critical distinction:</strong> Greek had two primary words for time. <em>Chronos</em> is sequential, measured, clock-time — the amount of time that passes (from which "chronology," "chronicle"). <em>Kairos</em> is qualitative, opportune, significant time — the right moment, the appointed occasion, the "now is the hour for this" (from which medical "crisis" — the decisive turning point of an illness). Paul uses <em>kairos</em> throughout Ephesians for theologically significant time (1:10; 2:12; 6:18). The command to redeem the <em>kairos</em>, not the <em>chronos</em>, is a command to recognize and seize the qualitatively significant moments that present themselves within the flow of time — not a command to manage clock-time more efficiently.</p>
+            <p><strong>NT range:</strong> The same phrase (<em>exagorazomenoi ton kairon</em>) appears in Col 3:5 — Paul's parallel instruction to the Colossians. Gal 4:4–5 uses <em>exagorazō</em> for the redemption Christ accomplishes: "when the fullness of time (<em>kairos</em>) came, God sent forth his Son… to redeem (<em>exagorasē</em>) those under the law." The same buying-out-of-the-market language applies to both Christ's redemption and the believer's time-use.</p>
+            <p><strong>AuDHD significance:</strong> The AuDHD brain often experiences time in a <em>kairos</em>-dominant rather than <em>chronos</em>-dominant mode: "now" vs. "not now," rather than a continuous, evenly-weighted flow. This is frequently framed as a deficit (inability to manage chronos time). But the biblical command is to redeem <em>kairos</em> — a mode the AuDHD brain may actually be neurologically more sensitive to, given its heightened awareness of the qualitative significance of the present moment and its tendency toward hyperfocus when kairos arrives.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v53')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v53">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v53">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller contrasts Spirit-filling with wine-filling by noting that in the ancient world, wine was the classic means of accessing "divine possession" — of transcending ordinary consciousness and being temporarily controlled by something beyond yourself. Paul acknowledges the desire for that experience and redirects it: the Spirit is the true means of the transcendence you're seeking, not wine. Keller notes that the Spirit-filled life is not less intense than the wine-filled life — it is more genuinely transformative and directional.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP BST)</div>
+              <p>Stott argues that the present passive imperative of "be filled" has two implications: (1) the filling is ongoing, not a single past event — the grammar demands continuous receptivity; (2) the filling is received, not self-generated — the Spirit does the filling; the believer opens themselves to be filled. Stott notes that the five participles following the imperative describe both the expressions and the means of Spirit-filling: as we speak, sing, give thanks, and submit together, we are both expressing and deepening our Spirit-filling. The relationship is genuinely reciprocal.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar NTC)</div>
+              <p>O'Brien traces the musical expression of Spirit-filling (psalms, hymns, spiritual songs) to the early church's understanding of corporate worship as the primary arena of the Spirit's work. He notes that the triple formula (psalms/hymns/spiritual songs) was likely less a precise taxonomy than a comprehensive expression — covering the full range of musical expression from the received (Psalter) to the spontaneous (spiritual songs). The Spirit-filled community is a singing community; this is not incidental but structural.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (ZECNT)</div>
+              <p>Arnold situates the wine/Spirit contrast explicitly within the Dionysian religious context of Ephesus. Dionysiac rites involved wine as the mechanism of divine possession, ecstatic states, and temporary union with the divine. Paul's community was surrounded by this practice and knew it experientially. The Spirit-filling Paul proposes is not a rejection of the desire for divine communion; it is the redirection of that desire toward the genuine source — the Spirit who does not produce chaos but community, not degradation but gratitude, not mania but music addressed to the Lord.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v53')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v53">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v53">
+            <ul>
+              <li>The command is to redeem the <em>kairos</em> — the qualitatively significant opportune moment — not to perfectly manage <em>chronos</em> clock-time. Where do you actually notice kairos moments? What does it look like for you to seize them rather than let them pass?</li>
+              <li>"Be filled with the Spirit" — present passive: you receive, you don't generate. Where have you been trying to generate the Spirit's filling by personal willpower, consistency, or spiritual discipline rather than receiving it? What would receptivity rather than generation look like for you?</li>
+              <li>The Spirit-filled life looks like singing, making melody, giving thanks, and submitting together — embodied, communal, musical. Does your engagement with worship tend toward receiving these as means of Spirit-filling, or do they feel like obligations to perform? What form of worship has ever genuinely filled you?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v53 -->
+
+    <!-- v54: Eph 5:22-33 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v54')">
+        <span class="verse-ref">Ephesians 5:22–33</span>
+        <span class="verse-title">Marriage as Gospel: The Mystērion of Christ and the Church</span>
+        <span class="toggle-arrow open" id="arrow-v54">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "Wives, submit to your own husbands, as to the Lord… Husbands, love your wives, as Christ loved the church and gave himself up for her, that he might sanctify her, having cleansed her by the washing of water with the word, so that he might present the church to himself in splendor, without spot or wrinkle or any such thing, that she might be holy and without blemish… 'Therefore a man shall leave his father and mother and hold fast to his wife, and the two shall become one flesh.' This mystery is profound, and I am saying that it refers to Christ and the church. However, let each one of you love his wife as himself, and let the wife see that she respects her husband." — ESV
+      </div>
+      <div class="collapsible-content open" id="v54">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v54')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v54">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v54">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">hypotassomenoi → gynaikες… (v. 21 → v. 22)</span>
+                <span class="term-parsing">pres. mid. participle → imperative (the submission flows from v. 21)</span>
+              </div>
+              <div class="term-gloss">ESV: "submitting… wives, submit" | NIV: same | NASB: same</div>
+              <div class="term-significance">The critical grammatical observation: the verb "submit" does not actually appear in the Greek of v. 22 — it is carried over as an implied participle from v. 21's "submitting to one another." The verse break between vv. 21 and 22 is a later editorial addition; in the original text the wife's submission is grammatically a continuation of the mutual submission of v. 21, not a new and independent command addressed only to wives. The submission of the wife flows from and is framed by the mutual submission of the Spirit-filled community (v. 21). Both husband and wife are under the overarching "submitting to one another out of reverence for Christ."</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">agapaō / paredōken heauton</span>
+                <span class="term-parsing">verb · pres. act. imperative / verb · aor. act. indic. 3sg + reflexive</span>
+              </div>
+              <div class="term-gloss">ESV: "love your wives / gave himself up for her" | NIV/NASB: same</div>
+              <div class="term-significance">The husband's command is <em>agapaō</em> in the present imperative — ongoing, active, costly love — modeled on Christ's self-giving. The aorist <em>paredōken heauton</em> (he gave himself up) describes Christ's definitive act of sacrifice; the present imperative means the husband's love is to be the continuous, living expression of this pattern in the marriage. The model is not merely affection but the kind of love that "gave himself up" — that cost everything. This is the most counter-cultural element of Paul's household code: husbands are not told to rule but to sacrifice.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">hagiasē / katharisas / parastēsē</span>
+                <span class="term-parsing">verbs · aor. subj. / aor. act. ptc. / aor. subj. (vv. 26–27)</span>
+              </div>
+              <div class="term-gloss">ESV: "sanctify / having cleansed / present" | NIV/NASB: similar</div>
+              <div class="term-significance">Three actions Christ performs on/for the church: (1) <em>hagiazō</em> (sanctify — set apart, make holy); (2) <em>katharizō</em> (cleanse — purify, remove defilement); (3) <em>paristēmi</em> (present — place before, offer). The church does not produce its own holiness; it is sanctified, cleansed, and presented by Christ's action. The final state — "in splendor, without spot or wrinkle or any such thing, holy and without blemish" — is Christ's achievement, not the church's performance. The church arrives at its glorified state because Christ has worked on it, not because it has worked itself into that condition.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">mystērion touto mega estin</span>
+                <span class="term-parsing">predicate noun construction (v. 32)</span>
+              </div>
+              <div class="term-gloss">ESV: "This mystery is profound" | NIV: "This is a profound mystery" | NASB: "This mystery is great"</div>
+              <div class="term-significance"><em>Mystērion</em> in Ephesians is always a revealed secret — something formerly hidden, now disclosed (see 1:9; 3:3–6; 3:9; 6:19). Paul reveals the referent: the Genesis 2:24 "one flesh" union was always <em>already pointing to</em> Christ and the church. Marriage is not merely an institution that serves as an analogy for Christ's relationship with the church; it is a prophetic anticipation of it. The original and ultimate reality is Christ and the church; human marriage is the earthly image of that prior reality. This means marriage is always already theological — it is a creaturely participation in something larger than itself.</div>
+            </div>
+
+            <p>Paul's instruction to wives (vv. 22–24) is brief; his instruction to husbands (vv. 25–33) is extensive — more than twice as long, and focused entirely on the demanding model of Christ's sacrificial love. The structural asymmetry is significant: the burden of the text falls heavily on the husband, whose love is to be shaped by the pattern of the cross. The counter-cultural weight of Paul's household code is carried primarily by the standard set for husbands, not wives.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v54')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v54">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v54">
+            <p>JFB note the astonishing reversal in the ancient household code: in Greco-Roman household ethics, the paterfamilias had absolute authority and the wife was required to submit to his rule with no corresponding obligation placed on him. Paul's code retains the structure of the ancient form (address to the socially subordinate role first, then the authority role) but radically transforms it: the husband's "authority" is redefined as the authority of a servant whose love takes the form of total self-sacrifice. The standard is the cross. No Greco-Roman husband was ever told anything like this.</p>
+            <p>JFB give extended attention to the three verbs of vv. 26–27 — sanctify, cleanse, present. They observe that all three describe what Christ does to/for the church — the church is the object throughout, not the agent. This is the theological key to understanding the marriage passage: the husband's love for the wife is modeled on a love that works on its object, not a love that rewards prior performance. Christ sanctified the church while it was still unglorious; the husband is to love the wife with a love that works toward her flourishing, not a love contingent on her already being flourishing.</p>
+            <p>JFB trace the <em>mystērion</em> of v. 32 carefully: the word refers to the Genesis 2:24 quotation, not to the institution of marriage in general. Paul is saying that when Moses wrote "the two shall become one flesh," he was, in the fullness of what he wrote, pointing forward to Christ and the church — which is the ultimate one-flesh union. Marriage is thus a participation in and anticipation of the gospel; its deepest meaning is not human companionship (though it includes that) but the union of Christ and his redeemed people.</p>
+            <p>JFB observe the concluding balance of v. 33 — "let each one of you love his wife as himself, and let the wife see that she respects her husband" — as a practical summary that translates the high Christological theology of vv. 25–32 into the most basic relational requirements of married life. The husband's need is to love rather than exploit; the wife's need is to respect rather than diminish. Both flow from and point back to the Christ-and-church relationship.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v54')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v54">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v54">
+            <p>The AuDHD experiences most directly addressed in the marriage passage: <strong>Masking Exhaustion</strong> and <strong>Identity vs. Behavior Confusion</strong>, particularly as they surface in the intimacy of marriage. The marriage passage offers a profound reframe of what love looks like when it is modeled on Christ's love for the church.</p>
+            <p>Christ's love for the church is explicitly described in the past tense before any description of the church's response: "Christ loved the church and gave himself up for her" — before she was sanctified, before she was cleansed, before she was glorious. He loved her while she was still spotted, wrinkled, not-yet-holy. The sequence matters enormously: the love comes first, the transformation follows. The church does not perform herself into a state worthy of Christ's love; she is loved into the transformed state. The verb sequence is all Christ's action: he sanctifies, he cleanses, he presents. The church is grammatically passive throughout — she receives.</p>
+            <p>For the AuDHD person in marriage, this has at least two important applications. First, for the AuDHD person who feels they are perpetually too much for their spouse — whose dysregulation, inconsistency, and emotional intensity has required ongoing patience and grace — the model of Christ's love says: the love that transforms is the love that comes first, before the performance has been achieved. You are not required to perform yourself into a state worthy of being loved; love is the mechanism of transformation. The marriage is supposed to be a place where you are loved before you are finished. Second, for the person who struggles with masking exhaustion in marriage — who has been performing a more regulated, more consistent, more neurotypical version of themselves even in the most intimate relationship — the model of Christ and the church says: Christ is not presenting the church to himself as the church it pretended to be; he is presenting it as what he has made it through his work on it. The love is toward the actual person, not toward the performance.</p>
+            <p>The husband's instruction — "love your wives as Christ loved the church" — is the highest possible bar set for any human relational obligation in the NT. The AuDHD husband who is genuinely trying to love his wife with costly, self-giving, her-flourishing-oriented love, but who fails consistently in execution due to the will-execution gap, needs the same grace the marriage passage is built on: this love is modeled on Christ's love, which sanctifies the church progressively. The love is the constant; the transformation it produces takes time. The husband who does not yet perfectly embody Christ's love for the church is not therefore disqualified from the calling — he is himself, in that calling, being sanctified by the very love he is called to practice.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v54')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v54">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v54">
+            <div class="word-study-term">mystērion / "mystery" — revealed secret, not unsolvable puzzle</div>
+            <p><strong>Usage in Ephesians:</strong> <em>Mystērion</em> appears six times in Ephesians (1:9; 3:3, 4, 9; 5:32; 6:19) — more than in any other Pauline letter. In every case it describes not a puzzle that defies understanding but a formerly hidden truth that has now been disclosed. The word in Paul's usage always has two components: (1) prior hiddenness — "the mystery hidden for ages and generations" (Col 1:26); (2) present revelation — "but now disclosed" or "as I have written briefly" or "which is why I, Paul…"</p>
+            <p><strong>The mystērion of 5:32:</strong> Paul quotes Gen 2:24 ("the two shall become one flesh") and then identifies the referent: "I am saying that it refers to Christ and the church." The <em>mystērion</em> is the previously-hidden fact that this ancient text was always pointing beyond human marriage to Christ's union with his people. Marriage was always a prophetic institution — created to image and anticipate the ultimate union of Christ and the church. This is not an allegory imposed on marriage; it is the original meaning of marriage, hidden in the text until Paul discloses it.</p>
+            <p><strong>Implications:</strong> (1) Marriage is irreducibly theological — its deepest meaning is not companionship or social order but participation in the gospel. (2) The failure of marriage is therefore not merely a social or relational failure but a failure to image the Christ-and-church relationship. (3) The calling of marriage is not to produce a perfect relationship by human effort but to embody the pattern of costly love (husband) and trusting responsiveness (wife) that characterizes Christ and the church. (4) The church's glorified state in Eph 5:27 is the eschatological goal of the marriage pattern: a community that is holy and without blemish — not because it performed itself into that state, but because Christ loved it there.</p>
+            <p><strong>Cross-references:</strong> 1:9 ("the mystery of his will… to unite all things in him"); 3:3–6 (the mystery of Jews and Gentiles as fellow heirs in Christ); Rev 19:6–9 ("the wedding supper of the Lamb" — the eschatological fulfillment of the marriage-image Paul draws on here); 2 Cor 11:2 ("I betrothed you to one husband, to present you as a pure virgin to Christ" — Paul uses the same presentation language for the church's relation to Christ).</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v54')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v54">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v54">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">The Meaning of Marriage (Dutton/Riverhead)</div>
+              <p>Keller's extended treatment of this passage in <em>The Meaning of Marriage</em> argues that Paul's household code radically destabilizes both patriarchal and egalitarian readings by setting the standard for each role as structurally transformative of how that role is typically exercised. The husband's "authority" is defined by the cross — it looks like total self-giving. The wife's submission is framed by the mutual submission of v. 21 and modeled on the church's trusting responsiveness to the one who has first loved it sacrificially. Neither role is left undemanding; neither is demeaning. The gospel transforms the institution from the inside.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP BST)</div>
+              <p>Stott argues that the purpose clause of vv. 26–27 — "that he might sanctify her… that he might present the church to himself in splendor" — describes an ongoing process, not a one-time event. The sanctification is happening now; the presentation in splendor is the eschatological goal. The church is currently in the process of being sanctified and cleansed by Christ's love — it is not yet glorious, but it is moving toward that glory through Christ's continuous work on it. The marriage is to embody this ongoing, direction-giving love, not merely to celebrate an already-achieved perfection.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar NTC)</div>
+              <p>O'Brien argues that the <em>mystērion</em> of v. 32 is one of the most hermeneutically significant statements in Ephesians: Paul is here disclosing the typological depth of Gen 2:24, not importing an alien meaning onto the text. The unity language of Genesis was always already more than a description of human biology; it was the language of the most intimate union possible, and Christ's union with his church is the antitype that explains why that language appeared in Genesis in the first place. Human marriage participates in a reality that is prior to and larger than itself.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (ZECNT)</div>
+              <p>Arnold situates the household code within its first-century social context, noting that Paul's instructions would have been read against the backdrop of Roman household management literature, in which the paterfamilias had legal and social dominance. Paul addresses the same social roles but transforms the content: husbands are to love at the cost of self-giving, not merely to manage the household. Arnold notes that the counter-cultural force of the passage falls primarily on the husband, not the wife — the demanding standard is the cross-shaped love of vv. 25–33, not the submission of vv. 22–24.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v54')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v54">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v54">
+            <ul>
+              <li>Christ loved the church before she was sanctified, cleansed, or glorious — then worked to bring her there. Where do you most need to receive the truth that love precedes transformation, not the other way around?</li>
+              <li>The church is grammatically passive throughout vv. 26–27 — she receives Christ's sanctifying, cleansing, and presenting action. What would it mean for your own sense of spiritual progress to receive that transformation rather than try to perform it?</li>
+              <li>Marriage is called a <em>mystērion</em> — a revealed secret that images Christ and the church. What would it change about how you approach your marriage (or your longing for it) to see it not primarily as a relational achievement but as a participation in the gospel story?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v54 -->
+
+  </div><!-- /chapter-block -->
+</div><!-- /study-container -->
+
+<script>
+function toggleVerse(id) {
+  const content = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  arrow.classList.toggle('open', !isOpen);
+  arrow.textContent = isOpen ? '▶' : '▼';
+}
+function togglePanel(id) {
+  const content = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  if (!content) return;
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  if (arrow) { arrow.textContent = isOpen ? '▶' : '▼'; }
+}
+</script>
+</body>
+</html>

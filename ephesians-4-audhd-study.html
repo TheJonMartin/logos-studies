@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ephesians 4 — AuDHD Bible Study</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; background: #f8f5f0; color: #2d2418; line-height: 1.65; }
+    h1 { font-size: 1.6rem; color: #1a0a00; text-align: center; padding: 1.5rem 1rem 0.5rem; }
+    h2 { font-size: 1.1rem; color: #5a3e28; margin: 1.5rem 0 0.75rem; padding-left: 1rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .study-container { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    .chapter-block { margin-bottom: 2rem; }
+    .chapter-heading { font-size: 1.1rem; color: #5a3e28; margin: 1.5rem 0 0.75rem; padding-left: 0.5rem; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 2px solid #c9a96e; padding-bottom: 0.4rem; }
+    .theme-banner { background: linear-gradient(135deg, #3b1a0a 0%, #6b3a1f 100%); color: #fdf5ec; padding: 1rem 1.4rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.92rem; line-height: 1.6; }
+    .theme-banner strong { font-size: 1rem; display: block; margin-bottom: 0.3rem; letter-spacing: 0.04em; color: #f0c98a; }
+    .verse-block { background: #fff; border: 1px solid #d4b896; border-radius: 8px; margin-bottom: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.06); overflow: hidden; }
+    .verse-header { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; background: linear-gradient(135deg, #6b3a1f 0%, #8b5a2b 100%); color: #fff; cursor: pointer; user-select: none; }
+    .verse-ref { font-size: 1rem; font-weight: 700; letter-spacing: 0.03em; }
+    .verse-title { font-size: 0.85rem; opacity: 0.88; font-style: italic; margin-left: 0.75rem; flex: 1; }
+    .verse-text-preview { font-size: 0.82rem; opacity: 0.85; padding: 0.65rem 1.1rem; background: #fdf5ec; border-bottom: 1px solid #e8d5bc; font-style: italic; color: #5a3e28; line-height: 1.6; }
+    .toggle-arrow { font-size: 0.85rem; transition: transform 0.2s; }
+    .toggle-arrow.open { transform: rotate(180deg); }
+    .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .collapsible-content.open { max-height: 9999px; }
+    .panel { border-top: 1px solid #e8ddd2; }
+    .panel-header { display: flex; align-items: center; padding: 0.65rem 1.1rem; font-weight: 600; font-size: 0.88rem; cursor: pointer; user-select: none; gap: 0.5rem; }
+    .panel-header .icon { font-size: 1rem; }
+    .panel-header .toggle-arrow { margin-left: auto; font-size: 0.75rem; }
+    .panel-body { padding: 1rem 1.1rem 1.1rem; font-size: 0.9rem; line-height: 1.7; }
+    .panel-body p { margin-bottom: 0.85rem; }
+    .panel-body p:last-child { margin-bottom: 0; }
+    .panel-greek .panel-header { background: #dbeafe; color: #1e3a5f; }
+    .panel-greek .panel-body  { background: #eff6ff; color: #1e3a5f; }
+    .greek-term { background: #fff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.85rem; }
+    .greek-term:last-child { margin-bottom: 0; }
+    .greek-term .term-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.4rem; }
+    .greek-term .term-word { font-size: 1.05rem; font-weight: 700; color: #1e40af; font-style: italic; }
+    .greek-term .term-parsing { font-size: 0.78rem; color: #3b5c9e; background: #dbeafe; padding: 2px 7px; border-radius: 12px; }
+    .greek-term .term-gloss { font-size: 0.82rem; color: #4b5563; margin-bottom: 0.35rem; }
+    .greek-term .term-significance { font-size: 0.88rem; color: #1e3a5f; }
+    .panel-jfb .panel-header { background: #fef3c7; color: #78350f; }
+    .panel-jfb .panel-body  { background: #fffbeb; color: #451a03; }
+    .panel-audhd .panel-header { background: #d1fae5; color: #064e3b; }
+    .panel-audhd .panel-body  { background: #ecfdf5; color: #022c22; }
+    .panel-ws .panel-header { background: #ede9fe; color: #3b0764; }
+    .panel-ws .panel-body  { background: #f5f3ff; color: #2e1065; }
+    .word-study-term { font-size: 1.05rem; font-weight: 700; color: #5b21b6; font-style: italic; margin-bottom: 0.5rem; }
+    .panel-commentators .panel-header { background: #ccfbf1; color: #0f4c3a; }
+    .panel-commentators .panel-body  { background: #f0fdf9; color: #052e25; }
+    .commentator-block { background: #fff; border: 1px solid #a7f3d0; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; }
+    .commentator-block:last-child { margin-bottom: 0; }
+    .commentator-name { font-weight: 700; font-size: 0.9rem; color: #065f46; }
+    .commentator-source { font-size: 0.78rem; color: #6b7280; font-style: italic; margin-bottom: 0.4rem; }
+    .panel-pastoral .panel-header { background: #ffe4e6; color: #9f1239; }
+    .panel-pastoral .panel-body  { background: #fff1f2; color: #4c0519; }
+    .panel-pastoral .panel-body ul { padding-left: 0; list-style: none; margin: 0; }
+    .panel-pastoral .panel-body ul li { padding: 8px 12px 8px 16px; margin: 8px 0; border-left: 3px solid #e11d48; background: #fff; border-radius: 0 4px 4px 0; font-size: 0.9rem; line-height: 1.55; }
+  </style>
+</head>
+<body>
+<div class="study-container">
+  <h1>Ephesians 4 — AuDHD Bible Study</h1>
+
+  <div class="theme-banner">
+    <strong>The Great Hinge: Indicative Becomes Imperative</strong>
+    Ephesians 4 opens with "therefore" — the hinge word that pivots the entire letter from what God has done (chapters 1–3) to what that demands of us (chapters 4–6). The walk Paul commands is not the mechanism of the calling; it is the correspondence to a calling already received. Chapter 4 moves through four movements: the unity the Spirit has already created and we must guard (vv. 1–6), the grace-gifts Christ distributes for the body's growth (vv. 7–16), the decisive put-off/put-on of the old and new self (vv. 17–24), and the specific relational practices of the new humanity in community (vv. 25–32).
+  </div>
+
+  <div class="chapter-block">
+    <h2 class="chapter-heading">Ephesians 4</h2>
+
+    <!-- v41: Eph 4:1-6 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v41')">
+        <span class="verse-ref">Ephesians 4:1–6</span>
+        <span class="verse-title">Walk Worthy: The Sevenfold Unity of the Spirit</span>
+        <span class="toggle-arrow open" id="arrow-v41">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "I therefore, a prisoner for the Lord, urge you to walk in a manner worthy of the calling to which you have been called, with all humility and gentleness, with patience, bearing with one another in love, eager to maintain the unity of the Spirit in the bond of peace. There is one body and one Spirit—just as you were called to the one hope that belongs to your call—one Lord, one faith, one baptism, one God and Father of all, who is over all and through all and in all." — ESV
+      </div>
+      <div class="collapsible-content open" id="v41">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v41')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v41">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v41">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">peripatēsai</span>
+                <span class="term-parsing">verb · aor. act. infinitive</span>
+              </div>
+              <div class="term-gloss">ESV: "walk" | NIV: "live" | NASB: "walk"</div>
+              <div class="term-significance"><em>Peripateō</em> (to walk around, to conduct one's life) is Paul's standard metaphor for the totality of Christian living — the whole-life pattern of movement and behavior. It appears 8 times in Ephesians alone (2:2, 10; 4:1, 17; 5:2, 8, 15). The word is concrete and embodied: not "believe the right things" or "feel the right way" but <em>walk</em> — the daily, physical, ongoing, this-moment movement of a life. For AuDHD readers, the bodily concreteness of "walk" is helpful: Christian living is described as movement, not as a state of arrived perfection.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">axiōs</span>
+                <span class="term-parsing">adverb</span>
+              </div>
+              <div class="term-gloss">ESV: "worthy" | NIV: "worthy" | NASB: "worthy"</div>
+              <div class="term-significance">The adverb of <em>axios</em> — literally "of equal weight," "commensurate with." A scale term: the walk should balance the calling on the other side. Note carefully what this does and does not say: the walk does not <em>earn</em> or <em>create</em> the calling — the calling is already given (aorist passive: "you have been called"). The walk <em>corresponds to</em> what already is. This is the difference between performance and identity-correspondence. You are not trying to become worthy; you are living in a way commensurate with what has already been declared true of you.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">spoudazontes</span>
+                <span class="term-parsing">verb · pres. act. participle</span>
+              </div>
+              <div class="term-gloss">ESV: "eager" | NIV: "make every effort" | NASB: "being diligent"</div>
+              <div class="term-significance">Active, energetic, urgent effort — not casual maintenance. But notice the object: <em>tērein</em> (to guard, to keep, to preserve). The unity of the Spirit is not being created by their eagerness; it <em>already exists</em> and must be <em>protected</em>. The Spirit made the unity; believers guard it. The eager effort is defensive and preservative, not generative. This removes the burden of manufacturing unity from scratch and replaces it with the burden of protecting what the Spirit has already established.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">heis / mia / hen (×7)</span>
+                <span class="term-parsing">numeral adjective · seven occurrences in vv. 4–6</span>
+              </div>
+              <div class="term-gloss">ESV: "one" (×7) | NIV: "one" (×7) | NASB: "one" (×7)</div>
+              <div class="term-significance">The seven-fold repetition of "one" in vv. 4–6 is liturgical in character — possibly an early baptismal creed or catechetical formula. Its structure is trinitarian: one body + one Spirit + one hope (the Spirit's domain); one Lord + one faith + one baptism (the Son's domain); one God and Father of all (the Father). Seven is also the number of completeness. The creedal rhythm is a stability structure — something to return to when the experience of unity is absent. The seven "ones" are true regardless of how unity feels on a given day.</div>
+            </div>
+
+            <p>The word <em>tapeinophrosynē</em> (humility, v. 2) deserves attention: in Greco-Roman culture this was not a virtue but a condition of the socially powerless — a slave's quality, something to be ashamed of. Paul lists it <em>first</em> among the relational virtues that make unity possible. Christianity inverted the honor code: the first relational virtue is the one the culture despised most. This inversion is not incidental but structural — the cross is the reason humility is now the foundation of community.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v41')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v41">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v41">
+            <p>JFB identify the "therefore" of v. 1 as the great hinge of the letter — chapters 1–3 are the theological indicative (who you are in Christ, what God has accomplished, what the mystery has disclosed), and chapters 4–6 are the ethical imperative (how you live in light of that). The "therefore" is not a loose transition; it is a theological claim that the two halves cannot be separated. Ethics without the prior indicative is moralism; indicative without the following imperative is antinomianism. Paul refuses both.</p>
+            <p>On "prisoner for the Lord" (v. 1), JFB note the deliberate return to Paul's self-designation from 3:1. He does not urge the Ephesians from a position of authority alone but from a position of costly obedience — his chains are his credential. The man who has paid the price of following Christ is qualified to urge the same walk on others. JFB note also that his appeal is <em>parakaleō</em> (urge/exhort/comfort) — a word of warm pastoral appeal, not authoritarian command.</p>
+            <p>JFB observe that the four virtues of v. 2 — humility, gentleness, patience, bearing with one another — are ordered from interior disposition to exterior action. Humility is the internal orientation; gentleness (<em>praotēs</em>) is the disposition toward others; patience is the sustained practice of both under pressure; bearing with one another is the active choice to keep carrying others in love even when it costs. They are not four independent qualities but a single integrated posture toward community life.</p>
+            <p>On the sevenfold "one" of vv. 4–6, JFB trace the implicit Trinitarian structure: the Spirit presides over body, Spirit, and hope; the Son over Lord, faith, and baptism; the Father over the whole as "God and Father of all." The theological unity of the Trinity is the ground of the ecclesial unity Paul exhorts. God's own oneness is the model and the power behind the community's oneness.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v41')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v41">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v41">
+            <p>The AuDHD experiences most directly activated by "walk in a manner worthy of the calling" are the <strong>Performance-Review Posture Toward God</strong> and the threat of <strong>Prohibition-Activation</strong> — the moment a command lands as a performance bar that will trigger God's disappointment if not cleared. But the grammar of v. 1 resists this reading from its first word: "therefore." The imperative follows from what has already been established in chapters 1–3. The calling has already happened (aorist passive: "you have been called" — a completed action, fully accomplished). The walk does not create the calling. The walk corresponds to it.</p>
+            <p>Think of it this way: "walk worthy" is not a job application; it is a job description. You are not trying to prove you deserve the position. The position was given. The walk is what living in the position looks like. This reframes the entire ethical section of Ephesians: chapters 4–6 are not the test you have to pass to retain your standing in chapters 1–3. They are the description of what it looks like to inhabit what chapters 1–3 have already declared true of you. The performance-review posture gets this exactly backwards.</p>
+            <p>The "unity of the Spirit" is already given — the Spirit created it. The eager effort of v. 3 is to <em>guard</em> what already is, not to produce what doesn't yet exist. For AuDHD believers who feel their presence in a community is inherently disruptive — too much, too intense, too different, too liable to say the thing nobody else will say — this reframes the question significantly. You are not failing to create unity by being who you are. The Spirit has already constituted the unity. Your work is not to manufacture it but to protect it. The guarding looks different from the creating.</p>
+            <p>The sevenfold "one" of vv. 4–6 functions as a <strong>stability anchor</strong> — a creedal list the AuDHD brain can return to when the felt sense of belonging fluctuates wildly. One body, one Spirit, one hope, one Lord, one faith, one baptism, one God and Father. Seven fixed realities that are true on the days when the community feels fractured, when you feel like the odd piece, when the morning prayer didn't happen and the sense of connection with God is at its lowest ebb. The sevenfold "one" is not a feeling; it is a theological fact. On the days when AuDHD time blindness makes all continuity feel broken, the creed offers a structural truth to return to: these things were true yesterday and are true today and will be true tomorrow, independent of your felt sense of them.</p>
+            <p>Finally, <em>tapeinophrosynē</em> (humility) listed first among the relational virtues is itself an AuDHD reframe. The AuDHD person who is chronically told they are "too much" has often internalized a kind of false humility — the performed smallness of someone trying to take up less room. That is not what Paul means. Biblical humility is not self-erasure; it is accurate self-assessment in relation to others. It is the orientation that says: the other person's needs and perspective are real and worth attending to, as real as my own. The AuDHD person who struggles with perspective-taking and social attunement is not disqualified from this virtue — they may be working harder at it than anyone sees, precisely because it doesn't come automatically.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v41')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v41">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v41">
+            <div class="word-study-term">tapeinophrosynē / "humility"</div>
+            <p><strong>Etymology:</strong> <em>tapeinos</em> (low, of low social position, pressed down) + <em>phronē</em> (the mind/orientation, from <em>phronēsis</em>) + <em>-synē</em> (abstract noun suffix) — literally "the mind of the lowly" or "low-mindedness." A compound coinage that Paul and the NT authors appear to have developed specifically as a theological virtue term.</p>
+            <p><strong>Cultural background:</strong> In classical Greek and Greco-Roman culture, <em>tapeinophrosynē</em> was not a virtue at all — it described the mental condition of the slave, the socially crushed, the defeated. It appeared in vice lists, not virtue lists. To be <em>tapeinos</em> was to be powerless and degraded. The NT's wholesale revaluation of this word is one of the most dramatic ethical inversions in intellectual history, grounded entirely in the cross: Jesus, who "did not count equality with God a thing to be grasped," took the form of a slave and humbled himself to death (Phil 2:6–8), making the slave's posture the pattern of Kingdom leadership.</p>
+            <p><strong>NT range:</strong> Always positive in the NT; always connected to the pattern of Christ. Matt 11:29 ("I am gentle and lowly [<em>tapeinos</em>] in heart"); Phil 2:3 ("in humility [<em>tapeinophrosynē</em>] count others more significant than yourselves"); Col 3:12 ("put on... humility"); 1 Pet 5:5 ("clothe yourselves, all of you, with humility toward one another").</p>
+            <p><strong>This usage:</strong> Paul lists humility first among the four relational virtues of v. 2 — it is the foundational orientation from which gentleness, patience, and bearing with one another flow. Without humility as the operating disposition, the other three collapse. Cross-reference: Phil 2:1–11, where the same word grounds the appeal for unity through the model of Christ's self-emptying.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v41')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v41">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v41">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller frames the "walk worthy" command entirely within gospel-motivation: the walk is not motivated by fear of losing the calling but by gratitude for having received it. The asymmetry between chapters 1–3 (total grace) and chapters 4–6 (real response) is the asymmetry of the gospel itself. The response is genuine and required; it is also entirely responsive, not generative. You walk worthy because you have been called, not in order to be.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP Bible Speaks Today)</div>
+              <p>Stott notes that Paul's four virtues (v. 2) are all inherently relational — they cannot be exercised in isolation. Humility requires someone to honor above yourself; gentleness requires someone to treat with care; patience requires someone to bear with; and bearing with one another is by definition a community practice. The worthy walk is not a private spiritual achievement; it is a communal way of being together. You cannot walk it alone.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar New Testament Commentary)</div>
+              <p>O'Brien argues the sevenfold "one" of vv. 4–6 functions as an implicit early creedal statement — possibly reflecting baptismal liturgy — with the Trinitarian structure organizing the seven elements: Spirit, Son, and Father each presiding over their portion. The theological unity of the one God is the ontological ground of the ecclesial unity Paul exhorts. The community's oneness is not a social achievement; it is a participation in the divine oneness.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Barnes</div>
+              <div class="commentator-source">Notes on the New Testament: Ephesians</div>
+              <p>Barnes notes the significance of <em>spoudazontes</em> (eager/diligent, v. 3) — the verb implies active, sustained effort, not passive hope that unity will maintain itself. He observes that the unity of the Spirit is real and given, but it is also fragile in its experiential expression — it is eroded by pride, impatience, and bitterness, and requires constant, active tending against these forces.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (Zondervan Exegetical Commentary on the NT)</div>
+              <p>Arnold observes that the seven "ones" of vv. 4–6 may function polemically in the Ephesian cultural context — countering the proliferating spiritual marketplace of Asia Minor, where competing lords, spirits, faiths, and initiation rites offered fragmented and competing access to divine power. Paul's sevenfold "one" is a theological claim: there is one of each. The unity of the church is grounded in the singularity of its God, not the compatibility of its members' preferences.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v41')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v41">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v41">
+            <ul>
+              <li>"Walk worthy of the calling" — the calling already happened; the walk responds to it. Does your relationship with God feel more like a job application (proving you qualify) or a job description (living what you already are)?</li>
+              <li>The Spirit's unity already exists; you are called to guard it, not produce it. When you feel like your presence in community is disruptive, what would it mean to hear that the unity is the Spirit's work — not a social equilibrium that depends on you performing correctly?</li>
+              <li>Which of the seven "ones" is hardest to feel the reality of on a difficult day — and what would it mean to treat that "one" as a creedal anchor rather than a felt experience you have to generate?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v41 -->
+
+    <!-- v42: Eph 4:7-16 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v42')">
+        <span class="verse-ref">Ephesians 4:7–16</span>
+        <span class="verse-title">Grace-Gifts and the Growing Body</span>
+        <span class="toggle-arrow open" id="arrow-v42">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "But grace was given to each one of us according to the measure of Christ's gift. Therefore it says, 'When he ascended on high he led a host of captives, and he gave gifts to men.' And he gave the apostles, the prophets, the evangelists, the shepherds and teachers, to equip the saints for the work of ministry, for building up the body of Christ, until we all attain to the unity of the faith and of the knowledge of the Son of God, to mature manhood, to the measure of the stature of the fullness of Christ, so that we may no longer be children, tossed to and fro by the waves and carried about by every wind of doctrine, by human cunning, by craftiness in deceitful schemes. Rather, speaking the truth in love, we are to grow up in every way into him who is the head, into Christ, from whom the whole body, joined and held together by every joint with which it is equipped, when each part is working properly, makes the body grow so that it builds itself up in love." — ESV
+      </div>
+      <div class="collapsible-content open" id="v42">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v42')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v42">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v42">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">charis</span>
+                <span class="term-parsing">noun · nom. sg. fem.</span>
+              </div>
+              <div class="term-gloss">ESV: "grace" | NIV: "grace" | NASB: "grace"</div>
+              <div class="term-significance">"Grace was given to <em>each one of us</em>" — the distribution is universal within the body. No member is graced in salvation but ungraced in gifting. The measure is "Christ's gift" — calibrated to Christ's generosity, not to the recipient's spiritual attainment or consistency. This grace is not merely the saving grace of chapters 1–3; it is the specific, differentiated gifting that goes with each person's role in the body. The passive "was given" (aorist passive, <em>edothē</em>) removes the believer as the source: this grace is received, not generated or earned.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">katartismos</span>
+                <span class="term-parsing">noun · acc. sg. masc. · hapax legomenon</span>
+              </div>
+              <div class="term-gloss">ESV: "equip" | NIV: "equip" | NASB: "equipping"</div>
+              <div class="term-significance">Only occurrence in the NT. From <em>katartizō</em> — to mend, to restore to proper condition, to prepare fully for use (used of mending fishing nets in Mark 1:19; of restoring a fallen brother in Gal 6:1; of God equipping believers in Heb 13:21). The gifted leaders (apostles, prophets, evangelists, pastor-teachers) exist to bring the saints into the condition of being fully prepared for the work of ministry. The saints do the ministry; the leaders prepare them for it. This decisively inverts any model where trained professionals do ministry while the laity observe.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">alētheuontes en agapē</span>
+                <span class="term-parsing">verb · pres. act. participle (+ prep. phrase)</span>
+              </div>
+              <div class="term-gloss">ESV: "speaking the truth in love" | NIV: "speaking the truth in love" | NASB: "speaking the truth in love"</div>
+              <div class="term-significance">The participle <em>alētheuontes</em> is broader than "speaking" — it can mean "being truthful, living according to truth, embodying truth in one's whole existence." The love (<em>agapē</em>) is the mode, manner, and context in which truth is carried — not a softener that dilutes the truth but the medium in which truth can be received without becoming weaponized. Truth without love is accurate but destructive; love without truth is warm but content-less. The participle holds them together as simultaneous, not sequential.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">synarmologoumenon</span>
+                <span class="term-parsing">verb · pres. pass. participle · acc. sg. neut.</span>
+              </div>
+              <div class="term-gloss">ESV: "joined and held together" | NIV: "joined and held together" | NASB: "being fitted and held together"</div>
+              <div class="term-significance">A compound from <em>syn</em> (together) + <em>harmos</em> (joint, the specific point where two bones connect) + <em>logos</em> (word/reason/fit). The body is an organism fitted at specific articular joints — not loosely associated but precisely connected at structural points designed for the purpose. The present tense means the fitting-together is ongoing, not a one-time assembly. Each joint (<em>haphē</em>) makes its specific contribution to the whole body's integrity. The image resists the idea that any member's connection to the body is incidental or redundant.</div>
+            </div>
+
+            <p>The phrase "when each part is working properly" (v. 16, <em>en metrō henos hekastou merous</em>) uses <em>metron</em> — measure or standard — in the singular for each part: each part's proper functioning is according to its own measure, not someone else's. The body does not grow by having strong parts compensate for weak ones; it grows when each part operates according to its own proper standard. This sets an internal, not comparative, measure for each member's contribution.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v42')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v42">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v42">
+            <p>JFB trace the logic of Paul's Psalm 68:18 citation (v. 8) carefully: the Psalm celebrates God's ascent of Zion after victory, receiving tribute from conquered peoples. Paul adapts the text — "he gave gifts to men" where the Psalm reads "you received gifts among men" — and reads it through the lens of Christ's ascension and Pentecost. The victorious ascent of Christ enables the downward distribution of gifts to the church. JFB note that this adaptation was not careless but interpretively deliberate: the ascended Christ, having conquered death, distributes the spoils of his victory to the community he leaves behind.</p>
+            <p>On the threefold purpose of v. 12 — equipping the saints, the work of ministry, the building up of the body — JFB read the three phrases as coordinate, all governed by the gifted leaders. The leaders equip; the saints minister; the ministry builds the body. The chain is deliberate: leadership exists to release ministry, not to monopolize it. A church where the leaders do all the ministry has not yet understood v. 12.</p>
+            <p>JFB give attention to the image of doctrinal instability in v. 14 — "children tossed to and fro by the waves and carried about by every wind of doctrine." The waves and winds represent the forces of theological confusion: human cunning, craftiness, deceitful schemes. JFB note that the instability is not intellectual weakness but the condition of the immature — those not yet rooted in the body. The remedy is maturity through corporate growth, not individual intellectual effort.</p>
+            <p>The body metaphor of vv. 15–16, JFB observe, is strikingly organic: each joint contributes its specific supply (<em>epichōrēgia</em>), each part works according to its own measure, and the whole body grows by this differentiated cooperation. The diversity of function is not a problem to be resolved into uniformity; it is the design of the body. The body requires its differences to function.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v42')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v42">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v42">
+            <p>The AuDHD experiences this passage speaks most directly into are the <strong>Neurology-as-Disqualifier Fear</strong> and the chronic exhaustion of the <strong>Will/Execution Gap</strong>. Both are addressed — not by being dismissed but by being structurally answered.</p>
+            <p>"Grace was given to <em>each one of us</em>" (v. 7) — not to the spiritually qualified subset, not to those whose executive function operates reliably, not to those who have demonstrated consistent output. Each one. The measure is Christ's gift — calibrated to his generosity, not to the recipient's performance metrics. The AuDHD believer who suspects they have received a lesser measure of grace-gift because their functioning is inconsistent, or because they cannot sustain output the way others seem to, is reading into v. 7 something it does not say. The gift is from Christ, the measure is Christ's, the distribution is to each one.</p>
+            <p>The <em>katartismos</em> (equipping) is the leaders' function, not yours to perform on yourself. The saints are being equipped; they are not responsible for self-equipping. This is significant for the AuDHD believer who has been trying to close the gap through sheer personal effort — reading more, attending more, praying more consistently, trying harder — and finding the gap between effort and outcome demoralizing. The equipping comes from outside. The gifted leaders are Christ's provision to the body specifically for this purpose. You do not have to arrive already equipped; you are being equipped. The equipping is the leaders' work and Christ's gift.</p>
+            <p>"No longer children, tossed to and fro by the waves" (v. 14) — this image of a ship in open water, driven by every changing wind of doctrine, resonates with a specific AuDHD experience: every compelling argument feels momentarily definitive, every new theological framework seems to expose the inadequacy of the last one, every criticism of your current theological position produces something that feels like RSD-level distress, not just intellectual disagreement. The AuDHD believer who is prone to this kind of doctrinal turbulence is not morally deficient; they are experiencing a neurological reality. But Paul's prescription is not more individual intellectual effort. It is growth into the body — "speaking the truth in love, we are to grow up <em>into him</em> who is the head." Doctrinal stability comes from relational rootedness in Christ via the body, not from achieving a sufficient level of individual theological certainty.</p>
+            <p>"Each part working properly" — <em>en metrō henos hekastou merous</em>, "according to the measure of each individual part." Properly means according to its own standard, not someone else's. The knee does not function properly by trying to do what the hand does. The AuDHD member of the body who functions differently from the visible "high-output" parts does not need to generate the other parts' kind of contribution. Their proper functioning is according to their own measure. The body needs the specific, differentiated contribution of every joint — including yours, in the form that yours actually takes. The image of joints (vv. 15–16) is particularly useful: the joint doesn't have to be the largest or most visible part to be structurally essential. The joint enables the rest of the body to move.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v42')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v42">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v42">
+            <div class="word-study-term">katartismos / "equipping"</div>
+            <p><strong>Etymology:</strong> From <em>katartizō</em> — <em>kata-</em> (intensive: thoroughly, fully) + <em>artizō</em> (to fit, to prepare, from <em>artios</em> meaning "fit, complete, ready for use"). The verb means to bring something from a broken or incomplete condition to its proper, fully functional state.</p>
+            <p><strong>Semantic range of katartizō in NT:</strong> The verb covers a remarkable range of completing/restoring actions: mending fishing nets (Mark 1:19 — restoring damaged nets to working order); restoring a fallen believer gently (Gal 6:1 — bringing a person back to proper spiritual condition); God equipping believers for every good work (Heb 13:21); the saints being "perfected/completed" (1 Cor 1:10, in context of reconciliation); God "making" or "preparing" Jesus to be the sacrifice (Heb 10:5, "a body you have prepared for me"). In each case: something is brought from broken or incomplete to whole and functional.</p>
+            <p><strong>The hapax katartismos:</strong> The noun form appears only here in the NT — Paul coins (or deploys) the abstract noun to name the process that the gifted leaders perform. The <em>katartismos</em> of the saints is the totality of the equipping process: teaching, modeling, correction, encouragement, and spiritual formation that brings members of the body from their current state toward full readiness for ministry.</p>
+            <p><strong>Implication for this usage:</strong> The leaders are not doing ministry on the saints' behalf — they are doing katartismos so the saints can do ministry. This is a profound ecclesiological distinction. Cross-references: 2 Tim 3:17 ("that the man of God may be complete [<em>artios</em>], equipped [<em>exērtismenos</em>] for every good work"); Heb 13:21 ("equip [<em>katartisai</em>] you with everything good that you may do his will").</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v42')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v42">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v42">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller focuses on the Psalm 68 citation as the key to interpreting the entire gift-passage: Christ's ascension is a victory procession, and the gifts distributed to the church are the spoils of his triumph over sin and death. The AuDHD believer's grace-gift is not a consolation prize for showing up; it is a war prize distributed by a victorious king from the wealth of his conquest. The generosity of the distribution matches the scale of the victory.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP Bible Speaks Today)</div>
+              <p>Stott argues this passage contains one of the NT's most important ecclesiological principles: the gifted leaders exist to equip the saints for ministry, not to perform ministry while the saints observe. Every member is a minister; the leaders are equippers. This is not a democratic flattening of church office but a radical elevation of every member's calling — each one has received grace for a specific ministry, and the leaders' job is to release them into it.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar New Testament Commentary)</div>
+              <p>O'Brien carefully unpacks <em>alētheuontes en agapē</em> (v. 15) as a comprehensive description of the community's relational posture — not just verbal truth-telling but a whole-life truthfulness practiced in the medium of love. He argues that love and truth are not in tension in Paul: love is not what softens truth until it loses its edge; it is the relational context that makes truth receivable, plantable, and growing rather than merely accurate and wounding.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Barnes</div>
+              <div class="commentator-source">Notes on the New Testament: Ephesians</div>
+              <p>Barnes notes the organic logic of vv. 15–16 — the body grows not by heroic effort of its strongest members covering for the weakest, but by the cooperative functioning of every part according to its own proper measure. He emphasizes that this means no member is dispensable, and no member can grow in isolation. The growth is inherently corporate: the body builds itself up in love through the differentiated, mutual contribution of every part.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (Zondervan Exegetical Commentary on the NT)</div>
+              <p>Arnold situates the ascension Christology of vv. 9–10 within the cosmic scope of Christ's lordship — having descended to the lowest point (death) and ascended "far above all the heavens," Christ now fills the entire cosmos with his authority and presence (cf. Eph 1:21–23). The gifts are distributed from a position of total cosmic dominion. The gifted leaders and every member's grace-gift come from one whose reach is universal and whose wealth is inexhaustible.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v42')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v42">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v42">
+            <ul>
+              <li>"Grace was given to each one of us according to the measure of Christ's gift" — not your consistency, not your output. What do you believe you have been specifically gifted with, even in inconsistent or partial form?</li>
+              <li>The leaders equip the saints; the saints do the ministry. Where have you been trying to self-equip — closing the gap yourself — that is actually the leaders' work to do for you? What would it look like to receive equipping rather than generate it?</li>
+              <li>"Each part working properly" means according to its own measure, not someone else's standard. What would it mean to define your proper contribution by your own measure rather than by comparison to how others function?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v42 -->
+
+    <!-- v43: Eph 4:17-24 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v43')">
+        <span class="verse-ref">Ephesians 4:17–24</span>
+        <span class="verse-title">Put Off / Put On: The New Humanity in Christ</span>
+        <span class="toggle-arrow open" id="arrow-v43">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "Now this I say and testify in the Lord, that you must no longer walk as the Gentiles do, in the futility of their minds. They are darkened in their understanding, alienated from the life of God because of the ignorance that is in them, due to their hardness of heart. They have become callous and have given themselves up to sensuality, greedy to practice every kind of impurity. But that is not the way you learned Christ! assuming that you have heard him and were taught in him, as the truth is in Jesus, to put off your old self, which belongs to your former manner of life and is corrupt through deceitful desires, and to be renewed in the spirit of your minds, and to put on the new self, created after the likeness of God in true righteousness and holiness." — ESV
+      </div>
+      <div class="collapsible-content open" id="v43">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v43')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v43">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v43">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">mataiotēs</span>
+                <span class="term-parsing">noun · dat. sg. fem.</span>
+              </div>
+              <div class="term-gloss">ESV: "futility" | NIV: "futility" | NASB: "futility"</div>
+              <div class="term-significance">The LXX word for <em>hebel</em> — the Hebrew "vapor, breath, vanity" that opens and permeates Ecclesiastes ("Vanity of vanities, all is vanity"). In Ecclesiastes it describes the experience of all human striving disconnected from God: generating motion without arrival, pursuing goals that evaporate upon reaching them. Paul applies it to the operating orientation of the unrenewed Gentile mind — not intellectual weakness but directional futility: the mind's efforts run in circles, producing motion without meaning, because they are disconnected from the source of reality.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">apothesthai / endysasthai</span>
+                <span class="term-parsing">verbs · aor. mid. infinitives (vv. 22, 24)</span>
+              </div>
+              <div class="term-gloss">ESV: "put off / put on" | NIV: "put off / put on" | NASB: "lay aside / put on"</div>
+              <div class="term-significance">Both aorist middle infinitives — decisive, completed actions at conversion. The aorist signals a one-time event, not an ongoing negotiation. The old self was decisively put off; the new self was decisively put on. The clothing metaphor is significant: the old self and new self are described as garments you remove and replace, not identities that replace each other at the deepest ontological level. The implication: when you act from the old self's patterns, you have not become the old self again — you have, as it were, put on the old clothes temporarily. The decisive acts hold.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">ananeousthai</span>
+                <span class="term-parsing">verb · pres. pass. infinitive (v. 23)</span>
+              </div>
+              <div class="term-gloss">ESV: "be renewed" | NIV: "be made new" | NASB: "be renewed"</div>
+              <div class="term-significance">The one present tense infinitive between the two aorists — deliberately so. The grammatical structure is: put off (aorist, decisive) → <em>be renewed</em> (present, ongoing, continuous) → put on (aorist, decisive). The renewal of the mind is not instantaneous; it is the ongoing process that happens within the frame of the two decisive conversional acts. Sanctification is not a linear progress graph but a continuous renewal inside a decisive framework. The framework holds; the renewal continues. Failures in the renewal process don't collapse the frame.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">ktisthenta</span>
+                <span class="term-parsing">verb · aor. pass. participle · acc. sg. masc.</span>
+              </div>
+              <div class="term-gloss">ESV: "created" | NIV: "created" | NASB: "created"</div>
+              <div class="term-significance">Aorist passive: the new self was <em>created</em> by God, not manufactured by the believer through sustained spiritual effort. The passive removes the believer from the position of creator of their own new identity. "Created after the likeness of God" — the word for creation (<em>ktizō</em>) is the same word used for God's original act in Genesis. The new self is a creation event, not a self-improvement project. You do not produce it; you put on what God has made.</div>
+            </div>
+
+            <p>The sequence of vv. 22–24 — put off / be renewed / put on — resists two errors simultaneously. It resists instantaneism (the idea that the put-on is instant and complete, leaving no ongoing work) by the present tense of v. 23. And it resists despair (the idea that ongoing failure in the renewal undoes the decisive frame) by the aorist tenses of vv. 22 and 24. The grammar holds both truths together: the decisiveness of conversion and the continuity of renewal.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v43')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v43">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v43">
+            <p>JFB observe the solemnity of Paul's introduction in v. 17 — "I say and testify in the Lord" is a quasi-prophetic formula, invoking divine witness. Paul is about to draw the sharpest possible line between the old life and the new, and he frames it with the full weight of apostolic authority. The contrast is not primarily behavioral but epistemological and ontological: the Gentile mind is characterized by <em>mataiotēs</em> (futility), darkened understanding, and alienation from the life of God. The moral failures of v. 19 are downstream effects of the epistemological failure, not its cause.</p>
+            <p>JFB give special attention to the remarkable expression in v. 20: "you did not learn <em>Christ</em> that way" — not "you did not learn <em>about</em> Christ" or "you did not learn Christ's <em>teaching</em>," but "you learned <em>Christ</em>." The person of Christ is both the teacher and the content of Christian formation. This is unique in Paul's vocabulary and signals that Christian transformation is not primarily information transfer but relational formation through encounter with a Person.</p>
+            <p>JFB trace the logical structure of vv. 22–24 as a threefold account of conversion and its ongoing implications: the old self is "being corrupted according to deceitful desires" (present tense — the old self is an active, deteriorating process, not a static condition), and it is this corrupt process that must be decisively put off. The new self is "created after the likeness of God" — calling back to Genesis 1:26, where humanity was made in God's image. The new creation restores what the fall distorted.</p>
+            <p>JFB note on "the spirit of your minds" (v. 23) — the <em>pneuma</em> here is likely not the Holy Spirit but the animating principle or deep orientation of the mind (the <em>nous</em>). The renewal goes to the level of the mind's fundamental mode of operating, not just its surface-level choices. This is the deepest possible kind of renewal: the operating system, not just the applications.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v43')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v43">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v43">
+            <p>The AuDHD experience most directly addressed in this passage is <strong>Identity vs. Behavior Confusion</strong> — the AuDHD brain's tendency to collapse "I did something that came from the old self" into "I <em>am</em> the old self." Every lapse becomes an identity verdict. Every sin becomes evidence that the conversion didn't take. Every failure becomes proof that you are the worst version of yourself, permanently. This is the shame spiral's preferred mechanism, and it runs fast and deep in AuDHD neurology.</p>
+            <p>The clothing metaphor of vv. 22–24 is designed to prevent exactly this collapse. The old self and the new self are described as garments — things you put on and take off — not identities that fuse with your being and cannot be separated. When you act from old-self patterns (the rage response, the deceitful shortcut, the self-destructive habit), you have not become the old self again. You have, in Paul's image, put on the old clothes. The decisive putting-off still happened. The decisive putting-on still happened. You are wearing old clothes over a new identity, not reverting to an old identity. This is not a trivial distinction — it is the grammar of sanctification that keeps the AuDHD shame spiral from claiming the ultimate verdict.</p>
+            <p>The aorist/present/aorist structure of vv. 22–24 is pastoral medicine for the AuDHD believer who treats their sanctification as a linear progress graph — tracking whether this week was better than last week, whether they are visibly closer to the target, whether the trajectory is good enough. The grammar refuses this frame. The decisive acts at the boundaries (put off, put on — both aorist, both at conversion) hold the frame. Inside the frame, the renewal of the mind is present tense — ongoing, continuous, always in process. There is no point on the timeline of your Christian life where the renewal is complete and can be checked off. It is always in process. This means failures are not catastrophic reversions to a pre-frame state; they are moments in an ongoing renewal that continues.</p>
+            <p><em>Mataiotēs</em> (futility, v. 17) is the word of Ecclesiastes — vapor, wind, running in circles. The AuDHD mind that sometimes experiences its own thought processes as exactly this — generating tremendous activity without arrival, pursuing goals that evaporate upon reaching them, the chronic sense that effort and outcome are disconnected — recognizes this word. Paul's description of the unrenewed mind is uncomfortably accurate to the AuDHD experience. The good news is not that the AuDHD mind is already renewed and therefore exempt from this. The good news is that the <em>spirit of your minds</em> — the deep operating orientation — is being renewed (v. 23). The renewal is not from outside the mind into the behavior, bypassing the mind. It goes directly to the mind. The Spirit's work of renewal targets the exact location where the futility lived.</p>
+            <p>Finally: "created after the likeness of God in true righteousness and holiness" (v. 24). The new self is a <em>creation</em> — aorist passive, God acted, it came into being. You did not manufacture the new self by sustained spiritual effort. You do not maintain it by spiritual willpower. It was created by God, given to you, and you are asked to put it on — to inhabit what has been made and given. The AuDHD believer who is exhausted from trying to generate a new self by effort is being handed something pre-made. The question is not whether you can become someone better; it is whether you will put on what has already been made for you.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v43')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v43">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v43">
+            <div class="word-study-term">ananeousthai / "be renewed" — and the aorist/present/aorist grammar</div>
+            <p><strong>Root:</strong> <em>ana-</em> (again, upward — a prefix of repetition or intensification) + <em>neos</em> (new, young — newness of recent origin, as distinct from <em>kainos</em> which means new in quality or kind) + <em>-oō</em> (verb suffix). To be made new again; to be brought back to a fresh, renewed condition. The compound with <em>ana-</em> suggests a re-freshening — something that was new becoming new again.</p>
+            <p><strong>The present tense matters:</strong> In the three-infinitive sequence of vv. 22–24 — <em>apothesthai</em> (aorist: put off), <em>ananeousthai</em> (present: be renewed), <em>endysasthai</em> (aorist: put on) — the present tense of the renewal is deliberate and theologically significant. The two decisive acts (put off at conversion; put on at conversion) are aorist — completed, in the past, decisive. The renewal between and within them is present — continuous, ongoing, not once-complete. Sanctification is the continuous present inside a decisive past frame.</p>
+            <p><strong>Comparison with Romans 12:2:</strong> "Be transformed by the renewing (<em>anakainōsei</em>) of your mind" — Paul uses the cognate noun (<em>anakainōsis</em>, with <em>kainos</em> rather than <em>neos</em>) in Romans. Both texts share the conviction that transformation runs through the mind's renewal, not around it. The mind is not bypassed in sanctification; it is the primary site of the Spirit's renewing work.</p>
+            <p><strong>Cross-references:</strong> Col 3:10 — "the new self, which is being renewed (<em>anakainoumenon</em>) in knowledge after the image of its creator" — present passive participle, confirming the ongoing nature of the renewal. 2 Cor 4:16 — "though our outer self is wasting away, our inner self is being renewed (<em>anakainoutai</em>) day by day." The renewal is daily — not achieved once and sustained by momentum, but given fresh each day.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v43')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v43">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v43">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series</div>
+              <p>Keller unpacks "you learned Christ" (v. 20) as one of the most important Pauline phrases in Ephesians — Christ is not merely the content of the curriculum but the Teacher who is himself the content. Christian formation is relational before it is propositional. You are being shaped by knowing him, not merely by accumulating accurate theological statements about him. The doctrine matters because it tells you who the Person is — but the formation is Person-to-person at its core.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP Bible Speaks Today)</div>
+              <p>Stott is particularly careful with the threefold infinitives of vv. 22–24, arguing they describe not a temporal sequence (first you put off, then you are renewed, then you put on) but the single complex reality of conversion-and-sanctification. The putting off and putting on are both already accomplished; the renewal is their continuous expression in the life of the believer. The three statements are not steps on a ladder but three angles on one event that has permanent ongoing implications.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar New Testament Commentary)</div>
+              <p>O'Brien argues that the diagnosis of the Gentile mind in vv. 17–19 is epistemological before it is moral: "darkened in their understanding" is the condition that produces the moral failures of v. 19, not the other way around. The solution is therefore not primarily moral improvement (trying harder to avoid the behaviors) but re-connection to the life of God — which is what conversion (vv. 20–24) accomplishes. The root fix addresses the root problem.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Barnes</div>
+              <div class="commentator-source">Notes on the New Testament: Ephesians</div>
+              <p>Barnes notes that "the old self is <em>corrupt according to deceitful desires</em>" — the old self is not merely static residue but an active deteriorating process. It continues to decay and to deceive. This is why the putting-off is necessary and decisive: the old garment is not simply outdated but actively rotting, and leaving it on causes ongoing damage. The decisiveness of the aorist (put off) matches the urgency of the situation.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (Zondervan Exegetical Commentary on the NT)</div>
+              <p>Arnold connects the "hardness of heart" (<em>pōrōsis</em>, v. 18) to ancient Greek medical terminology — <em>pōrōsis</em> was the medical term for callus formation, used for hardened arteries and cataracts. The spiritual callus is not the result of one decisive act but of accumulated willful resistance over time, layer by layer. Paul's contrast — "but you did not learn Christ that way" (v. 20) — implies the Ephesians' formation in Christ has been a process of softening, of progressive responsiveness to the truth, the opposite trajectory.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v43')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v43">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v43">
+            <ul>
+              <li>The old self is something you put off — not something you are. When you sin, does your brain tell you "I did something from the old self" or "I am the old self"? What would it take to hold the behavioral failure without the identity collapse?</li>
+              <li>The renewal of the mind is present tense — continuous, ongoing, not once-achieved. Are you treating sanctification as a linear progress graph you're failing to climb, or as an ongoing process inside a decisive frame that already holds?</li>
+              <li>"Created after the likeness of God" — the new self is a creation (God made it, aorist passive), not a performance (you generated it). Where are you still trying to manufacture the new self by willpower rather than inhabit what has been made and given?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v43 -->
+
+    <!-- v44: Eph 4:25-32 -->
+    <div class="verse-block">
+      <div class="verse-header" onclick="toggleVerse('v44')">
+        <span class="verse-ref">Ephesians 4:25–32</span>
+        <span class="verse-title">New Humanity in Practice: Truth, Anger, Speech, Forgiveness</span>
+        <span class="toggle-arrow open" id="arrow-v44">▼</span>
+      </div>
+      <div class="verse-text-preview">
+        "Therefore, having put away falsehood, let each one of you speak the truth with his neighbor, for we are members one of another. Be angry and do not sin; do not let the sun go down on your anger, and give no opportunity to the devil. Let the thief no longer steal, but rather let him labor, doing honest work with his own hands, so that he may have something to share with anyone in need. Let no corrupting talk come out of your mouths, but only such as is good for building up, as fits the occasion, so that it may give grace to those who hear. And do not grieve the Holy Spirit of God, by whom you were sealed for the day of redemption. Let all bitterness and wrath and anger and clamor and slander be put away from you, along with all malice. Be kind to one another, tenderhearted, forgiving one another, as God in Christ has forgiven you." — ESV
+      </div>
+      <div class="collapsible-content open" id="v44">
+
+        <div class="panel panel-greek">
+          <div class="panel-header" onclick="togglePanel('greek-v44')">
+            <span class="icon">🔍</span> Greek Exegesis
+            <span class="toggle-arrow" id="arrow-greek-v44">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="greek-v44">
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">orgizesthe</span>
+                <span class="term-parsing">verb · pres. mid/pass. imperative (v. 26)</span>
+              </div>
+              <div class="term-gloss">ESV: "be angry" | NIV: "in your anger" | NASB: "be angry"</div>
+              <div class="term-significance">A present imperative — either a command ("be angry") or a concessive conditional ("when you are angry..."). Either reading is striking: anger is not prohibited. The permission or command to be angry — taken from Ps 4:4 — acknowledges that anger is a morally appropriate response to genuine injustice or genuine wrong. The sin is not in the anger but in its mishandling: the duration (letting it outlast the day), the method (giving it to the devil as a foothold), and the direction (turning it into bitterness, v. 31). The emotion and the sin are carefully distinguished.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">sapros</span>
+                <span class="term-parsing">adjective · nom. sg. masc. (v. 29)</span>
+              </div>
+              <div class="term-gloss">ESV: "corrupting" | NIV: "unwholesome" | NASB: "unwholesome"</div>
+              <div class="term-significance">The word for rotting, putrefying, decayed — used of food that has gone bad. Paul applies it to speech: corrupting (<em>sapros</em>) talk is not merely unhelpful or inappropriate; it is putrefying, actively decaying the listener the way rotten food poisons whoever consumes it. The metaphor is visceral and deliberate. The contrast is speech that "gives grace (<em>charin</em>) to those who hear" — the word for grace (<em>charis</em>) itself appearing, so that the goal of speech is named as a grace-event.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">lypeō</span>
+                <span class="term-parsing">verb · pres. act. imperative (negated) (v. 30)</span>
+              </div>
+              <div class="term-gloss">ESV: "grieve" | NIV: "grieve" | NASB: "grieve"</div>
+              <div class="term-significance">To cause grief, pain, or sorrow to a person. Paul applies this personal, relational verb to the Holy Spirit: the Spirit can be <em>grieved</em>. Grief is not a mechanical reaction; it is a personal response that implies relationship, investment, and care. The Spirit is not indifferent to the community's relational behavior — he is personally present in it and personally responds to it. This is one of the strongest NT evidences for the Spirit's personhood. The command not to grieve is implicitly an invitation: live in a way that brings the Spirit joy, not sorrow.</div>
+            </div>
+
+            <div class="greek-term">
+              <div class="term-header">
+                <span class="term-word">charizomenoi</span>
+                <span class="term-parsing">verb · pres. mid. participle (v. 32)</span>
+              </div>
+              <div class="term-gloss">ESV: "forgiving" | NIV: "forgiving" | NASB: "forgiving"</div>
+              <div class="term-significance">From <em>charis</em> (grace, gift, favor) — to grace-give, to grant freely, to forgive. The etymology permanently links the act of forgiving to the giving of grace: you are not merely overlooking an offense or paying a moral debt; you are grace-gifting the other person. Present tense: ongoing, not a once-accomplished act. "As God in Christ has forgiven you" (<em>kathōs kai ho theos en Christō echarisato hymin</em>) — God's forgiveness in Christ is the template and the resource. The pattern is total, unilateral, and at great personal cost.</div>
+            </div>
+
+            <p>Each imperative unit in vv. 25–32 follows a consistent structure: a negative (what to stop — falsehood, sinful anger, theft, corrupting speech, bitterness), a positive (what to replace it with — truth, righteous anger appropriately handled, honest labor and generosity, grace-giving speech, kindness/tenderheartedness/forgiveness), and a reason grounded in community identity ("we are members one of another," "give no opportunity to the devil," "so that it may give grace to those who hear," "as God in Christ has forgiven you"). The ethics are not rules imposed from above; they are descriptions of what it looks like for members of one body to live accordingly.</p>
+
+          </div>
+        </div>
+
+        <div class="panel panel-jfb">
+          <div class="panel-header" onclick="togglePanel('jfb-v44')">
+            <span class="icon">📖</span> Commentary (JFB)
+            <span class="toggle-arrow" id="arrow-jfb-v44">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="jfb-v44">
+            <p>JFB note that the "therefore" of v. 25 anchors the specific imperatives that follow directly in the put-off/put-on theology of vv. 22–24. Each specific command is an application of the clothing metaphor: having put off the old self, now put away falsehood; having put on the new self, now speak truth. The specific commands of vv. 25–32 are not additional requirements tacked onto the general principle; they are the general principle arriving at specific moments of daily community life.</p>
+            <p>On v. 26's "be angry and do not sin" (citing Ps 4:4), JFB note that the command to be angry is not an anomaly — there is a form of anger that is morally required. Righteous indignation at genuine evil, at injustice, at the desecration of what is sacred, is a proper human response that mirrors God's own wrath against sin. The prohibition is not on the anger but on letting it become a structural feature — allowing it to outlast the situation that warranted it, to become habitual, to harden into bitterness (listed in v. 31).</p>
+            <p>JFB give careful attention to v. 30's "do not grieve the Holy Spirit of God" as a pivotal moment: the Spirit is "sealed" within believers as the guarantee of final redemption (echoing Eph 1:13–14). The Spirit who dwells within is not passive — he responds to the community's behavior. JFB note that the specific context is speech (vv. 25, 29) and interpersonal conflict (vv. 26–27) — suggesting that these relational sins are the primary mechanisms of grieving the Spirit, not primarily the more dramatic sins the religious imagination usually pictures.</p>
+            <p>On v. 32's climactic command — "be kind to one another, tenderhearted, forgiving one another, as God in Christ has forgiven you" — JFB note that the progression from kindness (<em>chrēstos</em>) to tenderheartedness (<em>eusplanchnos</em>) to forgiveness (<em>charizomai</em>) moves from external behavior to emotional disposition to the deepest act of grace. All three are grounded in the same source: "as God in Christ has forgiven you" — the motivation and resource for human forgiveness is always the experience of divine forgiveness received.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-audhd">
+          <div class="panel-header" onclick="togglePanel('audhd-v44')">
+            <span class="icon">🧠</span> AuDHD Reframe
+            <span class="toggle-arrow" id="arrow-audhd-v44">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="audhd-v44">
+            <p>The AuDHD experiences most alive in this closing section are <strong>Shame Spiraling</strong> (around anger and speech failures), <strong>Masking Exhaustion</strong> (the cost of performing emotional regulation), and the specific neurological reality that many of these imperatives touch on the areas where AuDHD functioning is most vulnerable. These are not reasons to excuse the commands; they are reasons to read them with more pastoral precision.</p>
+            <p>"Be angry and do not sin" — the permission to be angry is the first gift of this verse. The AuDHD nervous system often responds to anger with shame before it has any response to the situation that produced the anger: "I shouldn't be this angry. What's wrong with me? I'm too much." Paul's word is: the anger itself is not the sin. Anger at genuine injustice, at genuine wrong, is a morally appropriate response — it mirrors God's own righteous indignation. The sin is in the mishandling: letting it outlast the day (v. 26b), letting it become the devil's foothold (v. 27), letting it solidify into the bitterness and clamor of v. 31. But the emotion and the sin are carefully distinguished. The AuDHD person who experiences anger quickly and intensely is not morally inferior; they are experiencing what emotional dysregulation does to a nervous system, and they are being given a direction toward resolution (don't let the sun go down on it), not condemned for feeling it.</p>
+            <p>"Do not let the sun go down on your anger" — for AuDHD nervous systems, unresolved anger is not always a choice to hold on. The nervous system processes it at its own pace, which may be slower or more circuitous than a neurotypical system. Anger that "shouldn't still be there" continues to be there because the nervous system hasn't finished processing it. The pastoral interpretation of this command is not "resolve it in the same day by sheer willpower or you have sinned." It is a direction: move toward resolution, name the anger (rather than masking it into a smile), bring it into conversation (with God, with a trusted person, with the person who caused it if possible), rather than leaving it to fester. Masking the anger — performing calm while the anger runs underground — is actually the opposite of compliance with this command. The command is toward truthful, timely expression, not polished suppression.</p>
+            <p>"Let no corrupting talk come out of your mouths, but only such as is good for building up" (v. 29) — the AuDHD brain that sometimes says things before the filter catches them, that blurts, that misreads the social register and speaks too directly or too intensely, has often received this verse as a condemnation of their basic communication style. But notice: the positive command is not "speak less" or "filter everything." It is "let what comes out be <em>good for building up, as fits the occasion, so that it may give grace to those who hear</em>." The goal is grace-giving speech — speech oriented toward the other person's good. The AuDHD person whose directness and intensity sometimes lands hard is being pointed toward a telos (give grace to the hearer), not imprisoned by a prohibition that will activate the prohibition-activation paradox. What is the thing I'm about to say, and is its direction toward building up this person? That is the question the verse invites, not: have you pre-censored every syllable?</p>
+            <p>"Do not grieve the Holy Spirit" (v. 30) — this verse reframes the entire ethical section of vv. 25–32. The Spirit is personally present in the community's relational life. He is not watching from a distance to enforce the rules; he is invested in the community's wellbeing, personally present in the conversation you just had, personally responsive to whether you chose kindness or clamor. When you grieve the Spirit — through persistent bitterness, through corrupting speech, through nursing an unresolved anger into hardness — you are not breaking a rule in a rulebook. You are doing something to a Person who loves you and the people around you. This is a more motivating frame than "comply or face consequences"; it is "the Spirit who raised Jesus from the dead is present in your community's daily life, and your choices affect him."</p>
+            <p>Finally, <em>charizomai</em> (v. 32) — forgiving one another as <em>grace-giving</em>. The AuDHD believer who has frequently been on the receiving end of patience, who has needed more grace extended to them than they feel they've returned, who carries the chronic low-grade debt of "I've been too much for too many people" — is being invited to understand themselves as a conduit of something they have already received in abundance. You forgive from the overflow of what has been given to you, not from a reserve of personal virtue. The template is God's forgiveness in Christ: total, at immense personal cost, extended before you became worthy. From that template, extend what you have received. You are not running out of it. The source does not run dry.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-ws">
+          <div class="panel-header" onclick="togglePanel('ws-v44')">
+            <span class="icon">📝</span> Word Study
+            <span class="toggle-arrow" id="arrow-ws-v44">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="ws-v44">
+            <div class="word-study-term">charizomai / "forgive" — grace-giving</div>
+            <p><strong>Etymology:</strong> From <em>charis</em> (grace, favor, gift freely given) + <em>-izomai</em> (verb suffix meaning to act in the manner of, to do). The compound means "to act with grace toward, to give freely, to forgive by an act of grace." Every time Paul uses this word for forgiveness, the grace-quality is built in — you are not paying a debt or clearing an account; you are grace-gifting someone.</p>
+            <p><strong>NT range:</strong> Paul uses <em>charizomai</em> in three overlapping senses that illuminate each other: (1) to give freely — Phil 1:29 ("it has been granted [<em>charizomai</em>] to you that for the sake of Christ you should not only believe in him but also suffer for his sake"); (2) to forgive — Col 3:13 ("as the Lord has forgiven [<em>charizomai</em>] you, so you also must forgive one another"); (3) here in Eph 4:32. In every case the act is characterized by grace — it flows from abundance, not obligation; it is given, not owed.</p>
+            <p><strong>The link to charis:</strong> By using <em>charizomai</em> rather than <em>aphiēmi</em> (the other common NT forgiveness word) Paul permanently links the act of forgiving another to the experience of receiving grace. The etymology is the theology: you forgive by grace, from the position of one who has been graced, out of the same resource. The motivation and the mechanism are identical to the motivation and mechanism of God's own forgiveness of you. Cross-references: Col 3:13 ("as the Lord has forgiven you, so you also must forgive"); Luke 7:47 ("she loved much, because she has been forgiven much — but he who is forgiven little, loves little").</p>
+            <p><strong>This usage:</strong> The present middle participle (<em>charizomenoi</em>) — ongoing, active, reflexive or middle voice suggesting the forgiver is also involved in the act as a participant, not a detached executor. "As God in Christ has forgiven you" — the aorist <em>echarisato</em> there is the decisive, completed act of God's forgiveness in the cross. Your ongoing present-tense forgiving flows from that completed act. The spring feeds the stream; the stream does not have to generate its own water.</p>
+          </div>
+        </div>
+
+        <div class="panel panel-commentators">
+          <div class="panel-header" onclick="togglePanel('comm-v44')">
+            <span class="icon">📚</span> Additional Commentators
+            <span class="toggle-arrow" id="arrow-comm-v44">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="comm-v44">
+
+            <div class="commentator-block">
+              <div class="commentator-name">Keller</div>
+              <div class="commentator-source">Ephesians Sermon Series / The Prodigal God</div>
+              <p>Keller uses v. 32 as the capstone of his gospel-motivation framework for the entire ethical section: you cannot genuinely forgive from moral willpower; you forgive from the overflow of having been genuinely forgiven. The person who finds forgiveness impossible is likely one who has not yet experienced being fully forgiven themselves — because the experience of total, unearned grace produces the desire to give what you've received. The command and its resource are the same word (<em>charizomai</em>).</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Stott</div>
+              <div class="commentator-source">The Message of Ephesians (IVP Bible Speaks Today)</div>
+              <p>Stott observes that each specific command in vv. 25–32 is given a community rationale — "we are members one of another" (v. 25), "give no room to the devil" in the community (v. 27), "give grace to those who hear" (v. 29), "as God in Christ has forgiven you" (v. 32). The imperatives are not private spiritual disciplines; they are the relational practice of a body that shares one life in one Spirit. The individual Christian cannot practice these commands in isolation from the community that gives them their context and their ground.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">O'Brien</div>
+              <div class="commentator-source">The Letter to the Ephesians (Pillar New Testament Commentary)</div>
+              <p>O'Brien focuses on v. 30 as the theological center of the section — "do not grieve the Holy Spirit" anchors all the specific commands in a theology of the Spirit's personal presence in the community's life. The Spirit is sealed within believers as the guarantee of redemption; he is not an impersonal force but a Person who grieves over broken community. O'Brien argues this makes the ethics of vv. 25–32 inherently Spirit-relational: they are conditions of the Spirit's joyful, ungrieved presence, not merely social norms.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Barnes</div>
+              <div class="commentator-source">Notes on the New Testament: Ephesians</div>
+              <p>Barnes traces the visceral force of <em>sapros</em> (rotting/corrupting, v. 29) — literally the word for decayed food that makes the eater sick. He argues Paul wants the Ephesians to feel the active, damaging quality of corrupting speech: it is not merely unhelpful but poisonous to the listener. The contrast — speech that gives grace to those who hear — sets the highest possible positive telos for communication: every word is either decaying or gracing the hearer.</p>
+            </div>
+
+            <div class="commentator-block">
+              <div class="commentator-name">Arnold</div>
+              <div class="commentator-source">Ephesians (Zondervan Exegetical Commentary on the NT)</div>
+              <p>Arnold contextualizes v. 27 ("give no opportunity to the devil") within the Ephesian demonological background — in a culture acutely aware of spiritual powers and their points of access, Paul's claim is specific and practical: unresolved anger creates a structural opening (<em>topos</em> — a place, a foothold) that the adversary exploits. This is not abstract; it is a concrete claim that broken relational states create spiritual vulnerabilities in the community, not merely social dysfunction.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="panel panel-pastoral">
+          <div class="panel-header" onclick="togglePanel('reflect-v44')">
+            <span class="icon">💭</span> Pastoral Reflection
+            <span class="toggle-arrow" id="arrow-reflect-v44">▼</span>
+          </div>
+          <div class="panel-body collapsible-content open" id="reflect-v44">
+            <ul>
+              <li>"Be angry and do not sin" — the anger itself is not the sin. Where do you experience shame about the intensity or speed of your emotional responses, and what would it mean to separate the feeling from its mishandling?</li>
+              <li>Paul says the Holy Spirit can be grieved — meaning the Spirit is personally present in your community's relational life, responding to how you treat each other. How does it change your understanding of interpersonal conflict to see it as something the Spirit experiences, not just a social problem to manage?</li>
+              <li>Forgiveness is <em>charizomai</em> — giving grace from the position of having received it. Is there somewhere you're trying to forgive from a reservoir of personal moral strength rather than from the overflow of being graced yourself? What would it look like to forgive from the latter?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end v44 -->
+
+  </div><!-- /chapter-block -->
+</div><!-- /study-container -->
+
+<script>
+function toggleVerse(id) {
+  const content = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  arrow.classList.toggle('open', !isOpen);
+  arrow.textContent = isOpen ? '▶' : '▼';
+}
+function togglePanel(id) {
+  const content = document.getElementById(id);
+  const arrow = document.getElementById('arrow-' + id);
+  if (!content) return;
+  const isOpen = content.classList.contains('open');
+  content.classList.toggle('open', !isOpen);
+  if (arrow) { arrow.textContent = isOpen ? '▶' : '▼'; }
+}
+</script>
+</body>
+</html>
