@@ -84,6 +84,32 @@ function parseRef(ref) {
   return { book, bookIdx, chapter: parseInt(m[2], 10), verse: parseInt(m[3], 10) };
 }
 
+// Find up to `limit` studies that share at least one theme with `s`, ranked by
+// number of shared themes (most first), then by canonical Bible order. Ties
+// broken deterministically by that same order. Returns [] if `s` has no themes
+// or no other study shares one — the related-studies section is simply
+// omitted on that page rather than showing unrelated content.
+function relatedStudies(s, allStudies, limit) {
+  limit = limit || 3;
+  const myThemes = new Set(s.themes || []);
+  if (myThemes.size === 0) return [];
+  const scored = allStudies
+    .filter(o => o.id !== s.id)
+    .map(o => ({
+      o,
+      shared: (o.themes || []).filter(t => myThemes.has(t)).length,
+      p: parseRef(o.reference)
+    }))
+    .filter(x => x.shared > 0)
+    .sort((a, b) =>
+      b.shared - a.shared ||
+      a.p.bookIdx - b.p.bookIdx ||
+      a.p.chapter - b.p.chapter ||
+      a.p.verse - b.p.verse
+    );
+  return scored.slice(0, limit).map(x => x.o);
+}
+
 function escapeHtml(s) {
   return String(s == null ? "" : s)
     .replace(/&/g, "&amp;")
@@ -176,13 +202,29 @@ ul.pick li,ul.plain li{margin:8px 0}
 .sources{font-size:.82rem;color:var(--soft);border-top:1px solid var(--line);margin-top:30px;padding-top:14px}
 footer.pagefoot{max-width:720px;margin:40px auto 0;padding:20px;font-size:.82rem;color:var(--soft);border-top:1px solid var(--line)}
 footer.pagefoot a{color:var(--accent)}
+.related{margin:40px 0 0;padding-top:20px;border-top:1px solid var(--line)}
+.related .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:12px}
+.related ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.related li a{color:var(--accent);font-weight:600;text-decoration:none}
+.related li a:hover{text-decoration:underline}
+.related li .rsub{display:block;color:var(--soft);font-size:.88rem;font-weight:400;margin-top:2px}
 `;
 
-function studyPageHTML(s, fontStyleBlock) {
+function relatedStudiesHTML(related) {
+  if (!related.length) return "";
+  const items = related.map(r => {
+    const sub = truncate(stripTags(r.subtitle || ""), 90);
+    return `<li><a href="/studies/${r.id}.html">${escapeHtml(r.reference)}</a>${sub ? `<span class="rsub">${escapeHtml(sub)}</span>` : ""}</li>`;
+  }).join("");
+  return `<div class="related"><div class="lbl">Related studies</div><ul>${items}</ul></div>`;
+}
+
+function studyPageHTML(s, fontStyleBlock, allStudies) {
   const description = truncate(stripTags(s.subtitle || s.anchor), 155);
   const canonical = `${SITE_URL}/studies/${s.id}.html`;
   const appLink = `${SITE_URL}/#s=${s.id}`;
   const keywords = (s.themes || []).join(", ");
+  const related = relatedStudies(s, allStudies || []);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -239,6 +281,7 @@ ${fontStyleBlock}
   <article>
     ${studyArticleHTML(s)}
   </article>
+  ${relatedStudiesHTML(related)}
 </div>
 <footer class="pagefoot">
   Part of <a href="/">Logos Studies</a> — a growing collection of AuDHD-aware Bible studies.
@@ -294,7 +337,7 @@ function main() {
 
   // 2. one static page per study
   studies.forEach(s => {
-    const html = studyPageHTML(s, fontStyleBlock);
+    const html = studyPageHTML(s, fontStyleBlock, studies);
     fs.writeFileSync(path.join(DIST, "studies", `${s.id}.html`), html);
   });
 
