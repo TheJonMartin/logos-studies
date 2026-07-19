@@ -1,9 +1,12 @@
 [build]
-  # Copies the canonical app file into a clean publish folder as index.html.
-  # logos-study-app.html itself is never renamed or moved — this only affects
-  # the deploy output, so the working docs alongside it (STUDY-FORMAT-SPEC.md,
-  # HANDOFF notes, prototypes, etc.) are never published to the public site.
-  command = "mkdir -p dist && cp logos-study-app.html dist/index.html"
+  # scripts/build-seo.js copies the canonical app file into a clean publish
+  # folder as index.html (unchanged, verbatim), then generates a static,
+  # crawlable HTML page per study (dist/studies/<id>.html), sitemap.xml,
+  # robots.txt, and llms.txt from the same STUDIES array. logos-study-app.html
+  # itself is never renamed, moved, or rebuilt — this only affects the deploy
+  # output, so the working docs alongside it (STUDY-FORMAT-SPEC.md, HANDOFF
+  # notes, prototypes, etc.) are never published to the public site.
+  command = "node scripts/build-seo.js"
   publish = "dist"
 
 [[headers]]
@@ -11,3 +14,8 @@
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
+
+[[redirects]]
+  from = "/studies"
+  to = "/"
+  status = 301

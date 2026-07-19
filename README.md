@@ -6,14 +6,24 @@ Single self-contained study app, deployed to Netlify. Source of truth is
 
 ## Deploy
 
-Netlify builds from this repo automatically on every push to `main`:
+Netlify builds from this repo automatically on every push to `main`
+(live at https://audhd-bible.netlify.app/):
 
-1. `netlify.toml` copies `logos-study-app.html` → `dist/index.html`
-2. Netlify publishes the `dist/` folder
+1. `netlify.toml` runs `node scripts/build-seo.js`
+2. That script copies `logos-study-app.html` → `dist/index.html` (unchanged,
+   verbatim), then generates a real static HTML page per study at
+   `dist/studies/<id>.html` (crawlable by search engines and AI/answer-engine
+   bots that don't run JavaScript), plus `dist/sitemap.xml`, `dist/robots.txt`,
+   and `dist/llms.txt` — all derived automatically from the STUDIES array
+3. Netlify publishes the `dist/` folder
 
 Everything else in this repo (format spec, prototypes, handoff notes, the
 retired Notion-based skill export) stays out of the published site — only
-`dist/index.html` is public.
+what `scripts/build-seo.js` writes into `dist/` is public. Never edit files
+inside `dist/` directly; they're regenerated on every build.
+
+Studies are shareable directly: each static page links to
+`/#s=<id>`, which opens straight to that study in the interactive app.
 
 ## Working docs in this repo
 
