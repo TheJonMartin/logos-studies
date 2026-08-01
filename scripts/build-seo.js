@@ -65,12 +65,12 @@ function extractStudies(src) {
   return studies;
 }
 
-// Reuse the exact embedded base64 @font-face block from the source app so
-// static pages match the app's look with zero CDN dependency.
+// Field & Ledger uses system fonts only (Georgia / Calibri / Courier New) —
+// no embedded @font-face block needed, unlike the old Newsreader setup. Kept
+// as a no-op function (returns "") so studyPageHTML's template doesn't need
+// to change shape if a webfont is ever reintroduced.
 function extractFontStyleBlock(src) {
-  const m = src.match(/<style id="fonts">[\s\S]*?<\/style>/);
-  if (!m) throw new Error("Could not find <style id=\"fonts\"> block in logos-study-app.html.");
-  return m[0];
+  return "";
 }
 
 const BOOK_ORDER = ["Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job","Psalms","Proverbs","Ecclesiastes","Song of Solomon","Isaiah","Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi","Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"];
@@ -158,52 +158,57 @@ function studyArticleHTML(s) {
 
 const PAGE_CSS = `
 :root{
-  --bg:#e6dabf; --panel:#efe4cf; --ink:#2a2620; --soft:#6a5f45; --line:#d2c09c;
-  --accent:#6b7233; --accent-soft:#e7e5cc; --scripture:#332f24;
-  --shadow:0 1px 3px rgba(60,50,20,.10),0 8px 24px rgba(60,50,20,.07);
+  --bg:#faf6ef; --panel:#f0ece5; --ink:#2e2a26; --soft:#6f6b66; --line:#d5d1cb;
+  --accent:#4a3352; --accent-soft:#e5dfdc; --scripture:#2e2a26;
+  --sage:#7c9473; --sage-soft:#e6e6db;
+  --mustard:#e8a93b; --mustard-soft:#f7ebd6; --mustard-ink:#8d611e;
+  --shadow:0 1px 3px rgba(46,42,38,.10),0 8px 24px rgba(46,42,38,.07);
+  --font-head:Georgia,'Times New Roman',serif;
+  --font-body:Calibri,Candara,Segoe,'Segoe UI',Optima,Arial,sans-serif;
+  --font-label:'Courier New',Courier,monospace;
   --measure:66ch; --fs:18px; --radius:14px;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:'Newsreader',Georgia,'Times New Roman',serif;
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);
   font-size:var(--fs);line-height:1.65;-webkit-font-smoothing:antialiased}
 .wrap{max-width:720px;margin:0 auto;padding:0 20px 70px}
 header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top-inner{max-width:720px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.brand{font-weight:700;letter-spacing:.02em;font-size:1.05rem;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:9px}
+.brand{font-family:var(--font-head);font-weight:700;letter-spacing:.02em;font-size:1.05rem;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:9px}
 .brand .mark{width:26px;height:26px;border-radius:7px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:800}
 .top-spacer{flex:1}
 .applink{background:var(--accent);color:#fff;text-decoration:none;padding:8px 14px;border-radius:20px;font-size:.85rem;font-weight:600}
 .applink:hover{opacity:.9}
 .crumbs{font-size:.82rem;color:var(--soft);padding:16px 0 0}
 .crumbs a{color:var(--soft)}
-h1.title{font-size:1.9rem;margin:10px 0 4px}
-p.meta{color:var(--soft);margin:0 0 18px;font-family:'Courier New',monospace;font-size:.85rem;letter-spacing:.02em}
+h1.title{font-family:var(--font-head);font-size:1.9rem;margin:10px 0 4px}
+p.meta{color:var(--soft);margin:0 0 18px;font-family:var(--font-label);font-size:.85rem;letter-spacing:.02em}
 .anchor{background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:18px 0 30px}
-.anchor .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:6px}
+.anchor .lbl{font-family:var(--font-label);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:6px}
 section.blk{margin:30px 0}
-section.blk h2{font-size:1.2rem;display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:8px}
-section.blk h2 .num{color:var(--accent);font-weight:700}
-section.blk h2 .sub{display:block;font-size:.82rem;color:var(--soft);font-weight:400;margin-top:2px}
+section.blk h2{font-family:var(--font-head);font-size:1.2rem;display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:8px}
+section.blk h2 .num{font-family:var(--font-label);color:var(--accent);font-weight:700}
+section.blk h2 .sub{font-family:var(--font-body);display:block;font-size:.82rem;color:var(--soft);font-weight:400;margin-top:2px}
 .scripture{background:var(--panel);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;margin:14px 0;color:var(--scripture)}
-.scripture .ver{display:block;font-family:'Courier New',monospace;font-size:.75rem;letter-spacing:.08em;color:var(--accent);margin-bottom:6px;text-transform:uppercase}
-.word{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;margin:14px 0}
-.word .term{font-weight:700;margin-bottom:2px}
-.word .parse{font-family:'Courier New',monospace;font-size:.78rem;color:var(--soft);margin-bottom:8px}
+.scripture .ver{display:block;font-family:var(--font-label);font-size:.75rem;letter-spacing:.08em;color:var(--accent);margin-bottom:6px;text-transform:uppercase}
+.word{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--sage);border-radius:var(--radius);padding:14px 18px;margin:14px 0}
+.word .term{font-family:var(--font-head);font-weight:700;margin-bottom:2px}
+.word .parse{font-family:var(--font-label);font-size:.78rem;color:var(--soft);margin-bottom:8px}
 .callout{border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;margin:14px 0;background:var(--panel)}
-.callout.caution{border-color:#b8863a;background:#f3e6cf}
-.callout .clbl{font-weight:700;font-size:.85rem;margin-bottom:6px;color:var(--accent)}
-.callout.caution .clbl{color:#8a5a1e}
+.callout.caution{border-color:var(--mustard);background:var(--mustard-soft)}
+.callout .clbl{font-family:var(--font-label);font-weight:700;font-size:.85rem;margin-bottom:6px;color:var(--accent)}
+.callout.caution .clbl{color:var(--mustard-ink)}
 ul.pick li,ul.plain li{margin:8px 0}
 .prayer{font-style:italic;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:14px 0}
-.onething{background:var(--accent);color:#fff;border-radius:var(--radius);padding:18px 20px;margin:30px 0}
-.onething .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;opacity:.85;margin-bottom:6px;font-weight:700}
+.onething{background:var(--mustard);color:var(--ink);border-radius:var(--radius);padding:18px 20px;margin:30px 0}
+.onething .lbl{font-family:var(--font-label);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;opacity:.85;margin-bottom:6px;font-weight:700}
 .sources{font-size:.82rem;color:var(--soft);border-top:1px solid var(--line);margin-top:30px;padding-top:14px}
 footer.pagefoot{max-width:720px;margin:40px auto 0;padding:20px;font-size:.82rem;color:var(--soft);border-top:1px solid var(--line)}
 footer.pagefoot a{color:var(--accent)}
 .related{margin:40px 0 0;padding-top:20px;border-top:1px solid var(--line)}
-.related .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:12px}
+.related .lbl{font-family:var(--font-label);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:12px}
 .related ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .related li a{color:var(--accent);font-weight:600;text-decoration:none}
 .related li a:hover{text-decoration:underline}
