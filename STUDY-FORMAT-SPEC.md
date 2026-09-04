@@ -36,17 +36,19 @@ Every study moves once through the whole passage in this order. It does **not** 
 
 **3 · The Movement of Thought** — the logical/narrative flow, broken into labeled "beats." Fuller exegesis lives here. End with a one-line summary callout tracing the arc (e.g., "mercy → offering → transformation → discernment").
 
-**4 · Words That Carry Weight** — ~4–6 load-bearing original-language words, each as a word-card with: term + transliteration, grammatical parsing (tense/voice/mood/case as relevant), and 2–4 sentences of meaning tied to at least one cross-reference. Include amber caution callouts for any genuinely contested word. Close with a one-line summary.
+**4 · The Neuroplasticity Bridge** — connect the passage to how minds/identities actually change (attention, repetition, self-narrative), under the §1.5 guardrails. Tie to a specific biblical text on renewal/formation. One-line summary.
 
-**5 · The Neuroplasticity Bridge** — connect the passage to how minds/identities actually change (attention, repetition, self-narrative), under the §1.5 guardrails. Tie to a specific biblical text on renewal/formation. One-line summary.
+**5 · AuDHD Reframe** — 3–5 specific, honest points where the passage meets a neurodivergent mind. Draw from these recurring lenses as the text warrants: willpower/executive-function relief, identity-vs-performance, masking vs. inward transformation, embodiment/concreteness, iterative discernment, repetition-as-mechanism, the personal/singular against feeling like "the exception," sensory/pacing. Never force all of them; pick what the text actually supports.
 
-**6 · AuDHD Reframe** — 3–5 specific, honest points where the passage meets a neurodivergent mind. Draw from these recurring lenses as the text warrants: willpower/executive-function relief, identity-vs-performance, masking vs. inward transformation, embodiment/concreteness, iterative discernment, repetition-as-mechanism, the personal/singular against feeling like "the exception," sensory/pacing. Never force all of them; pick what the text actually supports.
+**6 · Words That Carry Weight** — ~4–6 load-bearing original-language words, each as a word-card with: term + transliteration, grammatical parsing (tense/voice/mood/case as relevant), and 2–4 sentences of meaning tied to at least one cross-reference. Include amber caution callouts for any genuinely contested word. Close with a one-line summary.
 
 **7 · Formation** — concrete application framed as **"pick one, not all."** 3 options, each a small, doable, embodied action. Reducing choice load is the point.
 
 **8 · Response / Prayer** — a short first-person prayer in the voice of the passage, honest about AuDHD struggle where fitting.
 
 **9 · One Thing to Carry Today** — a single sentence takeaway, rendered as the closing highlighted block. Bookends the Anchor.
+
+**Ordering is verified against the app, and the app wins.** As of 2026-08-14 all 166 single-passage studies in `STUDIES` run `text → context → flow → neuro → audhd → words → formation → prayer`; zero run Words before the Bridge. (Corrected 2026-08-14 — the spec had Words at 4 and the Bridge at 5, which never matched a built study.) The 11 topical studies use the §5.6 variant order and have no Neuroplasticity section at all. If this doc and the app ever disagree again, follow the app and flag the discrepancy to Jon rather than reordering 177 studies to match a document.
 
 ---
 
@@ -64,7 +66,7 @@ Every study moves once through the whole passage in this order. It does **not** 
 The arc holds; the emphasis flexes.
 
 - **Epistle (default):** as written above. "Movement of Thought" = logical argument.
-- **OT narrative:** §3 becomes scene/plot movement; §2 emphasizes placement in the larger story; watch for narrator's point of view. Hebrew words in §4.
+- **OT narrative:** §3 becomes scene/plot movement; §2 emphasizes placement in the larger story; watch for narrator's point of view. Hebrew words in *Words That Carry Weight*.
 - **Psalm / poetry:** §3 traces poetic structure (parallelism, strophes, turns); note imagery and emotional movement; Hebrew word studies; be careful not to flatten metaphor into proposition.
 - **Gospel:** §2 notes placement in the Gospel's flow and synoptic parallels where relevant; §3 traces the pericope's movement.
 - **Wisdom / Prophecy:** §2 handles historical setting and genre conventions; flag figurative vs. literal honestly.
@@ -75,7 +77,7 @@ In every genre, §1 guardrails apply without exception.
 
 ## 5 · Output format (how it reaches the app)
 
-Studies live in `bible-study-app.html` as objects appended to the `STUDIES` array. Adding a study = appending one object; Jon never edits code.
+Studies live in `logos-study-app.html` as objects appended to the `STUDIES` array. Adding a study = appending one object; Jon never edits code. (Filename corrected 2026-08-14 — this section previously said `bible-study-app.html`, which has not been the app's name for some time.)
 
 **Before adding a study, check existing work first.** Scan the `STUDIES` array for verse-adjacency (same book, nearby chapter/verse) or topical overlap with the new passage. If there's meaningful overlap, ask Jon whether the new passage should be merged into the existing study or added as its own standalone entry — don't decide unilaterally either way. (Adopted after Romans 6:5 and 6:6 were built as separate studies without this check.) **This check does not apply to topical studies (§5.6)** — a topical study is expected to revisit passages, or parts of passages, that already have their own single-passage study elsewhere in the library. That overlap is the point, not a problem to flag or avoid.
 
@@ -115,7 +117,7 @@ The library's "By Theme" toggle groups studies under these tags automatically (`
 - `{type:"prayer", html}` — the prayer block.
 - `{type:"heading", text}` — optional sub-heading.
 
-Section `id`s used for nav/scroll-spy: `text, context, flow, words, neuro, audhd, formation, prayer` (One Thing renders after the last section automatically).
+Section `id`s used for nav/scroll-spy, **in the order they must appear**: `text, context, flow, neuro, audhd, words, formation, prayer` (One Thing renders after the last section automatically). Number them `n:"1"` … `n:"8"` in that same order. Topical studies use the §5.6 order instead: `why, text, audhd, context, words, formation, prayer` — no `neuro` section.
 
 ---
 
@@ -179,8 +181,10 @@ Run before finalizing any study:
 7. Anchor and One Thing agree and bookend the study.
 8. `themes` field has 2–4 tags, all drawn from the controlled vocabulary in §5 (no ad hoc theme names).
 9. App still parses (JS syntax check) after appending.
+9a. Section order and numbering match §2 exactly (`text, context, flow, neuro, audhd, words, formation, prayer`), with no stray keys and no empty `blocks` arrays.
+9b. Study count diffed before/after: the reference list grew by exactly the number of studies requested, and nothing else in `STUDIES` moved or changed.
 10. For topical studies: `type:"topical"` is set; all passages' texts sit together in one "The Text" section, in order; AuDHD Reframe, Where This Sits, and Words That Carry Weight each appear exactly once and genuinely synthesize across passages rather than repeating a per-passage block four times; `translations` is `["NASB 1995"]` only; Formation/Prayer are synthesized once across the set; a supporting-passages check was run and any additions were confirmed with Jon, not assumed; no overlap check was run against single-passage studies (not required for this type).
 
 ---
 
-*Spec v1.2 — visuals re-standardized to Field & Ledger (plum/sage/mustard palette, Georgia/Calibri/Courier New, no font embedding). Locked from Romans 12:1–2, Galatians 2:20, Romans 6:5, and Colossians 3:3. Topical study variant (§5.6) added 2026-07-20. Field & Ledger re-brand 2026-08-01, replacing the original Olive Manuscript/Newsreader spec. Revise as the format matures.*
+*Spec v1.3 (2026-08-14) — §2 arc reordered to match the app (Neuroplasticity → AuDHD → Words; the spec had Words first, which no built study ever followed), app filename corrected in §5, verification checklist extended with ordering and diff checks. Previously v1.2 — visuals re-standardized to Field & Ledger (plum/sage/mustard palette, Georgia/Calibri/Courier New, no font embedding). Locked from Romans 12:1–2, Galatians 2:20, Romans 6:5, and Colossians 3:3. Topical study variant (§5.6) added 2026-07-20. Field & Ledger re-brand 2026-08-01, replacing the original Olive Manuscript/Newsreader spec. Revise as the format matures.*
