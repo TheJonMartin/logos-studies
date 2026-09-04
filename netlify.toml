@@ -1,11 +1,14 @@
 [build]
   # scripts/build-seo.js copies the canonical app file into a clean publish
-  # folder as index.html (unchanged, verbatim), then generates a static,
-  # crawlable HTML page per study (dist/studies/<id>.html), sitemap.xml,
-  # robots.txt, and llms.txt from the same STUDIES array. logos-study-app.html
-  # itself is never renamed, moved, or rebuilt — this only affects the deploy
-  # output, so the working docs alongside it (STUDY-FORMAT-SPEC.md, HANDOFF
-  # notes, prototypes, etc.) are never published to the public site.
+  # folder as index.html (unchanged, verbatim), then generates one real,
+  # canonical, crawlable HTML page per study at dist/studies/<id>/index.html
+  # (a hybrid: static content for crawlers + the full interactive app
+  # inlined, which self-boots and takes over for JS-capable visitors),
+  # plus sitemap.xml, robots.txt, and llms.txt from the same STUDIES array.
+  # logos-study-app.html itself is never renamed, moved, or rebuilt — this
+  # only affects the deploy output, so the working docs alongside it
+  # (STUDY-FORMAT-SPEC.md, HANDOFF notes, prototypes, etc.) are never
+  # published to the public site.
   command = "node scripts/build-seo.js"
   publish = "dist"
 
@@ -15,7 +18,32 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
 
+# The shared STUDIES asset is content-hashed by scripts/build-seo.js
+# (/assets/studies.<hash>.js), so its URL changes whenever a study changes.
+# That makes it safe to cache forever: returning visitors re-download the
+# 3.6 MB study data only when it has actually changed.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Old flat-file study URLs (pre-2026-08-02) redirect to the new per-study
+# directory URL — but as one exact literal line per study in dist/_redirects
+# (written by scripts/build-seo.js), not a wildcard rule here. A wildcard
+# pattern combining a placeholder/splat with a literal suffix in the same
+# segment (":id.html" / "*.html") did not reliably substitute or match in
+# testing; explicit literal redirects have no such ambiguity.
+
 [[redirects]]
   from = "/studies"
   to = "/"
   status = 301
+
+# SPA fallback — routes with no matching static file (e.g. /library) are
+# served the app shell, which reads location.pathname itself and renders
+# the right view client-side. Must stay LAST: Netlify only falls through to
+# this after failing to match a real file or an earlier, more specific rule.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

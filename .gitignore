@@ -1,3 +1,17 @@
 .DS_Store
 dist/
 node_modules/
+
+# Local scratch / session artifacts — never part of the site build
+.tmpcheck/
+_to_delete/
+scripts/_to_delete/
+scripts/.check.js
+scripts/*.bak-*
+.claude/
+
+# Netlify CLI local state (site id) and any local secrets
+.netlify/
+.env
+*.token
+netlify-token*
