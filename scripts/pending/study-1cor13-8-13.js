@@ -1,1 +1,60 @@
-SEE_FILE
+,
+{
+  id:"1-corinthians-13-8-13",
+  reference:"1 Corinthians 13:8–13",
+  title:"1 Corinthians 13:8–13",
+  subtitle:"The gifts are partial and they end. Love does not fall. Faith, hope, and love remain — and the greatest of these is love.",
+  translations:["NASB 1995","ESV"],
+  purpose:["Formation","AuDHD","Greek"],
+  themes:["Resurrection Hope","Life in the Spirit","Identity in Christ"],
+  anchor:"What you know now is in part. What will remain is not the part. Love does not fall.",
+  sections:[
+    {n:"1",id:"text",title:"The Text",blocks:[
+      {type:"scripture",ver:"NASB 1995",html:'<sup class="vn">8</sup>Love never fails; but if <em>there are gifts of</em> prophecy, they will be done away; if <em>there are</em> tongues, they will cease; if <em>there is</em> knowledge, it will be done away. <sup class="vn">9</sup>For we know in part and we prophesy in part; <sup class="vn">10</sup>but when the perfect comes, the partial will be done away. <sup class="vn">11</sup>When I was a child, I used to speak like a child, think like a child, reason like a child; when I became a man, I did away with childish things. <sup class="vn">12</sup>For now we see in a mirror dimly, but then face to face; now I know in part, but then I will know fully just as I also have been fully known. <sup class="vn">13</sup>But now faith, hope, love, abide these three; but the greatest of these is love.'},
+      {type:"scripture",ver:"ESV",html:'<sup class="vn">8</sup>Love never ends. As for prophecies, they will pass away; as for tongues, they will cease; as for knowledge, it will pass away. <sup class="vn">9</sup>For we know in part and we prophesy in part, <sup class="vn">10</sup>but when the perfect comes, the partial will pass away. <sup class="vn">11</sup>When I was a child, I spoke like a child, I thought like a child, I reasoned like a child. When I became a man, I gave up childish ways. <sup class="vn">12</sup>For now we see in a mirror dimly, but then face to face. Now I know in part; then I shall know fully, even as I have been fully known. <sup class="vn">13</sup>So now faith, hope, and love abide, these three; but the greatest of these is love.'}
+    ]},
+    {n:"2",id:"context",title:"Where This Sits",sub:"the more excellent way is also the thing that outlasts the gifts",blocks:[
+      {type:"p",html:'NASB 1995 prints 13:8&ndash;13 as one paragraph. ESV prints 13:8&ndash;12 together and sets 13:13 as its own paragraph. This study follows the NASB 1995 break, as locked for this chapter. The difference is worth naming: ESV lets v.13 stand as the landing sentence. NASB 1995 keeps the landing inside the same block as the argument that gets you there.'},
+      {type:"p",html:'The paragraph does not leave chapters 12 and 14 behind. The three gifts named in v.8 &mdash; prophecy, tongues, knowledge &mdash; are the ones Corinth has been treating as proof of spiritual standing. Paul does not say they are counterfeit. He says they are temporary. Love is the thing that does not fall, and therefore the thing that must govern how the temporary things are used when the church gathers in chapter 14.'},
+      {type:"p",html:'14:1 will open with the practical sequel: pursue love, and desire spiritual gifts. This paragraph is why that order is not reversible.'},
+      {type:"callout",style:"oneline",label:"In one line",html:"the gifts are partial and dated. Love is what remains, so love is what must run the room now."}
+    ]},
+    {n:"3",id:"flow",title:"The Movement of Thought",sub:"love never falls; the gifts end (v.8) → we know and prophesy in part (v.9) → the perfect ends the partial (v.10) → child to adult (v.11) → mirror to face (v.12) → three remain; love is greatest (v.13)",blocks:[
+      {type:"p",html:'<strong>v.8 &mdash; one present, three futures.</strong> Love never fails: <em>oudepote piptei</em>, it never falls. Then three futures: prophecies will be done away, tongues will cease, knowledge will be done away. Two different verbs. Prophecy and knowledge are <em>katargēthēsontai / katargēthēsetai</em> &mdash; they will be abolished, rendered inoperative. Tongues <em>pausontai</em> &mdash; they will cease. Paul does not stop here to date the ceasing. He sets a contrast: love does not fall; these do.'},
+      {type:"p",html:'<strong>vv.9&ndash;10 &mdash; partial now, ended when the complete arrives.</strong> We know in part and prophesy in part. When <em>to teleion</em> comes, the partial is done away with the same verb used of prophecy and knowledge in v.8. The child illustration in v.11 and the mirror in v.12 are how Paul wants that contrast felt: not as contempt for the present gifts, but as their proper scale.'},
+      {type:"p",html:'<strong>v.12 &mdash; now and then, twice.</strong> Now: a mirror, in a riddle (<em>en ainigmati</em> &mdash; NASB 1995 footnotes &ldquo;Lit <em>in a riddle</em>&rdquo;). Then: face to face. Now: I know in part. Then: I will know fully, just as I have been fully known. The last clause matters. Full knowing is not a human achievement. It is matched to having already been fully known.'},
+      {type:"p",html:'<strong>v.13 &mdash; three remain; one is greater.</strong> Faith, hope, love abide. The greatest of these is love. Paul does not explain the ranking in a second sentence. He has already shown it: love is what does not fall when the partial is ended, and love is what the other two exist to serve.'},
+      {type:"callout",style:"oneline",label:"In one line",html:"the argument is scale: gifts are real and partial; the end of the partial is coming; love is what is left standing."}
+    ]},
+    {n:"4",id:"neuro",title:"The Neuroplasticity Bridge",blocks:[
+      {type:"p",html:'God made minds that cannot hold the whole at once. Paul calls that condition &ldquo;in part,&rdquo; and he puts a mirror in a child&rsquo;s hand so the congregation can feel it. A later account of how partial attention, prediction, and memory work is looking at the same creature. It does not tell you what &ldquo;the perfect&rdquo; is, and it does not make Paul a theorist of development. The child-to-adult picture is an illustration of scale, not a stage theory to apply to yourself.'},
+      {type:"p",html:'What the paragraph actually does is relocate confidence. You are already fully known. You do not yet know fully. Love is the thing that can be practiced now without pretending the mirror has become a face.'},
+      {type:"callout",style:"oneline",label:"In one line",html:"partial knowing is how this creature was made for now — and love is given as the way to live inside that limit."}
+    ]},
+    {n:"5",id:"audhd",title:"AuDHD Reframe",blocks:[
+      {type:"p",html:'<strong>&ldquo;We know in part&rdquo; is permission, not an insult.</strong> A mind that collects, scripts, and checks is often trying to finish what Paul says cannot be finished yet. The drive for a complete map is understandable. This paragraph will not give you one. It says the map is partial until the perfect comes, and that being fully known is already true of you.'},
+      {type:"p",html:'The child illustration can land as shame if you have been called childish for how you speak, move, or recover. Paul is not ranking neurotypes. He is ranking two times: now and then. Childish things in v.11 are the temporary ways of knowing, not a person&rsquo;s manner in a room. The hope in v.12 is face to face, not becoming easier for other people to manage.'}
+    ]},
+    {n:"6",id:"words",title:"Words That Carry Weight",blocks:[
+      {type:"word",term:"οὐδέποτε πίπτει (oudepote piptei)",parse:"piptei: present indicative active, 3rd singular (G4098)",html:'&ldquo;Never fails / never falls.&rdquo; Present tense. Some Byzantine witnesses read <em>ekpiptei</em> (&ldquo;falls off&rdquo;). The sense is the same contrast with the future endings of the gifts. NASB 1995: &ldquo;never fails.&rdquo; ESV: &ldquo;never ends.&rdquo;'},
+      {type:"word",term:"καταργηθήσονται / παύσονται",parse:"katargēthēsontai: future indicative passive, 3rd plural (G2673); pausontai: future indicative middle, 3rd plural (G3973)",html:'&ldquo;Will be done away&rdquo; / &ldquo;will cease.&rdquo; Paul uses two verbs, not one. He does not here date either action to a year in church history. He places both in contrast with love, which does not fall.'},
+      {type:"word",term:"τὸ τέλειον (to teleion)",parse:"Adjective used as a noun, nominative neuter singular (G5046)",html:'&ldquo;The perfect / the complete.&rdquo; When it comes, the partial is done away. See the caution below. Do not flatten it into a slogan.'},
+      {type:"word",term:"δι’ ἐσόπτρου ἐν αἰνίγματι",parse:"esoptron G2072; ainigma G135",html:'&ldquo;Through a mirror, in a riddle.&rdquo; NASB 1995 main text: &ldquo;dimly,&rdquo; with the literal footnote &ldquo;in a riddle.&rdquo; Ancient mirrors were metal. The point is indirect seeing, not modern glass quality. Face to face is the contrast, the language of Numbers 12:8 behind it.'},
+      {type:"word",term:"ἐπιγνώσομαι / ἐπεγνώσθην",parse:"future middle 1st singular / aorist passive 1st singular (G1921)",html:'&ldquo;I will know fully&rdquo; / &ldquo;I have been fully known.&rdquo; The compound <em>epiginōskō</em> marks knowing that reaches its object. The second form is passive and past. Full knowledge later is answered by having already been known.'},
+      {type:"word",term:"μένει … μείζων (menei … meizōn)",parse:"menei: present indicative active, 3rd singular (G3306); meizōn: comparative adjective, nominative feminine singular (G3173)",html:'&ldquo;Abide / remain&rdquo; and &ldquo;greater.&rdquo; NASB 1995 footnotes &ldquo;Lit <em>greater</em>.&rdquo; Faith, hope, and love are the three that remain; love is the greater of them. 14:1 will turn that ranking into a pursuit.'},
+      {type:"callout",style:"caution",label:"Contested: what is \"the perfect\"?",html:'Readers have taken <em>to teleion</em> as the completed canon, as the maturity of the church, or as the eschatological completion when we see face to face. Paul does not define the noun in a fourth clause. What he does say is constrained by v.12: the contrast is now / then, mirror / face to face, knowing in part / being fully known. That &ldquo;then&rdquo; is personal seeing, not merely a finished book on a shelf. The date-the-gifts debate should not be settled from this adjective alone. Flag it; do not pretend Paul footnoted our calendar.'}
+    ]},
+    {n:"7",id:"formation",title:"Formation",sub:"pick one",blocks:[
+      {type:"list",style:"pick",items:[
+        "When you reach for a complete explanation this week, say v.9 out loud: we know in part. Then stop. Let the sentence be a ceiling, not a failure.",
+        "Write the last clause of v.12 where you will see it: 'I have been fully known.' Do not add a project to become more knowable.",
+        "Read 13:13 and 14:1 as one movement: love remains, therefore pursue love, and then desire the gifts. Keep that order in one gathering this week."
+      ]}
+    ]},
+    {n:"8",id:"prayer",title:"Response / Prayer",blocks:[
+      {type:"prayer",html:'God who knows me fully, I live in the mirror. Keep me from treating partial gifts as the whole. Teach me the love that does not fall, until the day I see face to face.'}
+    ]}
+  ],
+  oneThing:"You know in part, and you have already been fully known — love is what remains while the mirror lasts.",
+  sources:"NASB1995 and ESV text, italics and footnotes from Bible Gateway. Paragraph break disagreement noted: NASB 1995 prints 13:8–13 as one unit; ESV prints 13:13 alone. This study follows NASB 1995 per the locked decision for the chapter. Greek forms checked against Bible Hub text analysis for 13:8 and 13:13, with 13:10–12 forms from the same Nestle / WH line: piptei G4098, katargēthēsontai G2673, pausontai G3973, to teleion G5046, esoptron G2072, en ainigmati G135, epignōsomai / epegnōsthēn G1921, menei G3306, meizōn G3173. Byzantine ekpiptei at 13:8 noted. Cross-references: 1 Corinthians 12:31; 14:1; Numbers 12:8."
+}
