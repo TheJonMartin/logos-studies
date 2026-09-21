@@ -15,3 +15,5 @@ scripts/*.bak-*
 .env
 *.token
 netlify-token*
+
+*.log
