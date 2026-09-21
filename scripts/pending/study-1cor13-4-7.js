@@ -1,1 +1,57 @@
-SEE_FILE
+,
+{
+  id:"1-corinthians-13-4-7",
+  reference:"1 Corinthians 13:4–7",
+  title:"1 Corinthians 13:4–7",
+  subtitle:"Love is named as a subject that acts — patient and kind — then as a subject that refuses the postures this church already knows.",
+  translations:["NASB 1995","ESV"],
+  purpose:["Formation","AuDHD","Greek"],
+  themes:["Sanctification & Holiness","Identity in Christ","Suffering & Endurance"],
+  anchor:"Love here is not a feeling you check. It is a subject that does some things and will not do others.",
+  sections:[
+    {n:"1",id:"text",title:"The Text",blocks:[
+      {type:"scripture",ver:"NASB 1995",html:'<sup class="vn">4</sup>Love is patient, love is kind <em>and</em> is not jealous; love does not brag <em>and</em> is not arrogant, <sup class="vn">5</sup>does not act unbecomingly; it does not seek its own, is not provoked, does not take into account a wrong <em>suffered</em>, <sup class="vn">6</sup>does not rejoice in unrighteousness, but rejoices with the truth; <sup class="vn">7</sup>bears all things, believes all things, hopes all things, endures all things.'},
+      {type:"scripture",ver:"ESV",html:'<sup class="vn">4</sup>Love is patient and kind; love does not envy or boast; it is not arrogant <sup class="vn">5</sup>or rude. It does not insist on its own way; it is not irritable or resentful; <sup class="vn">6</sup>it does not rejoice at wrongdoing, but rejoices with the truth. <sup class="vn">7</sup>Love bears all things, believes all things, hopes all things, endures all things.'}
+    ]},
+    {n:"2",id:"context",title:"Where This Sits",sub:"after the résumé is emptied, love is described by what it does",blocks:[
+      {type:"p",html:'Verses 1&ndash;3 stripped the impressive list. Verses 4&ndash;7 now say what love itself is, and they say it with verbs. Both NASB 1995 and ESV print this as its own paragraph. The unit does not cross a chapter break. It also does not float free of Corinth. Several of the refusals here are words Paul has already used of this church: jealousy and strife (3:3), being puffed up (4:6, 18; 5:2; 8:1), insisting on one&rsquo;s own rights (chs. 8&ndash;10).'},
+      {type:"p",html:'The grammar matters for how the paragraph should be read. Love is the subject. The verbs are present tense. This is not a personality inventory and not a wedding wish. It is a description of what love does in a body that has been competing over gifts.'},
+      {type:"callout",style:"oneline",label:"In one line",html:"Paul does not ask them how love feels. He names what love does, using some of the same verbs he has already used against them."}
+    ]},
+    {n:"3",id:"flow",title:"The Movement of Thought",sub:"two positives (v.4a) → a run of refusals (vv.4b–6a) → one turn toward truth (v.6b) → four 'all things' that hold (v.7)",blocks:[
+      {type:"p",html:'<strong>v.4a &mdash; love acts first.</strong> <em>Hē agapē makrothymei, chrēsteuetai.</em> Patient: long-tempered, slow to pay back. Kind: a verb, not an adjective of niceness. Before love is described by what it will not do, it is described by two things it does.'},
+      {type:"p",html:'<strong>vv.4b&ndash;5 &mdash; the refusals that sound like Corinth.</strong> Not jealous. Does not brag. Is not arrogant (<em>ou physioutai</em> &mdash; the same puffing Paul has named since chapter 4). Does not act unbecomingly. Does not seek its own. Is not provoked. Does not log the wrong. ESV&rsquo;s &ldquo;resentful&rdquo; is rendering <em>ou logizetai to kakon</em>: love does not keep the account.'},
+      {type:"p",html:'<strong>v.6 &mdash; the one positive that is a turn.</strong> Love does not rejoice in unrighteousness. It rejoices with the truth. The paragraph is not asking anyone to be warm toward what is false. Kindness and truth are not two teams.'},
+      {type:"p",html:'<strong>v.7 &mdash; four times &ldquo;all things.&rdquo;</strong> Bears, believes, hopes, endures. NASB 1995 footnotes that &ldquo;bears&rdquo; can be &ldquo;covers.&rdquo; The four verbs are not a claim that love is gullible. They are a claim that love stays under the weight, stays with the person, stays pointed toward what God has promised, and does not walk off. The same endurance language will matter when 13:8 says love never fails.'},
+      {type:"callout",style:"oneline",label:"In one line",html:"love is two actions, a string of refusals this church already recognizes, a loyalty to the truth, and four ways of remaining."}
+    ]},
+    {n:"4",id:"neuro",title:"The Neuroplasticity Bridge",blocks:[
+      {type:"p",html:'God made minds that are shaped by what they practice &mdash; including contempt, scorekeeping, and the quick defense of one&rsquo;s own way. Paul describes love with present-tense verbs because love, in a body, is a way of going on. The later name for how repetition cuts a path in a creature is not what makes the paragraph true. The paragraph is true because this is how God made people, and because the Spirit produces this kind of patience and kindness as fruit (Galatians 5:22), not as a self-administered drill.'},
+      {type:"p",html:'If the neuroscience sentence is deleted, the exegesis still stands: love is patient and kind, and it will not keep the ledger. That is the right size of the rhyme.'},
+      {type:"callout",style:"oneline",label:"In one line",html:"love in this paragraph is a practiced way of remaining — and the One who made the mind is the One who grows that remaining."}
+    ]},
+    {n:"5",id:"audhd",title:"AuDHD Reframe",blocks:[
+      {type:"p",html:'<strong>&ldquo;Not irritable&rdquo; is not a command to have a quieter nervous system.</strong> Sensory load, interrupted attention, and social decoding already raise the cost of a room. Paul is not diagnosing a startle response as sin, and this study should not either. <em>Ou paroxynetai</em> is about being driven to sharp reaction as a way of life &mdash; the settled posture that treats every friction as a case to win.'},
+      {type:"p",html:'The phrase that often lands hardest here is &ldquo;does not take into account a wrong.&rdquo; Many autistic and ADHD adults keep exact internal records because the record was once the only way to stay safe in rooms that rewrote what happened. Paul is not asking anyone to pretend harm did not occur. He is describing love as the refusal to let the ledger become the relationship. Truth is still in v.6. Endurance is still in v.7. The account is not the same thing as wisdom about a pattern.'}
+    ]},
+    {n:"6",id:"words",title:"Words That Carry Weight",blocks:[
+      {type:"word",term:"μακροθυμεῖ (makrothymei)",parse:"Verb, present indicative active, 3rd singular (G3114)",html:'&ldquo;Is patient / suffers long.&rdquo; Present tense: this is love&rsquo;s ongoing manner, not a one-time restraint. Paul uses the cognate noun of God and of the church&rsquo;s life together (Romans 2:4; Galatians 5:22; Ephesians 4:2).'},
+      {type:"word",term:"χρηστεύεται (chrēsteuetai)",parse:"Verb, present indicative middle/passive, 3rd singular (G5541)",html:'&ldquo;Is kind.&rdquo; A verb built on <em>chrēstos</em>, used of God&rsquo;s own kindness. Love is not first a restraint. It does something good toward the other person.'},
+      {type:"word",term:"φυσιοῦται (physioutai)",parse:"Verb, present indicative middle/passive, 3rd singular (G5448)",html:'&ldquo;Is not puffed up / arrogant.&rdquo; Paul has already used this verb of the Corinthians themselves (4:6, 18&ndash;19; 5:2; 8:1). When he says love is not arrogant, he is not importing a generic vice list. He is naming their house style and saying love does not live there.'},
+      {type:"word",term:"οὐ λογίζεται τὸ κακόν (ou logizetai to kakon)",parse:"logizetai: present indicative middle/passive, 3rd singular (G3049)",html:'&ldquo;Does not take into account a wrong&rdquo; (NASB 1995); &ldquo;is not resentful&rdquo; (ESV), with ESV noting the Greek &ldquo;does not count up wrongdoing.&rdquo; <em>Logizomai</em> is accounting language. Love does not keep the running total as the basis of the next move.'},
+      {type:"word",term:"πάντα στέγει, πιστεύει, ἐλπίζει, ὑπομένει",parse:"All present indicative active, 3rd singular (G4722, G4100, G1679, G5278)",html:'&ldquo;Bears / believes / hopes / endures all things.&rdquo; Four matching clauses. NASB 1995 footnotes <em>stegei</em> as &ldquo;Or <em>covers</em>.&rdquo; None of the four is a command to deny what is in front of you. They are four ways love remains with what is in front of you.'}
+    ]},
+    {n:"7",id:"formation",title:"Formation",sub:"pick one",blocks:[
+      {type:"list",style:"pick",items:[
+        "Pick one refusal in vv.4–5 that you already know is your house style. Do not try to fix all seven. Practice the opposite of that one refusal in a single ordinary conversation.",
+        "When a wrong surfaces this week, notice whether you are keeping the account or telling the truth. Those are not the same act.",
+        "Read v.7 slowly and stop at the verb that is hardest for your body — bears, believes, hopes, or endures. Ask for that one remaining, not for a new personality."
+      ]}
+    ]},
+    {n:"8",id:"prayer",title:"Response / Prayer",blocks:[
+      {type:"prayer",html:'Lord Jesus, You have been patient and kind with me. Unlearn in me the puffing, the ledger, and the need to have my own way. Grow in me the love that remains — and keep me loyal to the truth while You do it.'}
+    ]}
+  ],
+  oneThing:"Love in this paragraph is a subject with verbs — it acts, it refuses, and it remains.",
+  sources:"NASB1995 and ESV text, italics and footnotes from Bible Gateway; both translations print 13:4–7 as one paragraph. ESV footnote on 13:5: 'Greek irritable and does not count up wrongdoing.' NASB 1995 footnote on 13:7: 'Or covers.' Greek forms checked against Bible Hub text analysis for 13:4 and standard parsing for 13:5–7: makrothymei G3114, chrēsteuetai G5541, zēloi G2206, perpereuetai G4068, physioutai G5448, aschēmonei G807, zētei ta heautēs, paroxynetai G3947, logizetai G3049, stegei G4722, pisteuei G4100, elpizei G1679, hypomenei G5278. Intra-letter links: 1 Corinthians 3:3; 4:6, 18; 5:2; 8:1; chs. 8–10. Galatians 5:22 for kindness and patience as the Spirit's fruit."
+}
