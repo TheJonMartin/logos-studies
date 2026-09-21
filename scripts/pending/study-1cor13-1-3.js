@@ -1,1 +1,57 @@
-SEE_FILE
+,
+{
+  id:"1-corinthians-13-1-3",
+  reference:"1 Corinthians 13:1–3",
+  title:"1 Corinthians 13:1–3",
+  subtitle:"Tongues, prophecy, knowledge, mountain-moving faith, and even the surrendered body — and without love Paul says he has become noise, and is nothing, and gains nothing.",
+  translations:["NASB 1995","ESV"],
+  purpose:["Formation","AuDHD","Greek"],
+  themes:["Identity in Christ","Worship & Consecration","Sanctification & Holiness"],
+  anchor:"The gifts the Corinthians were ranking can all be present, and the person who has them can still be noise.",
+  sections:[
+    {n:"1",id:"text",title:"The Text",blocks:[
+      {type:"scripture",ver:"NASB 1995",html:'<sup class="vn">1</sup>If I speak with the tongues of men and of angels, but do not have love, I have become a noisy gong or a clanging cymbal. <sup class="vn">2</sup>If I have <em>the gift of</em> prophecy, and know all mysteries and all knowledge; and if I have all faith, so as to remove mountains, but do not have love, I am nothing. <sup class="vn">3</sup>And if I give all my possessions to feed <em>the poor</em>, and if I surrender my body to be burned, but do not have love, it profits me nothing.'},
+      {type:"scripture",ver:"ESV",html:'<sup class="vn">1</sup>If I speak in the tongues of men and of angels, but have not love, I am a noisy gong or a clanging cymbal. <sup class="vn">2</sup>And if I have prophetic powers, and understand all mysteries and all knowledge, and if I have all faith, so as to remove mountains, but have not love, I am nothing. <sup class="vn">3</sup>If I give away all I have, and if I deliver up my body to be burned, but have not love, I gain nothing.'}
+    ]},
+    {n:"2",id:"context",title:"Where This Sits",sub:"the more excellent way is not a fourth gift list",blocks:[
+      {type:"p",html:'Chapter 12 ended with a ranking the Corinthians would have recognized &mdash; apostles, prophets, teachers, then miracles, gifts of healings, helps, administrations, kinds of tongues &mdash; and then a sentence that turns the page: &ldquo;And I show you a still more excellent way&rdquo; (12:31). Chapter 14 will pick the gifts back up and regulate how they are used when the church gathers. Chapter 13 sits between those two units on purpose. It is not a detour into a wedding reading. It is the criterion by which the gifts of 12 and the order of 14 are measured.'},
+      {type:"p",html:'Both NASB 1995 and ESV print 13:1&ndash;3 as one paragraph. The unit does not cross a chapter break. What it does cross is the church&rsquo;s habit of scoring spirituality by visible output. Paul takes the very things this congregation prized &mdash; tongues, prophecy, knowledge, spectacular faith, costly giving &mdash; and runs them through one test: do you <em>have love</em>?'},
+      {type:"p",html:'The &ldquo;I&rdquo; is first person singular throughout. Paul puts the most impressive r&eacute;sum&eacute; in his own mouth so that no one in Corinth can say he is talking about someone else.'},
+      {type:"callout",style:"oneline",label:"In one line",html:"this paragraph is not a poem about feelings. It is a verdict on giftedness that has come unhooked from love."}
+    ]},
+    {n:"3",id:"flow",title:"The Movement of Thought",sub:"tongues without love become noise (v.1) → prophecy, knowledge, and mountain-faith without love leave a person nothing (v.2) → even the given-away life without love profits nothing (v.3)",blocks:[
+      {type:"p",html:'<strong>v.1 &mdash; the sound without the person.</strong> &ldquo;If I speak with the tongues of men and of angels&rdquo; grants the highest possible claim about speech. Then the condition: &ldquo;but do not have love.&rdquo; The verb is <em>echō</em> &mdash; have, hold, possess. Love is not an atmosphere around the gift. It is something the speaker either has or does not. The result is not that the speech is a little less helpful. The result is identity: <em>I have become</em> a noisy gong or a clanging cymbal. Corinth knew both instruments. Bronze that rings and a cymbal that keeps crashing are loud, public, and empty of a person.'},
+      {type:"p",html:'<strong>v.2 &mdash; the inner life without a self.</strong> The list climbs: prophecy, all mysteries, all knowledge, all faith so as to remove mountains. That last clause is Jesus&rsquo; own language (Matthew 17:20; 21:21). Paul does not dispute that such faith can exist. He says that even that faith, without love, leaves the person who has it as <em>ouden</em> &mdash; nothing. Not &ldquo;less impressive.&rdquo; Nothing.'},
+      {type:"p",html:'<strong>v.3 &mdash; the costly act that still returns zero.</strong> Giving away every possession to feed people, then handing over one&rsquo;s own body, is the outer limit of visible sacrifice. The verdict does not soften: <em>ouden ōpheloumai</em> &mdash; I am profited nothing. The grammar is first person throughout so the reader cannot park the sentence on a neighbor.'},
+      {type:"callout",style:"oneline",label:"In one line",html:"the paragraph does not say the gifts are fake. It says the gifted person can still be noise, nothing, and unprofited."}
+    ]},
+    {n:"4",id:"neuro",title:"The Neuroplasticity Bridge",blocks:[
+      {type:"p",html:'God made minds that learn what they rehearse. A church that rehearses ranking &mdash; who speaks, who knows, who gives most visibly &mdash; will cut those grooves deeper, because attention and repetition are how creatures like us take shape. Paul does not need a later map of the nervous system to say what he says. He names the same creature in his own idiom: you can keep practicing impressive speech and still <em>become</em> a gong.'},
+      {type:"p",html:'The Spirit&rsquo;s work in this paragraph is not a protocol for self-upgrade. It is a confrontation with what the gifts cannot do. They cannot supply love. They can be practiced until they feel like identity. Love, here, is something you either have or do not, and the having is not produced by volume.'},
+      {type:"callout",style:"oneline",label:"In one line",html:"what you repeat in public will shape you — and Paul says the shape can still be an instrument with no one home."}
+    ]},
+    {n:"5",id:"audhd",title:"AuDHD Reframe",blocks:[
+      {type:"p",html:'<strong>Competence is not the same thing as presence.</strong> Many autistic and ADHD adults learned early that the room rewards the impressive output &mdash; the fluent answer, the stored knowledge, the costly yes. That training is not imaginary. Churches do it. Families do it. This paragraph refuses to let that scoring system stand. Tongues, knowledge, and even the surrendered body can all be present while love is absent, and Paul will not call that spiritual maturity.'},
+      {type:"p",html:'The other side matters too. A quiet person who does not speak in tongues and cannot give everything away is not being measured here as deficient. The paragraph is aimed at the r&eacute;sum&eacute;, not at the person who has nothing flashy to put on one. If your nervous system already spends the gathering managing sound, timing, and whether you are too much or not enough, this text is not asking you to add a performance. It is asking whether love is actually present in the room that is already loud.'}
+    ]},
+    {n:"6",id:"words",title:"Words That Carry Weight",blocks:[
+      {type:"word",term:"ἀγάπην (agapēn)",parse:"Noun, accusative feminine singular (G26)",html:'&ldquo;Love.&rdquo; The object of <em>echō</em> in each of the three verses. Not a mood and not a style of speech. Something held or not held. Paul has already used related language at 8:1: knowledge puffs up, love builds up. That earlier contrast is the soil this paragraph grows in.'},
+      {type:"word",term:"γέγονα (gegona)",parse:"Verb, perfect indicative active, 1st person singular (G1096)",html:'&ldquo;I have become.&rdquo; Perfect tense: a present state that results from a completed change. Without love, the gifted speaker is not briefly off-key. He has become an instrument. The person has been replaced by the noise.'},
+      {type:"word",term:"χαλκὸς ἠχῶν / κύμβαλον ἀλαλάζον",parse:"chalkos ēchōn (G5475 + G2278, present participle); kymbalon alalazon (G2950 + G214, present participle)",html:'&ldquo;Sounding bronze / clanging cymbal.&rdquo; Both participles are present: the ringing and the clashing keep going. Corinth knew metal that makes a public sound and cymbals used in cult and procession. Paul is not decorating. He is naming what speech becomes when love is missing: ongoing noise.'},
+      {type:"word",term:"οὐθέν / οὐδέν εἰμι · οὐδἲν ὠφελοῦμαι",parse:"ouden eimi (v.2); ouden ōpheloumai (v.3, present indicative middle/passive, 1st singular, G5623)",html:'&ldquo;I am nothing&rdquo; / &ldquo;I am profited nothing.&rdquo; The same root of nothingness lands first on the person and then on the return. Gift, knowledge, faith, and sacrifice do not automatically accrue spiritual profit. Love is the condition, not the bonus.'},
+      {type:"callout",style:"caution",label:"Contested: \"to be burned\" or \"that I may boast\"?",html:'At v.3 the manuscripts split. Early witnesses support <em>kauchēsōmai</em> (&ldquo;that I may boast&rdquo;); the majority tradition and the wording printed by NASB 1995 / ESV in the main line support a form of <em>kauthēsōmai / kauthēsomai</em> (&ldquo;that I may be burned&rdquo;). NASB 1995 footnotes, &ldquo;Early mss read <em>that I may boast</em>.&rdquo; ESV footnotes the same alternative. Either reading still serves Paul&rsquo;s point: a spectacular handing-over of the body, done without love, profits nothing. The debate is real. It does not rescue the r&eacute;sum&eacute;.'}
+    ]},
+    {n:"7",id:"formation",title:"Formation",sub:"pick one",blocks:[
+      {type:"list",style:"pick",items:[
+        "Name one impressive thing you are tempted to treat as proof that you are spiritually present. Read v.1–3 over it, and let the three verdicts stand: noise, nothing, no profit.",
+        "If you usually disappear in gifted rooms, do not add a performance this week. Ask one quieter question: was love actually in the room, including in me?",
+        "When you hear a public gift this week — teaching, prayer, generosity — thank God for the gift, then ask the sentence Paul asks: did love have it?"
+      ]}
+    ]},
+    {n:"8",id:"prayer",title:"Response / Prayer",blocks:[
+      {type:"prayer",html:'Father, I know how to be loud and how to be useful. Teach me to have love, not just to produce the sounds and costs that get noticed. Where I have become noise, bring me back to being a person before You and before the body.'}
+    ]}
+  ],
+  oneThing:"The gifts can all be real, and without love the gifted person is still noise.",
+  sources:"NASB1995 and ESV text, italics and footnotes fetched from Bible Gateway; both translations print 13:1–3 as one paragraph after 12:31's 'more excellent way' and before the 13:4–7 paragraph. Greek forms and morphologies checked against Bible Hub text analysis for 13:1 and 13:3 (Nestle 1904 / WH / NA apparatus): agapēn G26, gegona G1096 perfect active 1st singular, chalkos ēchōn G5475+G2278, kymbalon alalazon G2950+G214, ouden / ōpheloumai G5623. 13:3 variant kauchēsōmai vs kauthēsōmai/kauthēsomai flagged from NASB 1995 and ESV footnotes plus the WH / Nestle split on Bible Hub. Cross-references: 1 Corinthians 12:31; 8:1; 14:1; Matthew 17:20; 21:21."
+}
