@@ -26,7 +26,7 @@
       {type:"callout",style:"oneline",label:"In one line",html:"the paragraph does not say the gifts are fake. It says the spiritually gifted person can still be noise, nothing, and unprofited."}
     ]},
     {n:"4",id:"neuro",title:"The Neuroplasticity Bridge",blocks:[
-      {type:"p",html:'God made minds that learn what they rehearse. A church that rehearses ranking &mdash; who speaks, who knows, who gives most visibly &mdash; will cut those grooves deeper, because attention and repetition are how creatures like us take shape. Paul does not need a later map of the nervous system to say what he says. He names the same creature in his own idiom: you can keep practicing impressive speech and still <em>become</em> a gong.'},
+      {type:"p",html:'God made minds that learn what they rehearse. A church that rehearses ranking &mdash; who speaks, who knows, who gives most visibly &mdash; will cut those grooves deeper, because attention and repetition are how creatures like us take shape. Paul does not need current neuroscience to say what he says. He names the same creature in his own idiom: you can keep practicing impressive speech and still <em>become</em> a gong.'},
       {type:"p",html:'The Spirit&rsquo;s work in this paragraph is not a protocol for self-upgrade. It is a confrontation with what the gifts cannot do. They cannot supply love. They can be practiced until they feel like identity. Love, here, is something you either have or do not, and the having is not produced by volume.'},
       {type:"callout",style:"oneline",label:"In one line",html:"what you repeat in public will shape you — and Paul says the shape can still be an instrument with no one home."}
     ]},
