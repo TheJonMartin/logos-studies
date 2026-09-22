@@ -49,7 +49,7 @@
       ]}
     ]},
     {n:"8",id:"prayer",title:"Response / Prayer",blocks:[
-      {type:"prayer",html:'Father, I know how to be loud and how to be useful. Teach me to have love, not just to produce the sounds and costs that get noticed. Where I have become noise, bring me back to being a person before You and before the body.'}
+      {type:"prayer",html:'Father, I know how to be loud and how to be useful. Teach me to have love, not just to produce the sounds and costly acts that get noticed. Where I have become noise, bring me back to being a person before You and before the body.'}
     ]}
   ],
   oneThing:"The gifts can all be real, and without love the gifted person is still noise.",
