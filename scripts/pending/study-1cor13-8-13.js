@@ -27,7 +27,7 @@
       {type:"callout",style:"oneline",label:"In one line",html:"the argument is scale: gifts are real and partial; the end of the partial is coming; love is what is left standing."}
     ]},
     {n:"4",id:"neuro",title:"The Neuroplasticity Bridge",blocks:[
-      {type:"p",html:'God made minds that cannot hold the whole at once. Paul calls that condition &ldquo;in part,&rdquo; and he puts a mirror in a child&rsquo;s hand so the congregation can feel it. A later account of how partial attention, prediction, and memory work is looking at the same creature. It does not tell you what &ldquo;the perfect&rdquo; is, and it does not make Paul a theorist of development. The child-to-adult picture is an illustration of scale, not a stage theory to apply to yourself.'},
+      {type:"p",html:'God made minds that cannot hold the whole at once. Paul calls that condition &ldquo;in part,&rdquo; and he puts a mirror in a child&rsquo;s hand so the congregation can feel it. Current neuroscience of attention and memory is looking at the same creature. It does not tell you what &ldquo;the perfect&rdquo; is, and it does not make Paul a theorist of development. The child-to-adult picture is an illustration of scale, not a stage theory to apply to yourself.'},
       {type:"p",html:'What the paragraph actually does is relocate confidence. You are already fully known. You do not yet know fully. Love is the thing that can be practiced now without pretending the mirror has become a face.'},
       {type:"callout",style:"oneline",label:"In one line",html:"partial knowing is how this creature was made for now — and love is given as the way to live inside that limit."}
     ]},
