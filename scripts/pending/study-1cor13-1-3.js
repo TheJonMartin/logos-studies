@@ -45,7 +45,7 @@
       {type:"list",style:"pick",items:[
         "Name one impressive thing you are tempted to treat as proof that you are spiritually present. Read v.1–3 over it, and let the three verdicts stand: noise, nothing, no profit.",
         "If you usually disappear in gifted rooms, do not add a performance this week. Ask one quieter question: was love actually in the room, including in me?",
-        "When you hear a public gift this week — teaching, prayer, generosity — thank God for the gift, then ask the sentence Paul asks: did love have it?"
+        "When someone teaches, prays, or gives this week, thank God for the gift. Then ask of the use, not the person: was this held in love?"
       ]}
     ]},
     {n:"8",id:"prayer",title:"Response / Prayer",blocks:[
