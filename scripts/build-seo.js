@@ -1,36 +1,9 @@
 #!/usr/bin/env node
 /*
- * build-seo.js
- * ------------
- * Netlify build step for the Logos study app.
- *
- * URL structure (2026-08-02 rewrite): every study has exactly one real,
- * canonical address — /studies/<id>/ — used both by search/AI-answer-engine
- * crawlers AND by the interactive app itself (path-based routing via
- * pushState, see the router in logos-study-app.html). Analytics keys off
- * this same path regardless of whether a visit starts on the crawlable
- * static content or from clicking around inside the app.
- *
- * What it does:
- *   1. Copies logos-study-app.html -> dist/index.html (unchanged, verbatim —
- *      the interactive app is never rebuilt or altered by this script).
- *   2. Reads the STUDIES array out of logos-study-app.html and generates a
- *      real, static, crawlable HTML page per study at
- *      dist/studies/<id>/index.html. Each page is a hybrid: full scripture
- *      text and commentary in plain HTML (no JS required to read it) sits
- *      in #staticFallback, immediately followed by the complete interactive
- *      app (same CSS/JS/STUDIES as dist/index.html). A JS-capable visitor's
- *      browser boots straight into the full interactive reader for that
- *      study and hides the static block; a crawler that doesn't run
- *      JavaScript still sees the full content immediately, no JS needed.
- *   3. Generates dist/sitemap.xml (homepage + every study page).
- *   4. Generates dist/robots.txt (allow all, points at the sitemap).
- *   5. Generates dist/llms.txt (a plain-text index of every study, for AI
- *      answer engines that support the emerging llms.txt convention).
- *
- * Never edit dist/ directly — everything in it is regenerated on every
- * build. To add a study, edit the STUDIES array in logos-study-app.html as
- * usual; this script picks it up automatically next build.
+ * build-seo.js — Netlify build step for the Logos study app.
+ * Copies logos-study-app.html → dist/index.html (verbatim), then generates
+ * crawlable pages at dist/studies/<id>/index.html plus sitemap/robots/llms.txt
+ * from the STUDIES array. Never edit dist/ directly.
  */
 
 const fs = require("fs");
