@@ -75,26 +75,9 @@ function extractAppBodyInner(src) {
 }
 
 
-// ---------------------------------------------------------------------------
-// Shared-asset extraction (2026-09-02).
-//
-// The STUDIES array is 98.7% of logos-study-app.html (3.62 MB of 3.66 MB —
-// the engine, markup and CSS together are only ~49 KB). Before this change
-// every generated study page inlined the whole app verbatim, so each page
-// was ~3.8 MB and dist/ was ~850 MB at 227 studies: bad for Core Web Vitals,
-// and slow enough to upload that per-study deploys weren't practical.
-//
-// Now the array is emitted ONCE as a content-hashed, immutably-cacheable
-// asset at /assets/studies.<hash>.js, and every page loads it with a plain
-// <script src> placed immediately before the app's own script (plain, not
-// async/defer, so it always executes first). Pages drop to ~50-90 KB and
-// dist/ to roughly 22 MB. The hash changes only when a study changes, so
-// returning visitors re-download nothing.
-//
-// logos-study-app.html itself is NEVER modified — it stays a single
-// self-contained file that works offline by double-clicking. This only
-// affects the deploy output.
-// ---------------------------------------------------------------------------
+// Shared-asset extraction: the STUDIES array is ~99% of the app, so it's emitted
+// once as a content-hashed /assets/studies.<hash>.js loaded by every page.
+// logos-study-app.html itself is never modified; this only affects dist/.
 
 // Locate the STUDIES array literal. Returns {declStart, arrayStart, end} as
 // offsets into `html`: declStart is at "const", arrayStart just after
@@ -343,12 +326,6 @@ function buildRobots() {
   return `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`;
 }
 
-// One exact, literal 301 per study from its old flat URL (pre-2026-08-02:
-// /studies/<id>.html) to its new canonical directory URL (/studies/<id>/).
-// Deliberately not a wildcard/splat rule in netlify.toml — a placeholder or
-// splat glued to a literal ".html" suffix in the same path segment did not
-// reliably match or substitute in testing. A plain literal line per study
-// has no such ambiguity and is guaranteed to match exactly what it says.
 // Studies that once had their own canonical URL but have since been merged
 // into, or replaced by, another study. Their pages are no longer generated,
 // so without an explicit redirect the old URL 404s the moment dist/ is wiped
@@ -361,6 +338,7 @@ const RETIRED_STUDIES = {
   "hebrews12-4-11": "heb12-1-11",
 };
 
+// One literal 301 per study from /studies/<id>.html; a netlify.toml splat glued to ".html" didn't match reliably.
 function buildLegacyRedirects(studies) {
   const lines = studies.map(s => `/studies/${s.id}.html  /studies/${s.id}/  301`);
   // Retired ids need two lines each: the pre-2026-08-02 flat URL, which the
@@ -406,15 +384,7 @@ function main() {
   const leanSrc = leanify(src, studiesAssetPath, "dist/index.html");
   const leanAppBodyInner = leanify(appBodyInner, studiesAssetPath, "study page body");
 
-  // Netlify's build servers keep a cache between builds (that's normally a
-  // feature, not a bug — it's what makes npm installs fast). But this
-  // script writes rather than replaces, so anything left in dist/ from an
-  // older build (e.g. the flat studies/<id>.html pages this script used to
-  // generate, before the 2026-08-02 URL rewrite) would silently persist
-  // alongside the new output and get served by Netlify's "pretty URLs"
-  // resolution ahead of the new directory-style pages. Wipe dist/ first so
-  // every build starts from a clean slate and only ever contains exactly
-  // what this run produces.
+  // Wipe dist/ so stale flat pages from old builds can't be served.
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
   fs.mkdirSync(path.join(DIST, "studies"), { recursive: true });

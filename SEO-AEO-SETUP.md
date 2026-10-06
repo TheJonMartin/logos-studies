@@ -17,7 +17,7 @@ Fixed, without touching how the interactive app works:
 - **`scripts/build-seo.js`** — new Netlify build step. Reads the `STUDIES`
   array out of `logos-study-app.html` and generates, on every deploy:
   - `dist/index.html` — the app itself, copied verbatim, unchanged
-  - `dist/studies/<id>.html` — one real static HTML page per study, with the
+  - `dist/studies/<id>/index.html` — one real static HTML page per study, with the
     full scripture text and commentary in plain HTML (no JS needed to read
     it), its own `<title>`, meta description, canonical URL, Open Graph /
     Twitter tags, and `Article` + `BreadcrumbList` JSON-LD
@@ -28,8 +28,8 @@ Fixed, without touching how the interactive app works:
 - **`logos-study-app.html`** — added a real `<title>`, meta description,
   canonical link, OG/Twitter tags, and a `WebSite` JSON-LD block to the
   homepage `<head>`. Also added a tiny deep-linking feature: opening a study
-  now sets the URL to `/#s=<id>` and updates the page title/description live;
-  loading the app with that hash open straight to the study. Static pages
+  now sets the URL to `/studies/<id>/` and updates the page title/description live;
+  loading the app with that URL opens straight to the study. Static pages
   link to this so "open in the app" lands exactly where expected.
 - **`netlify.toml`** — build command now runs `node scripts/build-seo.js`
   instead of a plain file copy.
