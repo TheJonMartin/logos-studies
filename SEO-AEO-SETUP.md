@@ -44,7 +44,9 @@ deploy.
 llms.txt, and every study's static page regenerate from `STUDIES` on every
 build. If a custom domain ever replaces the Netlify subdomain, update the
 one `SITE_URL` constant at the top of `scripts/build-seo.js` and everything
-else follows.
+else follows. The exception is `RETIRED_STUDIES` in `scripts/build-seo.js` —
+add an entry whenever a study id is merged or retired, and never delete
+entries.
 
 ## Manual steps (need your Google/Bing accounts — can't be done from here)
 
@@ -59,10 +61,9 @@ else follows.
    - Bing's index also feeds Copilot and some other AI answer engines, so
      it's worth the five minutes
    - Same idea: add site, verify, submit `sitemap.xml`
-3. **Google Analytics 4** — https://analytics.google.com
-   - Create a GA4 property, get the Measurement ID
-   - Add the GA4 snippet to `logos-study-app.html`'s `<head>` (tell me when
-     you have the ID and I'll wire it in — every study page will need it too)
+3. **Google Analytics 4** — already wired (ID `G-YZHP5M7901`) in
+   `logos-study-app.html`'s `<head>` and on every study page
+   `scripts/build-seo.js` generates.
 4. Optional: a custom domain reads better in search results and social
    shares than a `.netlify.app` subdomain, and makes Search Console
    verification via DNS possible. Not required to move forward.
