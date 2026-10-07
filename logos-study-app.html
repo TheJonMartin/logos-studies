@@ -15240,12 +15240,21 @@ const THEMES=["Assurance & Security","Crucified with Christ","Discipleship & Fol
 /* Parses a "reference" string like "Romans 6:6" or "1 Corinthians 6:17" or "Romans 12:1–2"
    into {book, bookIdx, chapter, verse} for sorting. Unknown books sort last. */
 function parseRef(ref){
-  const m=(ref||"").match(/^(.*?)\s+(\d+):(\d+)/);
-  if(!m) return {book:ref||"",bookIdx:999,chapter:0,verse:0};
+  let m=(ref||"").match(/^(.*?)\s+(\d+):(\d+)/);
+  let chapter,verse;
+  if(m){
+    chapter=parseInt(m[2],10);
+    verse=parseInt(m[3],10);
+  }else{
+    m=(ref||"").match(/^(.*?)\s+(\d+)(?:\u2013|-)\d+$/);
+    if(!m) return {book:ref||"",bookIdx:999,chapter:0,verse:0};
+    chapter=1;
+    verse=parseInt(m[2],10);
+  }
   const book=m[1].trim();
-  let bookIdx=BOOK_ORDER.indexOf(book);
+  let bookIdx=BOOK_ORDER.indexOf(book==="Psalm"?"Psalms":book);
   if(bookIdx===-1)bookIdx=999;
-  return {book,bookIdx,chapter:parseInt(m[2],10),verse:parseInt(m[3],10)};
+  return {book,bookIdx,chapter,verse};
 }
 
 /* Returns STUDIES sorted into canonical Bible order and grouped by book:
