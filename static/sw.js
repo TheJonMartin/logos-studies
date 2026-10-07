@@ -5,13 +5,13 @@
  *   - HTML/navigation requests: network-first, falling back to the last
  *     cached copy only when offline. Online users always get the current
  *     library; offline users get whatever they last visited.
- *   - Everything else (icons, manifest, study JSON/HTML if ever added):
+ *   - Everything else same-origin (icons, manifest, study JSON/HTML if ever added):
  *     cache-first, since those rarely change.
  *
  * Bump CACHE_NAME any time you want to force every client to drop its old
  * cache on next visit (e.g. after a visual overhaul).
  */
-const CACHE_NAME = "audhd-bible-v1";
+const CACHE_NAME = "audhd-bible-v2";
 const PRECACHE = ["/", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png"];
 
 self.addEventListener("install", (event) => {
@@ -33,6 +33,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
+  if (new URL(req.url).origin !== self.location.origin) return;
 
   const isNavigation = req.mode === "navigate" || (req.headers.get("accept") || "").includes("text/html");
 
