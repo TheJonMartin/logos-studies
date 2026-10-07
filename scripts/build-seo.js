@@ -258,14 +258,13 @@ function studyPageHTML(s, styleBlock, appBodyInner, allStudies) {
     "keywords": keywords,
     "about": { "@type": "Thing", "name": s.reference },
     "isPartOf": { "@type": "WebSite", "name": "AuDHD Bible Study", "url": SITE_URL },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": canonical },
-    "dateModified": new Date().toISOString().slice(0, 10)
+    "mainEntityOfPage": { "@type": "WebPage", "@id": canonical }
   };
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Study Library", "item": `${SITE_URL}/library/` },
+      { "@type": "ListItem", "position": 1, "name": "AuDHD Bible Study", "item": `${SITE_URL}/` },
       { "@type": "ListItem", "position": 2, "name": s.reference, "item": canonical }
     ]
   };
@@ -323,11 +322,9 @@ ${appBodyInner}
 function buildSitemap(studies) {
   const urls = [
     { loc: `${SITE_URL}/`, changefreq: "weekly", priority: "1.0" },
-    { loc: `${SITE_URL}/library/`, changefreq: "weekly", priority: "0.9" },
     ...studies.map(s => ({ loc: `${SITE_URL}/studies/${s.id}/`, changefreq: "monthly", priority: "0.8" }))
   ];
-  const today = new Date().toISOString().slice(0, 10);
-  const body = urls.map(u => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`).join("\n");
+  const body = urls.map(u => `  <url>\n    <loc>${u.loc}</loc>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
 }
 
@@ -391,7 +388,11 @@ function main() {
   const studiesHash = crypto.createHash("sha256").update(studiesJS).digest("hex").slice(0, 10);
   const studiesAssetPath = "/assets/studies." + studiesHash + ".js";
   const leanSrc = leanify(src, studiesAssetPath, "dist/index.html");
-  const leanAppBodyInner = leanify(appBodyInner, studiesAssetPath, "study page body");
+  // Study pages start with #home hidden so no-JS readers get only the study;
+  // showHome() sets display:block when the app navigates home.
+  const studyBody = appBodyInner.replace('<div id="home">', '<div id="home" style="display:none">');
+  if (studyBody === appBodyInner) throw new Error('Could not locate <div id="home"> in logos-study-app.html');
+  const leanAppBodyInner = leanify(studyBody, studiesAssetPath, "study page body");
 
   // Wipe dist/ so stale flat pages from old builds can't be served.
   fs.rmSync(DIST, { recursive: true, force: true });
