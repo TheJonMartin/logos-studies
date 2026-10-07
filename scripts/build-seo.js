@@ -128,12 +128,21 @@ function leanify(html, assetPath, where) {
 const BOOK_ORDER = ["Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job","Psalms","Proverbs","Ecclesiastes","Song of Solomon","Isaiah","Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi","Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"];
 
 function parseRef(ref) {
-  const m = (ref || "").match(/^(.*?)\s+(\d+):(\d+)/);
-  if (!m) return { book: ref || "", bookIdx: 999, chapter: 0, verse: 0 };
+  let m = (ref || "").match(/^(.*?)\s+(\d+):(\d+)/);
+  let chapter, verse;
+  if (m) {
+    chapter = parseInt(m[2], 10);
+    verse = parseInt(m[3], 10);
+  } else {
+    m = (ref || "").match(/^(.*?)\s+(\d+)(?:\u2013|-)\d+$/);
+    if (!m) return { book: ref || "", bookIdx: 999, chapter: 0, verse: 0 };
+    chapter = 1;
+    verse = parseInt(m[2], 10);
+  }
   const book = m[1].trim();
-  let bookIdx = BOOK_ORDER.indexOf(book);
+  let bookIdx = BOOK_ORDER.indexOf(book === "Psalm" ? "Psalms" : book);
   if (bookIdx === -1) bookIdx = 999;
-  return { book, bookIdx, chapter: parseInt(m[2], 10), verse: parseInt(m[3], 10) };
+  return { book, bookIdx, chapter, verse };
 }
 
 // Find up to `limit` studies that share at least one theme with `s`, ranked by
