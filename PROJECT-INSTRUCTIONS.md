@@ -43,8 +43,8 @@ Read their docstrings before using them; they carry the hard-won failure modes.
 
 **Publishing — only when I explicitly ask.**
 
-- There is **no git remote** on this repo. Commits stay local; "push so Netlify rebuilds" does nothing. Deploys are manual `dist/` uploads through the Netlify API.
-- Wipe `dist/` before every rebuild — stale files otherwise survive into the deploy.
+- Push to `main` on `github.com/TheJonMartin/logos-studies`. Netlify builds on that push: `netlify.toml` runs `node scripts/build-seo.js` and publishes `dist/` (live at https://audhd-bible.netlify.app/).
+- The build wipes `dist/` before writing, so stale files do not survive a rebuild.
 - Canonical study URLs are `/studies/<id>/`. `_redirects` needs literal 301 entries, never wildcards.
 - **Never verify the live site with `web_fetch`** — it serves stale cached copies and has already produced one completely wrong status report. Use a cache-busted fetch through the browser instead.
 

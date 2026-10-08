@@ -1,5 +1,5 @@
 [build]
-  # Verbatim copy of logos-study-app.html into dist/, plus generated study pages/sitemap/robots/llms.txt.
+  # logos-study-app.html into dist/ with the STUDIES literal moved to /assets/studies.<hash>.js (the source file still runs when opened directly), plus generated study pages/sitemap/robots/llms.txt.
   command = "node scripts/build-seo.js"
   publish = "dist"
 
