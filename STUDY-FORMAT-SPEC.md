@@ -101,7 +101,7 @@ Studies live in `logos-study-app.html` as objects appended to the `STUDIES` arra
 }
 ```
 
-**Themes — controlled vocabulary.** Every study gets 2–4 `themes` tags, chosen from this list only. This is the same source of truth as the `THEMES` constant in the app's JS — if a new passage genuinely needs a theme not on this list, add it to both places at once (don't let them drift apart):
+**Themes — controlled vocabulary.** Every study gets 2–4 `themes` tags, chosen from this list only. The theme vocabulary lives in this spec only:
 
 Assurance & Security · Crucified with Christ · Discipleship & Following Jesus · Freedom from Sin · Identity in Christ · Life in the Spirit · Purpose & Mission · Renewal of the Mind · Resurrection Hope · Sanctification & Holiness · Suffering & Endurance · Union with Christ · Worship & Consecration
 
