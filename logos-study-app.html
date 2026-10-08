@@ -350,7 +350,7 @@
       </div>
       <div class="lib-controls">
         <div class="search-wrap">
-          <input type="text" id="searchInput" class="search-input" placeholder="Search by reference, title, or theme…" autocomplete="off">
+          <input type="text" id="searchInput" class="search-input" aria-label="Search by reference, title, or theme" placeholder="Search by reference, title, or theme…" autocomplete="off">
         </div>
         <button type="button" class="shuffle-btn" onclick="shuffleStudy()">🎲 Surprise me</button>
       </div>
@@ -15346,7 +15346,7 @@ function toggleChip(t){
 function renderChips(){
   const wrap=$("#purposeChips"); if(!wrap)return;
   wrap.innerHTML=allPurposeTags().map(t=>
-    `<button type="button" class="chip-btn${activeChips.has(t)?" on":""}" onclick="toggleChip('${t.replace(/'/g,"\\'")}')">${t}</button>`
+    `<button type="button" class="chip-btn${activeChips.has(t)?" on":""}" aria-pressed="${activeChips.has(t)}" onclick="toggleChip('${t.replace(/'/g,"\\'")}')">${t}</button>`
   ).join("");
 }
 function shuffleStudy(){
@@ -15403,8 +15403,11 @@ function jumpToGroup(s){
 function renderLibrary(){
   const g=$("#grid"); g.innerHTML="";
   $("#vtBook").classList.toggle("on",libView==="book");
+  $("#vtBook").setAttribute("aria-pressed",libView==="book"?"true":"false");
   $("#vtTheme").classList.toggle("on",libView==="theme");
+  $("#vtTheme").setAttribute("aria-pressed",libView==="theme"?"true":"false");
   $("#vtTopical").classList.toggle("on",libView==="topical");
+  $("#vtTopical").setAttribute("aria-pressed",libView==="topical"?"true":"false");
   renderChips();
   const filtering=!!(searchQuery||activeChips.size);
 
@@ -15460,7 +15463,7 @@ function renderLibrary(){
   }
   const e=document.createElement("div"); e.className="card card-empty card-add";
   e.innerHTML=`<div style="display:flex;flex-direction:column;gap:8px;width:100%">
-    <div class="add-label">+ Request a study</div>
+    <label class="add-label" for="queueInput">+ Request a study</label>
     <input type="text" id="queueInput" class="queue-input" placeholder="e.g. James 1:2–8" autocomplete="off">
     <button type="button" class="vt-btn queue-submit" onclick="submitQueueInput()">Add to queue</button>
   </div>`;
