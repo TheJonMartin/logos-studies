@@ -16,7 +16,9 @@ Fixed, without touching how the interactive app works:
 
 - **`scripts/build-seo.js`** — new Netlify build step. Reads the `STUDIES`
   array out of `logos-study-app.html` and generates, on every deploy:
-  - `dist/index.html` — the app itself, copied verbatim, unchanged
+  - `dist/index.html` — the source file, with the STUDIES literal moved to a
+    hashed `/assets/studies.<hash>.js` (the source file still runs when opened
+    directly)
   - `dist/studies/<id>/index.html` — one real static HTML page per study, with the
     full scripture text and commentary in plain HTML (no JS needed to read
     it), its own `<title>`, meta description, canonical URL, Open Graph /
