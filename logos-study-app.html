@@ -15603,7 +15603,14 @@ function setupScrollSpy(s){
   if(spyObserver)spyObserver.disconnect();
   const updateActive=()=>{
     let cur=ids[0];
-    for(const id of ids){const el=articleById(id);if(el&&el.getBoundingClientRect().top<200)cur=id;}
+    const header=document.querySelector("header.top");
+    const headerH=header?header.getBoundingClientRect().height:0;
+    const anchorBox=articleById("anchor");
+    const anchorH=anchorBox?anchorBox.getBoundingClientRect().height:0;
+    // Same clearance a section jump uses (header + sticky Anchor + 16), plus
+    // a few pixels so a heading parked on that line counts as current.
+    const line=headerH+anchorH+24;
+    for(const id of ids){const el=articleById(id);if(el&&el.getBoundingClientRect().top<line)cur=id;}
     links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+cur));
   };
   // IntersectionObserver fires only when a watched section crosses the
@@ -15611,8 +15618,14 @@ function setupScrollSpy(s){
   // old scroll listener, far less work while scrolling a long study. Falls
   // back to the plain scroll listener on the rare browser without it.
   if("IntersectionObserver" in window){
-    spyObserver=new IntersectionObserver(updateActive,{rootMargin:"-100px 0px -70% 0px",threshold:[0,1]});
-    ids.forEach(id=>{const el=articleById(id);if(el)spyObserver.observe(el);});
+    const io=new IntersectionObserver(updateActive,{rootMargin:"-100px 0px -70% 0px",threshold:[0,1]});
+    ids.forEach(id=>{const el=articleById(id);if(el)io.observe(el);});
+    // A smooth section jump can finish a few pixels after the last
+    // intersection callback, which would leave the previous section lit.
+    // scrollend fires once when that jump settles — not on every pixel.
+    const onScrollEnd=()=>updateActive();
+    window.addEventListener("scrollend",onScrollEnd);
+    spyObserver={disconnect(){io.disconnect();window.removeEventListener("scrollend",onScrollEnd);}};
   }else{
     window.addEventListener("scroll",updateActive);
     spyObserver={disconnect:()=>window.removeEventListener("scroll",updateActive)};
