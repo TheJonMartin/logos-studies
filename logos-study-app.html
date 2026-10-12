@@ -727,7 +727,7 @@ const STUDIES = [
     ]}
   ],
   oneThing:"God calls the gathered church His sanctuary and He calls your body one too — the same word, both holy, and neither of them neutral ground.",
-  sources:"Translations: NASB 1995, ESV. Greek text: 1 Corinthians 6:12–20 (NA/UBS). Key words: exousiasthēsomai (future passive indicative of exousiazō, v.12), sōma (v.13,15,18,19,20), kollōmenos (present middle/passive participle of kollaō, vv.16–17, echoing Genesis 2:24 and Deuteronomy 10:20 LXX), hen pneuma (v.17), pheugete (present active imperative of pheugō, v.18), naos (v.19), ēgorasthēte (aorist passive indicative of agorazō, v.20), doxasate (aorist active imperative of doxazō, v.20). Cross-references: Genesis 2:24; Deuteronomy 10:20; 1 Corinthians 3:16; 12:13; 15; 2 Timothy 2:22; John 17:21–23; Romans 8:9–11; 12:1; Galatians 2:20; Colossians 3:3; Romans 6:5. Contested points flagged, not resolved: whether “one spirit” (v.17) denotes the Holy Spirit or the spiritual nature of the union, and whether kollōmenos is reflexive (“joins himself”) or passive (“is joined”). MERGE NOTE (added when 1 Corinthians 3:16–17 was folded into this study at Jon's direction): 1 Corinthians 3:16–17 text verified via Bible Gateway (biblegateway.com), including NASB 1995's italicized supplied word at v.16 (\"that\"), its footnotes reading \"Or sanctuary\" at all three occurrences of temple in vv.16–17 and \"Lit who you are\" at v.17, and ESV's footnote at v.16 (\"The Greek for you is plural in verses 16 and 17\"). Greek forms for 3:16–17 verified via Bible Hub interlinear (biblehub.com/interlinear/1_corinthians/3-17.htm): naon G3485 (N-AMS, v.17) and naos G3485 (N-NMS, v.17), phtheirei G5351 (V-PIA-3S, v.17), phtherei G5351 (V-FIA-3S, v.17), hagios G40 (Adj-NMS, v.17), este G1510 (V-PIA-2P, v.17), hoitines G3748 (RelPro-NMP, v.17). Additional cross-references for the 3:16–17 material: 1 Corinthians 3:10–15 (the builders whose destroying work is in view); 15:33; 2 Corinthians 6:16; 11:3; Ephesians 2:21–22; 4:22; Romans 8:9. The two passages are held together because Paul applies the same noun naos to the church corporately (3:16, with plural \"you\") and to the individual believer's body (6:19); this merged entry therefore carries nine word cards (eight already present before the merge, plus one added for phtheirō) rather than the spec's usual four to six — a documented, deliberate deviation for a two-passage study, not an oversight, and its id (1co6-17) and canonical sort position are unchanged apart from the reference now leading with 3:16."
+  sources:"Translations: NASB 1995, ESV. Greek text: 1 Corinthians 6:12–20 (NA/UBS). Key words: exousiasthēsomai (future passive indicative of exousiazō, v.12), sōma (v.13,15,18,19,20), kollōmenos (present middle/passive participle of kollaō, vv.16–17, echoing Genesis 2:24 and Deuteronomy 10:20 LXX), hen pneuma (v.17), pheugete (present active imperative of pheugō, v.18), naos (v.19), ēgorasthēte (aorist passive indicative of agorazō, v.20), doxasate (aorist active imperative of doxazō, v.20). Cross-references: Genesis 2:24; Deuteronomy 10:20; 1 Corinthians 3:16; 12:13; 15; 2 Timothy 2:22; John 17:21–23; Romans 8:9–11; 12:1; Galatians 2:20; Colossians 3:3; Romans 6:5. Contested points flagged, not resolved: whether “one spirit” (v.17) denotes the Holy Spirit or the spiritual nature of the union, and whether kollōmenos is reflexive (“joins himself”) or passive (“is joined”). 1 Corinthians 3:16–17 text verified via Bible Gateway (biblegateway.com), including NASB 1995's italicized supplied word at v.16 (\"that\"), its footnotes reading \"Or sanctuary\" at all three occurrences of temple in vv.16–17 and \"Lit who you are\" at v.17, and ESV's footnote at v.16 (\"The Greek for you is plural in verses 16 and 17\"). Greek forms for 3:16–17 verified via Bible Hub interlinear (biblehub.com/interlinear/1_corinthians/3-17.htm): naon G3485 (N-AMS, v.17) and naos G3485 (N-NMS, v.17), phtheirei G5351 (V-PIA-3S, v.17), phtherei G5351 (V-FIA-3S, v.17), hagios G40 (Adj-NMS, v.17), este G1510 (V-PIA-2P, v.17), hoitines G3748 (RelPro-NMP, v.17). Additional cross-references for the 3:16–17 material: 1 Corinthians 3:10–15 (the builders whose destroying work is in view); 15:33; 2 Corinthians 6:16; 11:3; Ephesians 2:21–22; 4:22; Romans 8:9."
 },
 {
   id:"luke9-23",
@@ -15225,7 +15225,6 @@ const STUDIES = [
 }
 ];
 
-/* ================= RENDER ENGINE ================= */
 const $=s=>document.querySelector(s);
 
 /* Canonical Bible book order, for library sorting/grouping. */
@@ -15303,7 +15302,6 @@ function flatOrderedStudies(){
   return sortedGroupedStudies().flatMap(g=>g.items).concat(sortedTopicalStudies().flatMap(g=>g.items));
 }
 
-/* Reading time: strips HTML from every block's text and estimates at ~200wpm. */
 function studyWordCount(s){
   let words=0;
   const count=t=>{words+=String(t||"").replace(/<[^>]*>/g," ").split(/\s+/).filter(Boolean).length;};
@@ -15316,7 +15314,6 @@ function studyWordCount(s){
 }
 function readingMinutes(s){return Math.max(1,Math.round(studyWordCount(s)/200));}
 
-/* Visited/read tracking, stored in localStorage. */
 function getVisited(){try{return JSON.parse(load("visited","[]"))}catch(e){return []}}
 function markVisited(id){
   const v=getVisited();
@@ -15324,7 +15321,6 @@ function markVisited(id){
   store("lastOpened",id);
 }
 
-/* Library search + purpose-tag filter state. */
 let searchQuery="";
 let activeChips=new Set();
 function allPurposeTags(){
@@ -15515,7 +15511,6 @@ function openStudy(id){
   $("#reader").classList.add("active");
   window.scrollTo(0,0);
   markVisited(id);
-  // nav
   const nav=$("#arcNav");
   nav.classList.remove("open");
   nav.innerHTML=`<a class="back" href="${LIBRARY_PATH}">← Library</a>`+
@@ -15523,7 +15518,6 @@ function openStudy(id){
     `<a href="#anchor" class="on">Anchor</a>`+
     s.sections.map(sec=>`<a href="#sec-${sec.id}">${sec.n}. ${sec.title}</a>`).join("")+
     `<a href="#onething">One Thing</a>`;
-  // article
   const art=$("#article");
   let html=`<h1 class="title">${s.title}</h1>
     <p class="meta">${s.translations.join(" · ")}</p>
@@ -15607,7 +15601,6 @@ function setupScrollSpy(s){
   }
   updateActive();
 }
-/* ============ CONTROLS ============ */
 function store(k,v){try{localStorage.setItem("logos_"+k,v)}catch(e){}}
 function load(k,d){try{return localStorage.getItem("logos_"+k)??d}catch(e){return d}}
 
@@ -15629,7 +15622,6 @@ function applyDark(){
 }
 function toggleDark(){darkMode=!darkMode;store("dark",darkMode?"1":"0");applyDark();}
 
-/* init from saved prefs */
 applyFs();
 applyDark();
 if(load("focus","0")==="1"){document.body.classList.add("focus");const fb=$("#focusBtn");fb.classList.add("active");fb.setAttribute("aria-pressed","true");}
