@@ -15232,11 +15232,6 @@ const $=s=>document.querySelector(s);
 /* Canonical Bible book order, for library sorting/grouping. */
 const BOOK_ORDER=["Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job","Psalms","Proverbs","Ecclesiastes","Song of Solomon","Isaiah","Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi","Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"];
 
-/* Controlled vocabulary of themes. Every study is tagged with 2–4 of these in its
-   `themes` array (see STUDY-FORMAT-SPEC.md §5). Keep this list and each study's tags
-   in sync — add a new theme here before using it on a study. */
-const THEMES=["Assurance & Security","Crucified with Christ","Discipleship & Following Jesus","Freedom from Sin","Identity in Christ","Life in the Spirit","Purpose & Mission","Renewal of the Mind","Resurrection Hope","Sanctification & Holiness","Suffering & Endurance","Union with Christ","Worship & Consecration"];
-
 /* Parses a "reference" string like "Romans 6:6" or "1 Corinthians 6:17" or "Romans 12:1–2"
    into {book, bookIdx, chapter, verse} for sorting. Unknown books sort last. */
 function parseRef(ref){
