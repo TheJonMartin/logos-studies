@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 /*
  * build-seo.js — Netlify build step for the Logos study app.
- * Copies logos-study-app.html → dist/index.html (verbatim), then generates
- * crawlable pages at dist/studies/<id>/index.html plus sitemap/robots/llms.txt
- * from the STUDIES array. Never edit dist/ directly.
+ * Writes logos-study-app.html to dist/index.html with the STUDIES literal
+ * moved to a hashed /assets/studies.<hash>.js (the source file still runs
+ * when opened directly), then generates crawlable pages at
+ * dist/studies/<id>/index.html plus sitemap/robots/llms.txt from the STUDIES
+ * array. Never edit dist/ directly.
  */
 
 const fs = require("fs");
