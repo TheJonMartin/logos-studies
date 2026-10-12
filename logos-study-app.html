@@ -84,7 +84,7 @@
   .card-add{display:flex;place-items:stretch;cursor:default;text-align:left;gap:8px}
   .card-add .add-label{font-weight:700;color:var(--soft);font-size:.9rem}
   .queue-input{font-family:inherit;font-size:.95rem;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);width:100%}
-  .queue-input:focus{outline:none;border-color:var(--accent)}
+  .queue-input:focus{outline:3px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
   .queue-submit{align-self:flex-start;margin-top:2px}
   .card-queued{position:relative;border-style:dashed;cursor:default}
   .card-queued .ref{color:var(--soft)}
@@ -191,7 +191,7 @@
   .search-wrap{position:relative;flex:1;min-width:200px}
   .search-input{width:100%;font-family:inherit;font-size:.95rem;padding:9px 14px;border:1px solid var(--line);
     border-radius:20px;background:var(--panel);color:var(--ink)}
-  .search-input:focus{outline:none;border-color:var(--accent)}
+  .search-input:focus{outline:3px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
   .shuffle-btn{background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:9px 16px;border-radius:20px;
     cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:600;transition:.15s;white-space:nowrap}
   .shuffle-btn:hover{border-color:var(--accent);color:var(--accent)}
@@ -292,11 +292,10 @@
     <a class="nav-link" href="/library/">Library</a>
     <div class="top-spacer"></div>
     <div class="ctrl">
-      <button class="icon" id="darkBtn" title="Dark mode" onclick="toggleDark()">☾</button>
-      <button class="icon" id="focusBtn" title="Focus / reading mode" onclick="toggleFocus()">◎</button>
-      <button class="icon" title="Smaller text" onclick="fontStep(-1)">A−</button>
-      <button class="icon" title="Larger text" onclick="fontStep(1)">A+</button>
-    </div>
+      <button class="icon" id="darkBtn" title="Dark mode" aria-label="Dark mode" aria-pressed="false" onclick="toggleDark()">☾</button>
+      <button class="icon" id="focusBtn" title="Focus / reading mode" aria-label="Focus / reading mode" aria-pressed="false" onclick="toggleFocus()">◎</button>
+      <button class="icon" title="Smaller text" aria-label="Smaller text" onclick="fontStep(-1)">A−</button>
+      <button class="icon" title="Larger text" aria-label="Larger text" onclick="fontStep(1)">A+</button>
     </div>
   </div>
 </header>
@@ -15441,7 +15440,7 @@ function renderLibrary(){
   });
 
   if(!groups.length && filtering){
-    const ne=document.createElement("div"); ne.className="no-results";
+    const ne=document.createElement("div"); ne.className="no-results"; ne.setAttribute("aria-live","polite");
     ne.textContent="No studies match that search or filter. Try clearing one.";
     g.appendChild(ne);
   }
@@ -15457,7 +15456,7 @@ function renderLibrary(){
       const c=document.createElement("div"); c.className="card card-queued";
       const refDiv=document.createElement("div"); refDiv.className="ref"; refDiv.textContent=q;
       const subDiv=document.createElement("div"); subDiv.className="subtitle"; subDiv.textContent="Waiting to be studied";
-      const rm=document.createElement("button"); rm.className="queue-remove"; rm.title="Remove from queue"; rm.type="button"; rm.textContent="×";
+      const rm=document.createElement("button"); rm.className="queue-remove"; rm.title="Remove from queue"; rm.setAttribute("aria-label","Remove from queue"); rm.type="button"; rm.textContent="×";
       rm.onclick=(ev)=>{ev.stopPropagation();removeFromQueue(i);};
       c.appendChild(refDiv); c.appendChild(subDiv); c.appendChild(rm);
       g.appendChild(c);
@@ -15522,7 +15521,7 @@ function openStudy(id){
   const nav=$("#arcNav");
   nav.classList.remove("open");
   nav.innerHTML=`<a class="back" href="${LIBRARY_PATH}">← Library</a>`+
-    `<button type="button" class="mnav-toggle" onclick="$('#arcNav').classList.toggle('open')">Sections ▾</button>`+
+    `<button type="button" class="mnav-toggle" aria-expanded="false" aria-controls="arcNav" onclick="this.setAttribute('aria-expanded',$('#arcNav').classList.toggle('open'))">Sections ▾</button>`+
     `<a href="#anchor" class="on">Anchor</a>`+
     s.sections.map(sec=>`<a href="#sec-${sec.id}">${sec.n}. ${sec.title}</a>`).join("")+
     `<a href="#onething">One Thing</a>`;
@@ -15618,7 +15617,7 @@ function load(k,d){try{return localStorage.getItem("logos_"+k)??d}catch(e){retur
 let fs=+load("fs",18);
 function applyFs(){document.documentElement.style.setProperty("--fs",fs+"px");}
 function fontStep(d){fs=Math.max(14,Math.min(22,fs+d));applyFs();store("fs",fs);}
-function toggleFocus(){const on=document.body.classList.toggle("focus");$("#focusBtn").classList.toggle("active",on);store("focus",on?"1":"0");}
+function toggleFocus(){const on=document.body.classList.toggle("focus");const b=$("#focusBtn");b.classList.toggle("active",on);b.setAttribute("aria-pressed",on?"true":"false");store("focus",on?"1":"0");}
 
 let darkMode=(function(){
   const saved=load("dark",null);
@@ -15628,14 +15627,14 @@ let darkMode=(function(){
 function applyDark(){
   document.body.classList.toggle("dark",darkMode);
   const b=$("#darkBtn");
-  if(b){b.classList.toggle("active",darkMode);b.textContent=darkMode?"☀":"☾";b.title=darkMode?"Light mode":"Dark mode";}
+  if(b){b.classList.toggle("active",darkMode);b.textContent=darkMode?"☀":"☾";b.title=darkMode?"Light mode":"Dark mode";b.setAttribute("aria-pressed",darkMode?"true":"false");}
 }
 function toggleDark(){darkMode=!darkMode;store("dark",darkMode?"1":"0");applyDark();}
 
 /* init from saved prefs */
 applyFs();
 applyDark();
-if(load("focus","0")==="1"){document.body.classList.add("focus");$("#focusBtn").classList.add("active");}
+if(load("focus","0")==="1"){document.body.classList.add("focus");const fb=$("#focusBtn");fb.classList.add("active");fb.setAttribute("aria-pressed","true");}
 
 renderHome();
 renderLibrary();
