@@ -43,10 +43,13 @@ deploy.
 **Nothing to maintain by hand going forward** — the sitemap, robots.txt,
 llms.txt, and every study's static page regenerate from `STUDIES` on every
 build. If a custom domain ever replaces the Netlify subdomain, update the
-one `SITE_URL` constant at the top of `scripts/build-seo.js` and everything
-else follows. The exception is `RETIRED_STUDIES` in `scripts/build-seo.js` —
-add an entry whenever a study id is merged or retired, and never delete
-entries.
+`SITE_URL` constant at the top of `scripts/build-seo.js`. A domain change
+also requires editing the hardcoded homepage canonical, `og:url`, and JSON-LD
+in `logos-study-app.html`. The GA id (`G-YZHP5M7901`) appears in two places:
+`logos-study-app.html`'s `<head>` and the study-page template in
+`scripts/build-seo.js`. The exception is `RETIRED_STUDIES` in
+`scripts/build-seo.js` — add an entry whenever a study id is merged or
+retired, and never delete entries.
 
 ## Manual steps (need your Google/Bing accounts — can't be done from here)
 

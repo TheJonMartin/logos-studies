@@ -48,7 +48,7 @@ Every study moves once through the whole passage in this order. It does **not** 
 
 **9 · One Thing to Carry Today** — a single sentence takeaway, rendered as the closing highlighted block. Bookends the Anchor.
 
-**Ordering is verified against the app, and the app wins.** As of 2026-08-14 all 166 single-passage studies in `STUDIES` run `text → context → flow → neuro → audhd → words → formation → prayer`; zero run Words before the Bridge. (Corrected 2026-08-14 — the spec had Words at 4 and the Bridge at 5, which never matched a built study.) The 11 topical studies use the §5.6 variant order and have no Neuroplasticity section at all. If this doc and the app ever disagree again, follow the app and flag the discrepancy to Jon rather than reordering 177 studies to match a document.
+**Ordering is verified against the app, and the app wins.** As of 2026-10-12 all 216 passage studies in `STUDIES` run `text → context → flow → neuro → audhd → words → formation → prayer`; zero run Words before the Bridge. (Corrected 2026-08-14 — the spec had Words at 4 and the Bridge at 5, which never matched a built study.) The 13 topical studies use the §5.6 variant order and have no Neuroplasticity section at all. If this doc and the app ever disagree again, follow the app and flag the discrepancy to Jon rather than reordering 229 studies to match a document.
 
 ---
 
@@ -92,7 +92,7 @@ Studies live in `logos-study-app.html` as objects appended to the `STUDIES` arra
   title: "Romans 12:1–2",
   subtitle: "one-line hook for the library card",
   translations: ["NASB 1995","ESV"],
-  purpose: ["Formation","AuDHD","Greek"],   // kept for historical/content-type reasons; no longer rendered on cards
+  purpose: ["Formation","AuDHD","Greek"],   // drives the filter chips and is not printed on cards
   themes: ["Union with Christ","Identity in Christ"],   // 2–4 tags from the controlled vocabulary below — drives the "By Theme" library view
   anchor: "the one-sentence Anchor",
   sections: [ { n:"1", id:"text", title:"The Text", sub:"optional", blocks:[ ... ] }, ... ],
