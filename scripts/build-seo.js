@@ -107,7 +107,7 @@ function buildStudiesAsset(src) {
 // and add the <script src> that defines it just before the app's own script.
 //
 // The guard matters: if the asset ever fails to load, the throw stops the
-// app's boot code before it hides #staticFallback, so a visitor (or crawler)
+// app's boot code before it removes #staticFallback, so a visitor (or crawler)
 // still sees the real static study content instead of an empty library.
 function leanify(html, assetPath, where) {
   const loc = locateStudies(html, where);
