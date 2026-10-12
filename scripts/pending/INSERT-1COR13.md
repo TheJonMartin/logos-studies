@@ -15,16 +15,7 @@ git commit -m "Add 1 Corinthians 13:1–3, 13:4–7, 13:8–13 studies"
 git push origin main
 ```
 
-Expected STUDIES reference count: 228 → 231.
 Expected new ids:
 - 1-corinthians-13-1-3
 - 1-corinthians-13-4-7
 - 1-corinthians-13-8-13
-
-Then deploy as usual. Add literal 301s:
-
-```
-/studies/1-corinthians-13-1-3/   /studies/1-corinthians-13-1-3/index.html   301
-/studies/1-corinthians-13-4-7/   /studies/1-corinthians-13-4-7/index.html   301
-/studies/1-corinthians-13-8-13/  /studies/1-corinthians-13-8-13/index.html  301
-```
