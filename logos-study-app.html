@@ -15641,7 +15641,7 @@ let darkMode=(function(){
 function applyDark(){
   document.body.classList.toggle("dark",darkMode);
   const b=$("#darkBtn");
-  if(b){b.classList.toggle("active",darkMode);b.textContent=darkMode?"☀":"☾";b.title=darkMode?"Light mode":"Dark mode";b.setAttribute("aria-pressed",darkMode?"true":"false");}
+  if(b){const label=darkMode?"Light mode":"Dark mode";b.classList.toggle("active",darkMode);b.textContent=darkMode?"☀":"☾";b.title=label;b.setAttribute("aria-label",label);b.setAttribute("aria-pressed",darkMode?"true":"false");}
 }
 function toggleDark(){darkMode=!darkMode;store("dark",darkMode?"1":"0");applyDark();}
 
