@@ -26,20 +26,8 @@ function readSource() {
 // an isolated VM context (no access to the real global scope) rather than
 // hand-parsing thousands of lines of JS objects.
 function extractStudies(src) {
-  const startMarker = "const STUDIES = [";
-  const start = src.indexOf(startMarker);
-  if (start === -1) {
-    throw new Error("Could not locate STUDIES array in logos-study-app.html — start marker not found.");
-  }
-  const arrayStart = start + "const STUDIES = ".length;
-  // Find the top-level closing "];" — a line that closes the array itself, not
-  // one of the many nested arrays inside each study (those close as "]}" or "],").
-  const closeMatch = src.slice(arrayStart).match(/\n\];/);
-  if (!closeMatch) {
-    throw new Error("Could not locate closing \"];\" for STUDIES array.");
-  }
-  const end = arrayStart + closeMatch.index + closeMatch[0].length; // include the "];"
-  let literal = src.slice(arrayStart, end).trim();
+  const loc = locateStudies(src, "logos-study-app.html");
+  let literal = src.slice(loc.arrayStart, loc.end).trim();
   // literal currently ends with "];" — strip trailing semicolon so it evals as an expression
   literal = literal.replace(/;\s*$/, "");
   const sandbox = {};
